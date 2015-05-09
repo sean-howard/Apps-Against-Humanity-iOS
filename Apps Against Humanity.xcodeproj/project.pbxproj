@@ -20,6 +20,7 @@
 		8CCA3EB31AFE837A00F2E494 /* ClientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCA3EB21AFE837A00F2E494 /* ClientViewController.m */; };
 		8CCA3EC11AFEA57500F2E494 /* SocketServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCA3EC01AFEA57500F2E494 /* SocketServerManager.m */; };
 		8CCA3EC41AFEA58300F2E494 /* SocketClientManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCA3EC31AFEA58300F2E494 /* SocketClientManager.m */; };
+		8CCA3EC81AFEB41B00F2E494 /* MessagePacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCA3EC71AFEB41B00F2E494 /* MessagePacket.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		8CCA3EC01AFEA57500F2E494 /* SocketServerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketServerManager.m; sourceTree = "<group>"; };
 		8CCA3EC21AFEA58300F2E494 /* SocketClientManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketClientManager.h; sourceTree = "<group>"; };
 		8CCA3EC31AFEA58300F2E494 /* SocketClientManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketClientManager.m; sourceTree = "<group>"; };
+		8CCA3EC61AFEB41B00F2E494 /* MessagePacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagePacket.h; sourceTree = "<group>"; };
+		8CCA3EC71AFEB41B00F2E494 /* MessagePacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagePacket.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +125,7 @@
 			children = (
 				8CAA92051AFE5DBD00332FC9 /* AppDelegate.h */,
 				8CAA92061AFE5DBD00332FC9 /* AppDelegate.m */,
+				8CCA3EC91AFEB41E00F2E494 /* MessagePacket */,
 				8CCA3EBA1AFE956600F2E494 /* Socket Controllers */,
 				8CAA92081AFE5DBD00332FC9 /* ViewController.h */,
 				8CAA92091AFE5DBD00332FC9 /* ViewController.m */,
@@ -172,6 +176,15 @@
 				8CCA3EC31AFEA58300F2E494 /* SocketClientManager.m */,
 			);
 			name = "Socket Controllers";
+			sourceTree = "<group>";
+		};
+		8CCA3EC91AFEB41E00F2E494 /* MessagePacket */ = {
+			isa = PBXGroup;
+			children = (
+				8CCA3EC61AFEB41B00F2E494 /* MessagePacket.h */,
+				8CCA3EC71AFEB41B00F2E494 /* MessagePacket.m */,
+			);
+			name = MessagePacket;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,6 +330,7 @@
 				8CCA3EC11AFEA57500F2E494 /* SocketServerManager.m in Sources */,
 				8CCA3EB01AFE837300F2E494 /* ServerViewController.m in Sources */,
 				8CCA3EB31AFE837A00F2E494 /* ClientViewController.m in Sources */,
+				8CCA3EC81AFEB41B00F2E494 /* MessagePacket.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
