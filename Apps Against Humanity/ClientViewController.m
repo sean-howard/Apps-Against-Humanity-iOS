@@ -81,7 +81,7 @@ static NSString *ServiceCell = @"ServiceCell";
 
 - (void)clientDidFinishFindingServices:(NSArray *)services
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+    NSLog(@"%s %@", __PRETTY_FUNCTION__, services);
     
     self.services = services;
     [self.tableView reloadData];
@@ -89,7 +89,7 @@ static NSString *ServiceCell = @"ServiceCell";
 
 - (void)clientDidUpdateServices:(NSArray *)services
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+    NSLog(@"%s %@", __PRETTY_FUNCTION__, services);
 
     self.services = services;
     [self.tableView reloadData];

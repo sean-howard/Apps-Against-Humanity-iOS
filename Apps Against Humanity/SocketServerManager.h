@@ -15,7 +15,8 @@
 
 - (void)serverDidStartBroadcasting;
 - (void)serverDidFailToBroadcast;
-- (void)serverDidAcceptNewConnection;
+- (void)serverDidAcceptNewConnections:(NSArray *)connections;
+- (void)serverDidLoseConnections:(NSArray *)connections;
 - (void)serverDidDisconnect;
 
 @end

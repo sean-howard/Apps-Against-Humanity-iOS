@@ -44,6 +44,16 @@
     NSLog(@"%s", __PRETTY_FUNCTION__);
 }
 
+- (void)serverDidAcceptNewConnections:(NSArray *)connections
+{
+    NSLog(@"%s %@", __PRETTY_FUNCTION__, connections);    
+}
+
+- (void)serverDidLoseConnections:(NSArray *)connections
+{
+    NSLog(@"%s %@", __PRETTY_FUNCTION__, connections);
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

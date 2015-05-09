@@ -12,6 +12,7 @@
 @interface SocketServerManager ()<NSNetServiceDelegate, GCDAsyncSocketDelegate>
 @property (strong, nonatomic) NSNetService *service;
 @property (strong, nonatomic) GCDAsyncSocket *socket;
+@property (strong, nonatomic) NSMutableArray *connections;
 @end
 
 @implementation SocketServerManager
@@ -20,6 +21,17 @@ static SocketServerManager *SINGLETON = nil;
 
 static bool isFirstAccess = YES;
 
+#pragma mark -
+#pragma mark Lazy Loading
+- (NSMutableArray *)connections
+{
+    if (!_connections) {
+        _connections = [NSMutableArray new];
+    }
+    return _connections;
+}
+
+#pragma mark -
 #pragma mark - Public Method
 
 + (id)sharedManager
@@ -33,6 +45,7 @@ static bool isFirstAccess = YES;
     return SINGLETON;
 }
 
+#pragma mark -
 #pragma mark - Life Cycle
 
 + (id) allocWithZone:(NSZone *)zone
@@ -117,28 +130,34 @@ static bool isFirstAccess = YES;
 - (void)socket:(GCDAsyncSocket *)socket didAcceptNewSocket:(GCDAsyncSocket *)newSocket {
     NSLog(@"Accepted New Socket from %@:%hu", [newSocket connectedHost], [newSocket connectedPort]);
     
-    // Socket
-    [self setSocket:newSocket];
+    [self.connections addObject:newSocket];
     
     // Read Data from Socket
     [newSocket readDataToLength:sizeof(uint64_t) withTimeout:-1.0 tag:0];
     
-    if ([self.delegate respondsToSelector:@selector(serverDidAcceptNewConnection)]) {
-        [self.delegate serverDidAcceptNewConnection];
+    if ([self.delegate respondsToSelector:@selector(serverDidAcceptNewConnections:)]) {
+        [self.delegate serverDidAcceptNewConnections:self.connections];
     }
 }
 
 - (void)socketDidDisconnect:(GCDAsyncSocket *)socket withError:(NSError *)error {
     NSLog(@"%s", __PRETTY_FUNCTION__);
     NSLog(@"%@ %@", [error localizedDescription], [error description]);
+
     if (self.socket == socket) {
         [self.socket setDelegate:nil];
         [self setSocket:nil];
+        
+        if ([self.delegate respondsToSelector:@selector(serverDidDisconnect)]) {
+            [self.delegate serverDidDisconnect];
+        }
     }
     
-    if ([self.delegate respondsToSelector:@selector(serverDidDisconnect)]) {
-        [self.delegate serverDidDisconnect];
-            
+    if ([self.connections containsObject:socket]) {
+        [self.connections removeObject:socket];
+        if ([self.delegate respondsToSelector:@selector(serverDidLoseConnections:)]) {
+            [self.delegate serverDidLoseConnections:self.connections];
+        }
     }
 }
 
