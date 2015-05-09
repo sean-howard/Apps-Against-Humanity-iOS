@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		89799468B7F1E04A85A70983 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A99A6BB1EF34B5952B7B672 /* libPods.a */; };
 		8CAA92041AFE5DBD00332FC9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CAA92031AFE5DBD00332FC9 /* main.m */; };
 		8CAA92071AFE5DBD00332FC9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CAA92061AFE5DBD00332FC9 /* AppDelegate.m */; };
 		8CAA920A1AFE5DBD00332FC9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CAA92091AFE5DBD00332FC9 /* ViewController.m */; };
@@ -14,6 +15,11 @@
 		8CAA920F1AFE5DBD00332FC9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CAA920E1AFE5DBD00332FC9 /* Images.xcassets */; };
 		8CAA92121AFE5DBD00332FC9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CAA92101AFE5DBD00332FC9 /* LaunchScreen.xib */; };
 		8CAA921E1AFE5DBE00332FC9 /* Apps_Against_HumanityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CAA921D1AFE5DBE00332FC9 /* Apps_Against_HumanityTests.m */; };
+		8CCA3EAD1AFE7FD000F2E494 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 8CCA3EAC1AFE7FD000F2E494 /* Podfile */; };
+		8CCA3EB01AFE837300F2E494 /* ServerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCA3EAF1AFE837300F2E494 /* ServerViewController.m */; };
+		8CCA3EB31AFE837A00F2E494 /* ClientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCA3EB21AFE837A00F2E494 /* ClientViewController.m */; };
+		8CCA3EC11AFEA57500F2E494 /* SocketServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCA3EC01AFEA57500F2E494 /* SocketServerManager.m */; };
+		8CCA3EC41AFEA58300F2E494 /* SocketClientManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCA3EC31AFEA58300F2E494 /* SocketClientManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +33,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		48FA31B81B320A81F857D89B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		4CF7D8216768588C78C7B18D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		8A99A6BB1EF34B5952B7B672 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CAA91FE1AFE5DBD00332FC9 /* Apps Against Humanity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Apps Against Humanity.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CAA92021AFE5DBD00332FC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8CAA92031AFE5DBD00332FC9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -40,6 +49,15 @@
 		8CAA92171AFE5DBE00332FC9 /* Apps Against HumanityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Apps Against HumanityTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CAA921C1AFE5DBE00332FC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8CAA921D1AFE5DBE00332FC9 /* Apps_Against_HumanityTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Apps_Against_HumanityTests.m; sourceTree = "<group>"; };
+		8CCA3EAC1AFE7FD000F2E494 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		8CCA3EAE1AFE837300F2E494 /* ServerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerViewController.h; sourceTree = "<group>"; };
+		8CCA3EAF1AFE837300F2E494 /* ServerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerViewController.m; sourceTree = "<group>"; };
+		8CCA3EB11AFE837A00F2E494 /* ClientViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientViewController.h; sourceTree = "<group>"; };
+		8CCA3EB21AFE837A00F2E494 /* ClientViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientViewController.m; sourceTree = "<group>"; };
+		8CCA3EBF1AFEA57500F2E494 /* SocketServerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketServerManager.h; sourceTree = "<group>"; };
+		8CCA3EC01AFEA57500F2E494 /* SocketServerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketServerManager.m; sourceTree = "<group>"; };
+		8CCA3EC21AFEA58300F2E494 /* SocketClientManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketClientManager.h; sourceTree = "<group>"; };
+		8CCA3EC31AFEA58300F2E494 /* SocketClientManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketClientManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89799468B7F1E04A85A70983 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,12 +79,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		57AB47AE04571C0078839A80 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8A99A6BB1EF34B5952B7B672 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		88263F4EAD32CA6F6C28E362 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				48FA31B81B320A81F857D89B /* Pods.debug.xcconfig */,
+				4CF7D8216768588C78C7B18D /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		8CAA91F51AFE5DBD00332FC9 = {
 			isa = PBXGroup;
 			children = (
+				8CCA3EAC1AFE7FD000F2E494 /* Podfile */,
 				8CAA92001AFE5DBD00332FC9 /* Apps Against Humanity */,
 				8CAA921A1AFE5DBE00332FC9 /* Apps Against HumanityTests */,
 				8CAA91FF1AFE5DBD00332FC9 /* Products */,
+				88263F4EAD32CA6F6C28E362 /* Pods */,
+				57AB47AE04571C0078839A80 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,8 +122,13 @@
 			children = (
 				8CAA92051AFE5DBD00332FC9 /* AppDelegate.h */,
 				8CAA92061AFE5DBD00332FC9 /* AppDelegate.m */,
+				8CCA3EBA1AFE956600F2E494 /* Socket Controllers */,
 				8CAA92081AFE5DBD00332FC9 /* ViewController.h */,
 				8CAA92091AFE5DBD00332FC9 /* ViewController.m */,
+				8CCA3EAE1AFE837300F2E494 /* ServerViewController.h */,
+				8CCA3EAF1AFE837300F2E494 /* ServerViewController.m */,
+				8CCA3EB11AFE837A00F2E494 /* ClientViewController.h */,
+				8CCA3EB21AFE837A00F2E494 /* ClientViewController.m */,
 				8CAA920B1AFE5DBD00332FC9 /* Main.storyboard */,
 				8CAA920E1AFE5DBD00332FC9 /* Images.xcassets */,
 				8CAA92101AFE5DBD00332FC9 /* LaunchScreen.xib */,
@@ -119,6 +163,17 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		8CCA3EBA1AFE956600F2E494 /* Socket Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8CCA3EBF1AFEA57500F2E494 /* SocketServerManager.h */,
+				8CCA3EC01AFEA57500F2E494 /* SocketServerManager.m */,
+				8CCA3EC21AFEA58300F2E494 /* SocketClientManager.h */,
+				8CCA3EC31AFEA58300F2E494 /* SocketClientManager.m */,
+			);
+			name = "Socket Controllers";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -126,9 +181,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8CAA92211AFE5DBE00332FC9 /* Build configuration list for PBXNativeTarget "Apps Against Humanity" */;
 			buildPhases = (
+				BF925211CDDD70D7CA93BA69 /* Check Pods Manifest.lock */,
 				8CAA91FA1AFE5DBD00332FC9 /* Sources */,
 				8CAA91FB1AFE5DBD00332FC9 /* Frameworks */,
 				8CAA91FC1AFE5DBD00332FC9 /* Resources */,
+				324DC5AA425C195EAD1CA61F /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -201,6 +258,7 @@
 			files = (
 				8CAA920D1AFE5DBD00332FC9 /* Main.storyboard in Resources */,
 				8CAA92121AFE5DBD00332FC9 /* LaunchScreen.xib in Resources */,
+				8CCA3EAD1AFE7FD000F2E494 /* Podfile in Resources */,
 				8CAA920F1AFE5DBD00332FC9 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -214,6 +272,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		324DC5AA425C195EAD1CA61F /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BF925211CDDD70D7CA93BA69 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8CAA91FA1AFE5DBD00332FC9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -222,6 +313,10 @@
 				8CAA920A1AFE5DBD00332FC9 /* ViewController.m in Sources */,
 				8CAA92071AFE5DBD00332FC9 /* AppDelegate.m in Sources */,
 				8CAA92041AFE5DBD00332FC9 /* main.m in Sources */,
+				8CCA3EC41AFEA58300F2E494 /* SocketClientManager.m in Sources */,
+				8CCA3EC11AFEA57500F2E494 /* SocketServerManager.m in Sources */,
+				8CCA3EB01AFE837300F2E494 /* ServerViewController.m in Sources */,
+				8CCA3EB31AFE837A00F2E494 /* ClientViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,6 +440,7 @@
 		};
 		8CAA92221AFE5DBE00332FC9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48FA31B81B320A81F857D89B /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Apps Against Humanity/Info.plist";
@@ -355,6 +451,7 @@
 		};
 		8CAA92231AFE5DBE00332FC9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4CF7D8216768588C78C7B18D /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Apps Against Humanity/Info.plist";
@@ -416,6 +513,7 @@
 				8CAA92231AFE5DBE00332FC9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8CAA92241AFE5DBE00332FC9 /* Build configuration list for PBXNativeTarget "Apps Against HumanityTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +522,7 @@
 				8CAA92261AFE5DBE00332FC9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
