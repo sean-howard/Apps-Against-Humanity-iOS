@@ -180,11 +180,12 @@ static bool isFirstAccess = YES;
 - (void)webSocketDidOpen:(SRWebSocket *)webSocket
 {
     NSLog(@"%s", __PRETTY_FUNCTION__);
+    [webSocket send:@"message"];
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+    NSLog(@"%s %@", __PRETTY_FUNCTION__, message);
 }
 
 -(void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean

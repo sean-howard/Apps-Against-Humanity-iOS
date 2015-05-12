@@ -7,11 +7,11 @@
 //
 
 #import "SocketServerManager.h"
-#import "MBWebSocketServer.h"
+#import <PocketSocket/PSWebSocketServer.h>
 
-@interface SocketServerManager ()<NSNetServiceDelegate, MBWebSocketServerDelegate>
+@interface SocketServerManager ()<NSNetServiceDelegate, PSWebSocketServerDelegate>
 @property (strong, nonatomic) NSNetService *service;
-@property (strong, nonatomic) MBWebSocketServer *socketServer;
+@property (strong, nonatomic) PSWebSocketServer *socketServer;
 @property (strong, nonatomic) NSMutableArray *connections;
 @end
 
@@ -88,9 +88,12 @@ static bool isFirstAccess = YES;
 - (void)startBroadcast {
     // Initialize GCDAsyncSocket
     
-    self.socketServer = [[MBWebSocketServer alloc] initWithPort:12345 delegate:self];
     
-    self.service = [[NSNetService alloc] initWithDomain:@"local." type:@"_AppsAgainstHumanity._tcp." name:@"" port:(int)[self.socketServer port]];
+    self.socketServer = [PSWebSocketServer serverWithHost:nil port:12345];
+    self.socketServer.delegate = self;
+    [self.socketServer start];
+    
+    self.service = [[NSNetService alloc] initWithDomain:@"local." type:@"_AppsAgainstHumanity._tcp." name:@"" port:12345];
     
     // Configure Service
     [self.service setDelegate:self];
@@ -118,6 +121,34 @@ static bool isFirstAccess = YES;
         [self.delegate serverDidFailToBroadcast];
     }
 }
+
+#pragma mark -
+#pragma mark - PSWebSocketServerDelegate
+- (void)serverDidStart:(PSWebSocketServer *)server {
+    NSLog(@"Server did start…");
+}
+- (void)serverDidStop:(PSWebSocketServer *)server {
+    NSLog(@"Server did stop…");
+}
+- (BOOL)server:(PSWebSocketServer *)server acceptWebSocketWithRequest:(NSURLRequest *)request {
+    NSLog(@"Server should accept request: %@", request);
+    return YES;
+}
+- (void)server:(PSWebSocketServer *)server webSocket:(PSWebSocket *)webSocket didReceiveMessage:(id)message {
+    NSString *newMessage = [(NSString *)message uppercaseString];
+    [webSocket send:newMessage];
+}
+- (void)server:(PSWebSocketServer *)server webSocketDidOpen:(PSWebSocket *)webSocket {
+    NSLog(@"Server websocket did open");
+}
+- (void)server:(PSWebSocketServer *)server webSocket:(PSWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean {
+    NSLog(@"Server websocket did close with code: %@, reason: %@, wasClean: %@", @(code), reason, @(wasClean));
+}
+- (void)server:(PSWebSocketServer *)server webSocket:(PSWebSocket *)webSocket didFailWithError:(NSError *)error {
+    NSLog(@"Server websocket did fail with error: %@", error);
+}
+
+/*
 
 #pragma mark -
 #pragma mark MBWebSocketServerDelegate
@@ -156,5 +187,6 @@ static bool isFirstAccess = YES;
 {
     NSLog(@"%s", __PRETTY_FUNCTION__);
 }
+ */
 
 @end
