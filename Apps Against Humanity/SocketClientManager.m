@@ -7,10 +7,11 @@
 //
 
 #import "SocketClientManager.h"
-#import <GCDAsyncSocket.h>
+#import <SocketRocket/SRWebSocket.h>
+#include <arpa/inet.h>
 
-@interface SocketClientManager ()<NSNetServiceDelegate, NSNetServiceBrowserDelegate>
-@property (strong, nonatomic) GCDAsyncSocket *socket;
+@interface SocketClientManager ()<NSNetServiceDelegate, NSNetServiceBrowserDelegate, SRWebSocketDelegate>
+@property (strong, nonatomic) SRWebSocket *socket;
 @property (strong, nonatomic) NSMutableArray *services;
 @property (strong, nonatomic) NSNetServiceBrowser *serviceBrowser;
 @end
@@ -119,7 +120,6 @@ static bool isFirstAccess = YES;
         if ([self.delegate respondsToSelector:@selector(clientDidFinishFindingServices:)]) {
             [self.delegate clientDidFinishFindingServices:self.services];
         }
-
     }
 }
 
@@ -148,65 +148,53 @@ static bool isFirstAccess = YES;
 
 - (void)netServiceDidResolveAddress:(NSNetService *)service {
     // Connect With Service
-    if ([self connectWithService:service]) {
-        NSLog(@"Did Connect with Service: domain(%@) type(%@) name(%@) port(%i)", [service domain], [service type], [service name], (int)[service port]);
-    } else {
-        NSLog(@"Unable to Connect with Service: domain(%@) type(%@) name(%@) port(%i)", [service domain], [service type], [service name], (int)[service port]);
-    }
+    [self connectWithService:service];
 }
 
-- (BOOL)connectWithService:(NSNetService *)service {
-    BOOL _isConnected = NO;
-    
+- (void)connectWithService:(NSNetService *)service {
     // Copy Service Addresses
     NSArray *addresses = [[service addresses] mutableCopy];
     
-    if (!self.socket || ![self.socket isConnected]) {
+    if (!self.socket) {
         // Initialize Socket
-        self.socket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
-        
-        // Connect
-        while (!_isConnected && [addresses count]) {
-            NSData *address = [addresses objectAtIndex:0];
-            
-            NSError *error = nil;
-            if ([self.socket connectToAddress:address error:&error]) {
-                _isConnected = YES;
-                
-            } else if (error) {
-                NSLog(@"Unable to connect to address. Error %@ with user info %@.", error, [error userInfo]);
-            }
-        }
-        
-    } else {
-        _isConnected = [self.socket isConnected];
-    }
-    
-    return _isConnected;
+        self.socket = [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[self getStringFromAddressData:[addresses firstObject]]]]];
+        self.socket.delegate = self;
+        [self.socket open];
+     }
 }
+
+- (NSString *)getStringFromAddressData:(NSData *)dataIn {
+    struct sockaddr_in  *socketAddress = nil;
+    NSString            *ipString = nil;
+    
+    socketAddress = (struct sockaddr_in *)[dataIn bytes];
+    ipString = [NSString stringWithFormat: @"http://%s:%i",
+                inet_ntoa(socketAddress->sin_addr),ntohs(socketAddress->sin_port)];  ///problem here
+    
+    return ipString;
+}
+
 
 #pragma mark -
-#pragma mark GCDSocketDelegate Methods
-- (void)socket:(GCDAsyncSocket *)socket didConnectToHost:(NSString *)host port:(UInt16)port {
-    NSLog(@"Socket Did Connect to Host: %@ Port: %hu", host, port);
-    
-    // Start Reading
-    [socket readDataToLength:sizeof(uint64_t) withTimeout:-1.0 tag:0];
-    
-    if ([self.delegate respondsToSelector:@selector(clientDidConnectToServer)]) {
-        [self.delegate clientDidConnectToServer];
-    }
+#pragma mark SRSocketDelegate Methods
+- (void)webSocketDidOpen:(SRWebSocket *)webSocket
+{
+    NSLog(@"%s", __PRETTY_FUNCTION__);
 }
 
-- (void)socketDidDisconnect:(GCDAsyncSocket *)socket withError:(NSError *)error {
-    NSLog(@"Socket Did Disconnect with Error %@ with User Info %@.", error, [error userInfo]);
-    
-    [socket setDelegate:nil];
-    [self setSocket:nil];
-    
-    if ([self.delegate respondsToSelector:@selector(clientDidDisconnectFromServer)]) {
-        [self.delegate clientDidDisconnectFromServer];
-    }
+- (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message
+{
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+}
+
+-(void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean
+{
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+}
+
+- (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error
+{
+    NSLog(@"%s", __PRETTY_FUNCTION__);
 }
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "SocketServerManager.h"
+/*
 #import <GCDAsyncSocket.h>
 
 @interface SocketServerManager ()<NSNetServiceDelegate, GCDAsyncSocketDelegate>
@@ -14,13 +15,13 @@
 @property (strong, nonatomic) GCDAsyncSocket *socket;
 @property (strong, nonatomic) NSMutableArray *connections;
 @end
-
+*/
 @implementation SocketServerManager
 
 static SocketServerManager *SINGLETON = nil;
 
 static bool isFirstAccess = YES;
-
+/*
 #pragma mark -
 #pragma mark Lazy Loading
 - (NSMutableArray *)connections
@@ -159,6 +160,6 @@ static bool isFirstAccess = YES;
             [self.delegate serverDidLoseConnections:self.connections];
         }
     }
-}
+}*/
 
 @end

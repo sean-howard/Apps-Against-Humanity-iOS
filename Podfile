@@ -1,1 +1,1 @@
-pod 'CocoaAsyncSocket', '~> 7.4'
+pod 'SocketRocket'
