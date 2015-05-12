@@ -7,21 +7,20 @@
 //
 
 #import "SocketServerManager.h"
-/*
-#import <GCDAsyncSocket.h>
+#import "MBWebSocketServer.h"
 
-@interface SocketServerManager ()<NSNetServiceDelegate, GCDAsyncSocketDelegate>
+@interface SocketServerManager ()<NSNetServiceDelegate, MBWebSocketServerDelegate>
 @property (strong, nonatomic) NSNetService *service;
-@property (strong, nonatomic) GCDAsyncSocket *socket;
+@property (strong, nonatomic) MBWebSocketServer *socketServer;
 @property (strong, nonatomic) NSMutableArray *connections;
 @end
-*/
+
 @implementation SocketServerManager
 
 static SocketServerManager *SINGLETON = nil;
 
 static bool isFirstAccess = YES;
-/*
+
 #pragma mark -
 #pragma mark Lazy Loading
 - (NSMutableArray *)connections
@@ -88,23 +87,17 @@ static bool isFirstAccess = YES;
 
 - (void)startBroadcast {
     // Initialize GCDAsyncSocket
-    self.socket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
     
-    // Start Listening for Incoming Connections
-    NSError *error = nil;
-    if ([self.socket acceptOnPort:0 error:&error]) {
-        // Initialize Service
-        self.service = [[NSNetService alloc] initWithDomain:@"local." type:@"_AppsAgainstHumanity._tcp." name:@"" port:[self.socket localPort]];
+    self.socketServer = [[MBWebSocketServer alloc] initWithPort:12345 delegate:self];
+    
+    self.service = [[NSNetService alloc] initWithDomain:@"local." type:@"_AppsAgainstHumanity._tcp." name:@"" port:(int)[self.socketServer port]];
+    
+    // Configure Service
+    [self.service setDelegate:self];
+    
+    // Publish Service
+    [self.service publish];
         
-        // Configure Service
-        [self.service setDelegate:self];
-        
-        // Publish Service
-        [self.service publish];
-        
-    } else {
-        NSLog(@"Unable to create socket. Error %@ with user info %@.", error, [error userInfo]);
-    }
 }
 
 #pragma mark -
@@ -127,39 +120,41 @@ static bool isFirstAccess = YES;
 }
 
 #pragma mark -
-#pragma mark GCDAsyncSocketDelegate
-- (void)socket:(GCDAsyncSocket *)socket didAcceptNewSocket:(GCDAsyncSocket *)newSocket {
-    NSLog(@"Accepted New Socket from %@:%hu", [newSocket connectedHost], [newSocket connectedPort]);
+#pragma mark MBWebSocketServerDelegate
+- (void)webSocketServer:(MBWebSocketServer *)webSocketServer didAcceptConnection:(GCDAsyncSocket *)connection
+{
+    NSLog(@"Accepted New Socket from %@:%hu", [connection connectedHost], [connection connectedPort]);
     
-    [self.connections addObject:newSocket];
+    [self.connections addObject:connection];
     
     // Read Data from Socket
-    [newSocket readDataToLength:sizeof(uint64_t) withTimeout:-1.0 tag:0];
+    [connection readDataToLength:sizeof(uint64_t) withTimeout:-1.0 tag:0];
     
     if ([self.delegate respondsToSelector:@selector(serverDidAcceptNewConnections:)]) {
         [self.delegate serverDidAcceptNewConnections:self.connections];
     }
 }
 
-- (void)socketDidDisconnect:(GCDAsyncSocket *)socket withError:(NSError *)error {
+- (void)webSocketServer:(MBWebSocketServer *)webSocketServer clientDisconnected:(GCDAsyncSocket *)connection
+{
     NSLog(@"%s", __PRETTY_FUNCTION__);
-    NSLog(@"%@ %@", [error localizedDescription], [error description]);
-
-    if (self.socket == socket) {
-        [self.socket setDelegate:nil];
-        [self setSocket:nil];
-        
-        if ([self.delegate respondsToSelector:@selector(serverDidDisconnect)]) {
-            [self.delegate serverDidDisconnect];
-        }
-    }
     
-    if ([self.connections containsObject:socket]) {
-        [self.connections removeObject:socket];
+    if ([self.connections containsObject:connection]) {
+        [self.connections removeObject:connection];
         if ([self.delegate respondsToSelector:@selector(serverDidLoseConnections:)]) {
             [self.delegate serverDidLoseConnections:self.connections];
         }
     }
-}*/
+}
+
+- (void)webSocketServer:(MBWebSocketServer *)webSocket didReceiveData:(NSData *)data fromConnection:(GCDAsyncSocket *)connection
+{
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+}
+
+- (void)webSocketServer:(MBWebSocketServer *)webSocketServer couldNotParseRawData:(NSData *)rawData fromConnection:(GCDAsyncSocket *)connection error:(NSError *)error
+{
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+}
 
 @end

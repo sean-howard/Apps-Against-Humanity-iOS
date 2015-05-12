@@ -21,6 +21,8 @@
 		8CCA3EC11AFEA57500F2E494 /* SocketServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCA3EC01AFEA57500F2E494 /* SocketServerManager.m */; };
 		8CCA3EC41AFEA58300F2E494 /* SocketClientManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCA3EC31AFEA58300F2E494 /* SocketClientManager.m */; };
 		8CCA3EC81AFEB41B00F2E494 /* MessagePacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCA3EC71AFEB41B00F2E494 /* MessagePacket.m */; };
+		8CF1BF161B029A170083700B /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF1BF151B029A170083700B /* GCDAsyncSocket.m */; };
+		8CF1BF191B029C6B0083700B /* MBWebSocketServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF1BF181B029C6B0083700B /* MBWebSocketServer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,10 @@
 		8CCA3EC31AFEA58300F2E494 /* SocketClientManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketClientManager.m; sourceTree = "<group>"; };
 		8CCA3EC61AFEB41B00F2E494 /* MessagePacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagePacket.h; sourceTree = "<group>"; };
 		8CCA3EC71AFEB41B00F2E494 /* MessagePacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagePacket.m; sourceTree = "<group>"; };
+		8CF1BF141B029A170083700B /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
+		8CF1BF151B029A170083700B /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
+		8CF1BF171B029C6B0083700B /* MBWebSocketServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBWebSocketServer.h; sourceTree = "<group>"; };
+		8CF1BF181B029C6B0083700B /* MBWebSocketServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBWebSocketServer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +129,7 @@
 		8CAA92001AFE5DBD00332FC9 /* Apps Against Humanity */ = {
 			isa = PBXGroup;
 			children = (
+				8CF1BF131B0299A50083700B /* Vendor */,
 				8CAA92051AFE5DBD00332FC9 /* AppDelegate.h */,
 				8CAA92061AFE5DBD00332FC9 /* AppDelegate.m */,
 				8CCA3EC91AFEB41E00F2E494 /* MessagePacket */,
@@ -185,6 +192,17 @@
 				8CCA3EC71AFEB41B00F2E494 /* MessagePacket.m */,
 			);
 			name = MessagePacket;
+			sourceTree = "<group>";
+		};
+		8CF1BF131B0299A50083700B /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				8CF1BF141B029A170083700B /* GCDAsyncSocket.h */,
+				8CF1BF151B029A170083700B /* GCDAsyncSocket.m */,
+				8CF1BF171B029C6B0083700B /* MBWebSocketServer.h */,
+				8CF1BF181B029C6B0083700B /* MBWebSocketServer.m */,
+			);
+			name = Vendor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -328,6 +346,8 @@
 				8CAA92041AFE5DBD00332FC9 /* main.m in Sources */,
 				8CCA3EC41AFEA58300F2E494 /* SocketClientManager.m in Sources */,
 				8CCA3EC11AFEA57500F2E494 /* SocketServerManager.m in Sources */,
+				8CF1BF191B029C6B0083700B /* MBWebSocketServer.m in Sources */,
+				8CF1BF161B029A170083700B /* GCDAsyncSocket.m in Sources */,
 				8CCA3EB01AFE837300F2E494 /* ServerViewController.m in Sources */,
 				8CCA3EB31AFE837A00F2E494 /* ClientViewController.m in Sources */,
 				8CCA3EC81AFEB41B00F2E494 /* MessagePacket.m in Sources */,
