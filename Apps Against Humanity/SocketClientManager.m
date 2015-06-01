@@ -9,6 +9,7 @@
 #import "SocketClientManager.h"
 #import <SocketRocket/SRWebSocket.h>
 #include <arpa/inet.h>
+#import "MessagePacket.h"
 
 @interface SocketClientManager ()<NSNetServiceDelegate, NSNetServiceBrowserDelegate, SRWebSocketDelegate>
 @property (strong, nonatomic) SRWebSocket *socket;
@@ -181,14 +182,12 @@ static bool isFirstAccess = YES;
 {
     NSLog(@"%s", __PRETTY_FUNCTION__);
     
-    NSDictionary *sampleData = @{@"name":@"Sean Howard",
-                                 @"card":@"White",
-                                 @"age":@"23",
-                                 @"expertise":@"master"};
+    NSDictionary *lobbyMessage = @{@"action":[NSNumber numberWithInt:MessagePacketActionJoiningLobby],
+                                   @"name":@"Sean Howard"};
     
     NSError *error = nil;
     
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:sampleData options:NSJSONWritingPrettyPrinted error:&error];
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:lobbyMessage options:0 error:&error];
     
     if (error) {
         NSLog(@"%@", error.localizedDescription);
@@ -218,6 +217,7 @@ static bool isFirstAccess = YES;
 - (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error
 {
     NSLog(@"%s", __PRETTY_FUNCTION__);
+    NSLog(@"%@", error.localizedDescription);
 }
 
 @end

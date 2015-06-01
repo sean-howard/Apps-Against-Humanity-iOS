@@ -21,7 +21,9 @@ typedef enum : NSInteger
 
 typedef enum : NSInteger
 {
-    MessagePacketActionUnknown = -1
+    MessagePacketActionUnknown = -1,
+    MessagePacketActionJoiningLobby = 0,
+    MessagePacketActionStartGame
 } MessagePacketAction;
 
 @property (nonatomic, strong) id data;
