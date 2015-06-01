@@ -148,45 +148,4 @@ static bool isFirstAccess = YES;
     NSLog(@"Server websocket did fail with error: %@", error);
 }
 
-/*
-
-#pragma mark -
-#pragma mark MBWebSocketServerDelegate
-- (void)webSocketServer:(MBWebSocketServer *)webSocketServer didAcceptConnection:(GCDAsyncSocket *)connection
-{
-    NSLog(@"Accepted New Socket from %@:%hu", [connection connectedHost], [connection connectedPort]);
-    
-    [self.connections addObject:connection];
-    
-    // Read Data from Socket
-    [connection readDataToLength:sizeof(uint64_t) withTimeout:-1.0 tag:0];
-    
-    if ([self.delegate respondsToSelector:@selector(serverDidAcceptNewConnections:)]) {
-        [self.delegate serverDidAcceptNewConnections:self.connections];
-    }
-}
-
-- (void)webSocketServer:(MBWebSocketServer *)webSocketServer clientDisconnected:(GCDAsyncSocket *)connection
-{
-    NSLog(@"%s", __PRETTY_FUNCTION__);
-    
-    if ([self.connections containsObject:connection]) {
-        [self.connections removeObject:connection];
-        if ([self.delegate respondsToSelector:@selector(serverDidLoseConnections:)]) {
-            [self.delegate serverDidLoseConnections:self.connections];
-        }
-    }
-}
-
-- (void)webSocketServer:(MBWebSocketServer *)webSocket didReceiveData:(NSData *)data fromConnection:(GCDAsyncSocket *)connection
-{
-    NSLog(@"%s", __PRETTY_FUNCTION__);
-}
-
-- (void)webSocketServer:(MBWebSocketServer *)webSocketServer couldNotParseRawData:(NSData *)rawData fromConnection:(GCDAsyncSocket *)connection error:(NSError *)error
-{
-    NSLog(@"%s", __PRETTY_FUNCTION__);
-}
- */
-
 @end
