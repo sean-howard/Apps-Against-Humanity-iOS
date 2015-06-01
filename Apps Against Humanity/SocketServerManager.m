@@ -135,9 +135,14 @@ static bool isFirstAccess = YES;
     return YES;
 }
 - (void)server:(PSWebSocketServer *)server webSocket:(PSWebSocket *)webSocket didReceiveMessage:(id)message {
-    NSString *newMessage = [(NSString *)message uppercaseString];
-    [webSocket send:newMessage];
+    NSData *data = [message dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    
+    NSLog(@"Server received message: %@", json);
+    
+    [webSocket send:[message uppercaseString]];
 }
+
 - (void)server:(PSWebSocketServer *)server webSocketDidOpen:(PSWebSocket *)webSocket {
     NSLog(@"Server websocket did open");
 }

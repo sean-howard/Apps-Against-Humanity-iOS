@@ -180,12 +180,34 @@ static bool isFirstAccess = YES;
 - (void)webSocketDidOpen:(SRWebSocket *)webSocket
 {
     NSLog(@"%s", __PRETTY_FUNCTION__);
-    [webSocket send:@"message"];
+    
+    NSDictionary *sampleData = @{@"name":@"Sean Howard",
+                                 @"card":@"White",
+                                 @"age":@"23",
+                                 @"expertise":@"master"};
+    
+    NSError *error = nil;
+    
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:sampleData options:NSJSONWritingPrettyPrinted error:&error];
+    
+    if (error) {
+        NSLog(@"%@", error.localizedDescription);
+    }
+    
+    NSString *string = [[NSString alloc] initWithData:jsonData
+                                             encoding:NSUTF8StringEncoding];
+    
+    NSLog(@"%@", string);
+    [webSocket send:string];
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message
 {
     NSLog(@"%s %@", __PRETTY_FUNCTION__, message);
+    NSData *data = [message dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    
+    NSLog(@"Client received message: %@", json);
 }
 
 -(void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean
