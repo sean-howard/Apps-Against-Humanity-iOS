@@ -59,4 +59,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)launchQuickCommand:(id)sender {
+    [self performSegueWithIdentifier:@"quickCommand" sender:self];
+}
+
 @end

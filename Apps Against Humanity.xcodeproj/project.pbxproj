@@ -21,6 +21,7 @@
 		8CCA3EC11AFEA57500F2E494 /* SocketServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCA3EC01AFEA57500F2E494 /* SocketServerManager.m */; };
 		8CCA3EC41AFEA58300F2E494 /* SocketClientManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCA3EC31AFEA58300F2E494 /* SocketClientManager.m */; };
 		8CCA3EC81AFEB41B00F2E494 /* MessagePacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCA3EC71AFEB41B00F2E494 /* MessagePacket.m */; };
+		8CF6F3D91B320C0B00521756 /* QuickCommandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF6F3D81B320C0B00521756 /* QuickCommandViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,8 @@
 		8CCA3EC31AFEA58300F2E494 /* SocketClientManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketClientManager.m; sourceTree = "<group>"; };
 		8CCA3EC61AFEB41B00F2E494 /* MessagePacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagePacket.h; sourceTree = "<group>"; };
 		8CCA3EC71AFEB41B00F2E494 /* MessagePacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagePacket.m; sourceTree = "<group>"; };
+		8CF6F3D71B320C0B00521756 /* QuickCommandViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuickCommandViewController.h; sourceTree = "<group>"; };
+		8CF6F3D81B320C0B00521756 /* QuickCommandViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuickCommandViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +132,8 @@
 				8CCA3EBA1AFE956600F2E494 /* Socket Controllers */,
 				8CAA92081AFE5DBD00332FC9 /* ViewController.h */,
 				8CAA92091AFE5DBD00332FC9 /* ViewController.m */,
+				8CF6F3D71B320C0B00521756 /* QuickCommandViewController.h */,
+				8CF6F3D81B320C0B00521756 /* QuickCommandViewController.m */,
 				8CCA3EAE1AFE837300F2E494 /* ServerViewController.h */,
 				8CCA3EAF1AFE837300F2E494 /* ServerViewController.m */,
 				8CCA3EB11AFE837A00F2E494 /* ClientViewController.h */,
@@ -330,6 +335,7 @@
 				8CCA3EC11AFEA57500F2E494 /* SocketServerManager.m in Sources */,
 				8CCA3EB01AFE837300F2E494 /* ServerViewController.m in Sources */,
 				8CCA3EB31AFE837A00F2E494 /* ClientViewController.m in Sources */,
+				8CF6F3D91B320C0B00521756 /* QuickCommandViewController.m in Sources */,
 				8CCA3EC81AFEB41B00F2E494 /* MessagePacket.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

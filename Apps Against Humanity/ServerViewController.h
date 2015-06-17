@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ServerViewController : UIViewController
-
+- (IBAction)launchQuickCommand:(id)sender;
 @end

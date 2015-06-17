@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ClientViewController : UITableViewController
+- (IBAction)launchQuickCommand:(id)sender;
 
 @end

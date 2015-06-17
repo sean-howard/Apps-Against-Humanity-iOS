@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E33b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="okr-6A-sfP">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -95,8 +96,17 @@
                                 </state>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.63921568627450975" green="0.80392156862745101" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Server" id="Lr4-RH-e3z" userLabel="Server">
+                        <barButtonItem key="rightBarButtonItem" title="Quick Command" id="bte-lF-mmV">
+                            <connections>
+                                <action selector="launchQuickCommand:" destination="7vQ-4Y-63V" id="8nh-yU-hdr"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="vLC-va-sIE" kind="show" identifier="quickCommand" id="2e2-nZ-iH2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XbP-GP-vii" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -123,10 +133,154 @@
                             <outlet property="delegate" destination="G0X-KB-nPs" id="hGZ-Em-qEQ"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Client" id="bfU-MN-5ng" userLabel="Server">
+                        <barButtonItem key="rightBarButtonItem" title="Quick Command" id="uL7-FB-6tO">
+                            <connections>
+                                <action selector="launchQuickCommand:" destination="G0X-KB-nPs" id="L9l-wY-7PA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="vLC-va-sIE" kind="show" identifier="quickCommand" id="tdA-0M-hdA"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YZE-SW-LW3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="500" y="852"/>
         </scene>
+        <!--Quick Command View Controller-->
+        <scene sceneID="rd8-co-mgy">
+            <objects>
+                <viewController id="vLC-va-sIE" customClass="QuickCommandViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="t1O-se-K5J"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZBS-sy-8Pa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4rO-ew-vbk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QTz-sF-u4Q">
+                                <rect key="frame" x="57" y="95" width="207" height="30"/>
+                                <state key="normal" title="Join Lobby">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendCommand:" destination="vLC-va-sIE" eventType="touchUpInside" id="z78-Av-eWe"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ZG-c1-s1K">
+                                <rect key="frame" x="57" y="133" width="207" height="30"/>
+                                <state key="normal" title="Start Game Session">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendCommand:" destination="vLC-va-sIE" eventType="touchUpInside" id="zca-r5-Mjt"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cks-1W-6xO">
+                                <rect key="frame" x="57" y="171" width="207" height="30"/>
+                                <state key="normal" title="Start Game Match">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendCommand:" destination="vLC-va-sIE" eventType="touchUpInside" id="0nx-JI-Yvd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Edq-IK-x43">
+                                <rect key="frame" x="57" y="209" width="207" height="30"/>
+                                <state key="normal" title="Select Black Card Player">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendCommand:" destination="vLC-va-sIE" eventType="touchUpInside" id="kE6-zl-Mlq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sp8-24-h28">
+                                <rect key="frame" x="57" y="247" width="207" height="30"/>
+                                <state key="normal" title="Distribute White Cards">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendCommand:" destination="vLC-va-sIE" eventType="touchUpInside" id="mFy-8e-UYz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9b7-qi-Z2O">
+                                <rect key="frame" x="57" y="285" width="207" height="30"/>
+                                <state key="normal" title="Display Black Question Card">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendCommand:" destination="vLC-va-sIE" eventType="touchUpInside" id="3k4-qU-PK6"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eD1-aa-IAc">
+                                <rect key="frame" x="57" y="323" width="207" height="30"/>
+                                <state key="normal" title="Submit White Card">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendCommand:" destination="vLC-va-sIE" eventType="touchUpInside" id="NVa-NB-Dh8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P9A-f0-LTR">
+                                <rect key="frame" x="57" y="361" width="207" height="30"/>
+                                <state key="normal" title="All Cards Submitted">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendCommand:" destination="vLC-va-sIE" eventType="touchUpInside" id="wiG-8f-dte"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keS-vG-Rnm">
+                                <rect key="frame" x="57" y="399" width="207" height="30"/>
+                                <state key="normal" title="Choose Winner">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendCommand:" destination="vLC-va-sIE" eventType="touchUpInside" id="med-Pg-OVx"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Edq-IK-x43" firstAttribute="leading" secondItem="Sp8-24-h28" secondAttribute="leading" id="357-Ly-Pzj"/>
+                            <constraint firstAttribute="centerX" secondItem="QTz-sF-u4Q" secondAttribute="centerX" constant="-0.5" id="76d-wb-2tA"/>
+                            <constraint firstItem="Cks-1W-6xO" firstAttribute="trailing" secondItem="Edq-IK-x43" secondAttribute="trailing" id="EvZ-Fd-J7j"/>
+                            <constraint firstItem="eD1-aa-IAc" firstAttribute="trailing" secondItem="P9A-f0-LTR" secondAttribute="trailing" id="EwL-Kk-Els"/>
+                            <constraint firstItem="9b7-qi-Z2O" firstAttribute="trailing" secondItem="Sp8-24-h28" secondAttribute="trailing" id="H2Y-U9-FKF"/>
+                            <constraint firstItem="Edq-IK-x43" firstAttribute="leading" secondItem="Cks-1W-6xO" secondAttribute="leading" id="IwK-YR-ZUl"/>
+                            <constraint firstItem="eD1-aa-IAc" firstAttribute="top" secondItem="9b7-qi-Z2O" secondAttribute="bottom" constant="8" symbolic="YES" id="Jim-KF-Jg1"/>
+                            <constraint firstItem="Cks-1W-6xO" firstAttribute="leading" secondItem="2ZG-c1-s1K" secondAttribute="leading" id="MdS-Qp-mL7"/>
+                            <constraint firstItem="P9A-f0-LTR" firstAttribute="leading" secondItem="eD1-aa-IAc" secondAttribute="leading" id="Q7g-BI-KEs"/>
+                            <constraint firstItem="Cks-1W-6xO" firstAttribute="trailing" secondItem="2ZG-c1-s1K" secondAttribute="trailing" id="R53-Cq-sUi"/>
+                            <constraint firstItem="keS-vG-Rnm" firstAttribute="leading" secondItem="P9A-f0-LTR" secondAttribute="leading" id="RF7-AH-X9M"/>
+                            <constraint firstItem="9b7-qi-Z2O" firstAttribute="top" secondItem="Sp8-24-h28" secondAttribute="bottom" constant="8" symbolic="YES" id="RmV-2p-kIM"/>
+                            <constraint firstItem="P9A-f0-LTR" firstAttribute="top" secondItem="eD1-aa-IAc" secondAttribute="bottom" constant="8" symbolic="YES" id="XO5-kj-o64"/>
+                            <constraint firstItem="eD1-aa-IAc" firstAttribute="leading" secondItem="9b7-qi-Z2O" secondAttribute="leading" id="XUB-PF-OBd"/>
+                            <constraint firstItem="QTz-sF-u4Q" firstAttribute="leading" secondItem="4rO-ew-vbk" secondAttribute="leadingMargin" constant="41" id="eMp-pB-tJp"/>
+                            <constraint firstItem="Edq-IK-x43" firstAttribute="top" secondItem="Cks-1W-6xO" secondAttribute="bottom" constant="8" symbolic="YES" id="fQh-69-pNf"/>
+                            <constraint firstItem="eD1-aa-IAc" firstAttribute="trailing" secondItem="9b7-qi-Z2O" secondAttribute="trailing" id="i9N-cW-TZn"/>
+                            <constraint firstItem="QTz-sF-u4Q" firstAttribute="trailing" secondItem="2ZG-c1-s1K" secondAttribute="trailing" id="itL-fH-4np"/>
+                            <constraint firstItem="Sp8-24-h28" firstAttribute="top" secondItem="Edq-IK-x43" secondAttribute="bottom" constant="8" symbolic="YES" id="jH7-zF-2Ud"/>
+                            <constraint firstItem="Sp8-24-h28" firstAttribute="leading" secondItem="9b7-qi-Z2O" secondAttribute="leading" id="jht-Of-MPm"/>
+                            <constraint firstItem="Sp8-24-h28" firstAttribute="trailing" secondItem="Edq-IK-x43" secondAttribute="trailing" id="kYO-Qv-9EB"/>
+                            <constraint firstItem="QTz-sF-u4Q" firstAttribute="leading" secondItem="2ZG-c1-s1K" secondAttribute="leading" id="lyp-Po-2SJ"/>
+                            <constraint firstItem="2ZG-c1-s1K" firstAttribute="top" secondItem="QTz-sF-u4Q" secondAttribute="bottom" constant="8" symbolic="YES" id="m0N-CV-ou2"/>
+                            <constraint firstItem="Cks-1W-6xO" firstAttribute="top" secondItem="2ZG-c1-s1K" secondAttribute="bottom" constant="8" symbolic="YES" id="oUE-64-RpU"/>
+                            <constraint firstItem="P9A-f0-LTR" firstAttribute="trailing" secondItem="keS-vG-Rnm" secondAttribute="trailing" id="rI6-Ul-bbO"/>
+                            <constraint firstItem="QTz-sF-u4Q" firstAttribute="top" secondItem="t1O-se-K5J" secondAttribute="bottom" constant="31" id="rgn-YV-gL6"/>
+                            <constraint firstItem="keS-vG-Rnm" firstAttribute="top" secondItem="P9A-f0-LTR" secondAttribute="bottom" constant="8" symbolic="YES" id="uXF-A1-AHc"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Qk-VM-I8S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1184" y="404"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="2e2-nZ-iH2"/>
+    </inferredMetricsTieBreakers>
 </document>
