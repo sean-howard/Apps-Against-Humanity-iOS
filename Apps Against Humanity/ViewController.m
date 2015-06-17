@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "MessagePacket.h"
 
 @interface ViewController ()
 @end
@@ -16,6 +17,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.    
+    
+    NSDictionary *rawMessage = @{@"name":@"Sean Howard",
+                                 @"uuid":[[NSUUID UUID] UUIDString]};
+    
+    MessagePacket *message = [[MessagePacket alloc] initWithData:rawMessage action:MessagePacketActionJoiningLobby];
+    
+    NSLog(@"%@", [message asString]);
+    NSLog(@"%@", [message serialise]);
+
+    
+    MessagePacket *secondPacket = [[MessagePacket alloc] initWithRawData:[message asString]];
+    NSLog(@"%@", [secondPacket serialise]);
 }
 
 @end

@@ -11,27 +11,30 @@
 @interface MessagePacket : NSObject
 
 extern NSString * const MessagePacketKeyData;
-extern NSString * const MessagePacketKeyType;
 extern NSString * const MessagePacketKeyAction;
-
-typedef enum : NSInteger
-{
-    MessagePacketTypeUnknown = -1
-} MessagePacketType;
 
 typedef enum : NSInteger
 {
     MessagePacketActionUnknown = -1,
     MessagePacketActionJoiningLobby = 0,
-    MessagePacketActionStartGame
+    MessagePacketActionStartGameSession,
+    MessagePacketActionStartGameMatch,
+    MessagePacketActionSelectBlackCardPlayer,
+    MessagePacketActionDistributeWhiteCards,
+    MessagePacketActionDisplayBlackQuestionCard,
+    MessagePacketActionSubmitWhiteCard,
+    MessagePacketActionAllCardsSubmitted,
+    MessagePacketActionChooseWinner
 } MessagePacketAction;
 
-@property (nonatomic, strong) id data;
-@property (nonatomic, assign) MessagePacketType type;
+@property (nonatomic, strong) NSDictionary *data;
 @property (nonatomic, assign) MessagePacketAction action;
 
 #pragma mark -
 #pragma mark Initialization
-- (instancetype)initWithData:(id)data type:(MessagePacketType)type action:(MessagePacketAction)action;
+- (instancetype)initWithRawData:(id)message;
+- (instancetype)initWithData:(NSDictionary *)data action:(MessagePacketAction)action;
+- (NSString *)asString;
+- (NSDictionary *)serialise;
 
 @end

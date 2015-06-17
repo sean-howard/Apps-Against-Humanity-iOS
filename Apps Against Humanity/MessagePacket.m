@@ -9,39 +9,49 @@
 #import "MessagePacket.h"
 
 NSString * const MessagePacketKeyData = @"data";
-NSString * const MessagePacketKeyType = @"type";
 NSString * const MessagePacketKeyAction = @"action";
+
 
 @implementation MessagePacket
 
-- (instancetype)initWithData:(id)data type:(MessagePacketType)type action:(MessagePacketAction)action
+- (instancetype)initWithData:(id)data action:(MessagePacketAction)action
 {
     if (self = [super init]) {
         self.data = data;
-        self.type = type;
         self.action = action;
     }
     return self;
 }
 
-#pragma mark -
-#pragma mark NSCoding Protocol
-- (void)encodeWithCoder:(NSCoder *)coder {
-    [coder encodeObject:self.data forKey:MessagePacketKeyData];
-    [coder encodeInteger:self.type forKey:MessagePacketKeyType];
-    [coder encodeInteger:self.action forKey:MessagePacketKeyAction];
+- (instancetype)initWithRawData:(id)message
+{
+    if (self = [super init]) {
+        NSData *data = [message dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    
+        self.action = [json[MessagePacketKeyAction] integerValue];
+        self.data = json[MessagePacketKeyData];
+    }
+    return self;
 }
 
-- (id)initWithCoder:(NSCoder *)decoder {
-    self = [super init];
+- (NSString *)asString
+{
+    NSError *error = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:[self serialise] options:0 error:&error];
     
-    if (self) {
-        [self setData:[decoder decodeObjectForKey:MessagePacketKeyData]];
-        [self setType:[decoder decodeIntegerForKey:MessagePacketKeyType]];
-        [self setAction:[decoder decodeIntegerForKey:MessagePacketKeyAction]];
+    if (error) {
+        NSLog(@"%@", error.localizedDescription);
+        return nil;
     }
     
-    return self;
+    return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+}
+
+- (NSDictionary *)serialise
+{
+  return @{MessagePacketKeyAction:@(self.action),
+           MessagePacketKeyData:self.data};
 }
 
 @end
