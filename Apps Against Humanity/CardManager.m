@@ -11,6 +11,7 @@
 #import "Pack.h"
 #import "WhiteCard.h"
 #import "BlackCard.h"
+#import "Hand.h"
 
 @implementation CardManager
 
@@ -127,7 +128,7 @@ static bool isFirstAccess = YES;
     return cardsJson;
 }
 
-#pragma mark Single Card By cardId
+#pragma mark - Single Card By cardId
 - (WhiteCard *)whiteCardWithId:(NSInteger)cardId
 {
     return [WhiteCard objectForPrimaryKey:@(cardId)];
@@ -138,7 +139,18 @@ static bool isFirstAccess = YES;
     return [BlackCard objectForPrimaryKey:@(cardId)];
 }
 
-#pragma mark Random Cards
+#pragma mark - Cards From Ids
+- (NSArray *)getCardsFromIds:(NSArray *)cardIds
+{
+    NSMutableArray *tempArray = [NSMutableArray new];
+    
+    for (NSNumber *cardId in cardIds) {
+        [tempArray addObject:[self whiteCardWithId:[cardId integerValue]]];
+    }
+    return tempArray;
+}
+
+#pragma mark - Random Cards
 - (BlackCard *)randomBlackCardFromPack:(Pack *)pack
 {
     if (!pack) {
@@ -155,6 +167,22 @@ static bool isFirstAccess = YES;
     }
     
     return pack.whiteCards[arc4random() % [pack.whiteCards count]];
+}
+
+#pragma mark - Random Sets
+- (NSArray *)getRandomSetOfWhiteCardsFromPack:(Pack *)pack limitedTo:(int)limit
+{
+    NSMutableArray *cards = [NSMutableArray new];
+    WhiteCard *whiteCard;
+    
+    for (int i = 0; i < limit; i++) {
+        do {
+            whiteCard = [self randomWhiteCardFromPack:pack];
+        } while ([cards containsObject:whiteCard]);
+    
+        [cards addObject:whiteCard];
+    }
+    return (NSArray *)cards;
 }
 
 @end

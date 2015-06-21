@@ -11,6 +11,7 @@
 		8C4C99701B3711E5005BD478 /* WhiteCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4C996F1B3711E5005BD478 /* WhiteCard.m */; };
 		8C4C99731B3711FF005BD478 /* BlackCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4C99721B3711FF005BD478 /* BlackCard.m */; };
 		8C4C99761B37120B005BD478 /* Pack.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4C99751B37120B005BD478 /* Pack.m */; };
+		8C4C997C1B373980005BD478 /* Hand.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4C997B1B373980005BD478 /* Hand.m */; };
 		8C77427D1B370A380037A42A /* CardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C77427C1B370A380037A42A /* CardManager.m */; };
 		8C7742801B370ACF0037A42A /* cards.json in Resources */ = {isa = PBXBuildFile; fileRef = 8C77427F1B370ACF0037A42A /* cards.json */; };
 		8CAA92041AFE5DBD00332FC9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CAA92031AFE5DBD00332FC9 /* main.m */; };
@@ -49,6 +50,8 @@
 		8C4C99721B3711FF005BD478 /* BlackCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlackCard.m; sourceTree = "<group>"; };
 		8C4C99741B37120B005BD478 /* Pack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pack.h; sourceTree = "<group>"; };
 		8C4C99751B37120B005BD478 /* Pack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pack.m; sourceTree = "<group>"; };
+		8C4C997A1B373980005BD478 /* Hand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hand.h; sourceTree = "<group>"; };
+		8C4C997B1B373980005BD478 /* Hand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hand.m; sourceTree = "<group>"; };
 		8C77427B1B370A380037A42A /* CardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardManager.h; sourceTree = "<group>"; };
 		8C77427C1B370A380037A42A /* CardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardManager.m; sourceTree = "<group>"; };
 		8C77427F1B370ACF0037A42A /* cards.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cards.json; sourceTree = "<group>"; };
@@ -143,6 +146,15 @@
 			name = BlackCard;
 			sourceTree = "<group>";
 		};
+		8C4C997D1B373986005BD478 /* Hand */ = {
+			isa = PBXGroup;
+			children = (
+				8C4C997A1B373980005BD478 /* Hand.h */,
+				8C4C997B1B373980005BD478 /* Hand.m */,
+			);
+			name = Hand;
+			sourceTree = "<group>";
+		};
 		8C77427E1B370A400037A42A /* CardManagement */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +169,7 @@
 			children = (
 				8C77427B1B370A380037A42A /* CardManager.h */,
 				8C77427C1B370A380037A42A /* CardManager.m */,
+				8C4C997D1B373986005BD478 /* Hand */,
 				8C4C99771B371215005BD478 /* Pack */,
 				8C4C99781B37121A005BD478 /* WhiteCard */,
 				8C4C99791B371220005BD478 /* BlackCard */,
@@ -401,6 +414,7 @@
 				8CAA92041AFE5DBD00332FC9 /* main.m in Sources */,
 				8C4C99731B3711FF005BD478 /* BlackCard.m in Sources */,
 				8CCA3EC41AFEA58300F2E494 /* SocketClientManager.m in Sources */,
+				8C4C997C1B373980005BD478 /* Hand.m in Sources */,
 				8CCA3EC11AFEA57500F2E494 /* SocketServerManager.m in Sources */,
 				8CCA3EB01AFE837300F2E494 /* ServerViewController.m in Sources */,
 				8CCA3EB31AFE837A00F2E494 /* ClientViewController.m in Sources */,

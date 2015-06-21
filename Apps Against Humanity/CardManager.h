@@ -10,6 +10,7 @@
 @class BlackCard;
 @class WhiteCard;
 @class Pack;
+@class Hand;
 
 @interface CardManager : NSObject
 
@@ -28,4 +29,8 @@
 
 - (WhiteCard *)randomWhiteCardFromPack:(Pack *)pack;
 - (BlackCard *)randomBlackCardFromPack:(Pack *)pack;
+
+- (NSArray *)getRandomSetOfWhiteCardsFromPack:(Pack *)pack limitedTo:(int)limit;
+- (NSArray *)getCardsFromIds:(NSArray *)cardIds;
+
 @end
