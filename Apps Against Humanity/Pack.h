@@ -12,7 +12,6 @@
 
 @interface Pack : RLMObject
 @property NSString *packName;
-@property NSInteger packId;
 @property RLMArray <WhiteCard> *whiteCards;
 @property RLMArray <BlackCard> *blackCards;
 @end

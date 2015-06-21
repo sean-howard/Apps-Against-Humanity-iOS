@@ -11,7 +11,7 @@
 @implementation Pack
 
 + (NSString *)primaryKey {
-    return @"packId";
+    return @"packName";
 }
 
 @end

@@ -20,7 +20,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.    
     
-    [[CardManager sharedManager] populateDatabaseWithCards];
+    if (![[CardManager sharedManager] packsAvailable]) {
+        [[CardManager sharedManager] populateDatabaseWithCards];
+    }
     
     /*
     NSDictionary *rawMessage = @{@"name":@"Sean Howard",

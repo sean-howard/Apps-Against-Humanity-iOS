@@ -91,7 +91,6 @@ static bool isFirstAccess = YES;
     [[RLMRealm defaultRealm] beginWriteTransaction];
     
     Pack *pack = [Pack new];
-    pack.packId = 1;
     pack.packName = packName;
     
     for (NSDictionary *dict in whiteCards) {
