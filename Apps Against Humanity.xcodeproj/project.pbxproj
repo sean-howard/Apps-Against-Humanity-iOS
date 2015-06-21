@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		89799468B7F1E04A85A70983 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A99A6BB1EF34B5952B7B672 /* libPods.a */; };
+		8C4C99701B3711E5005BD478 /* WhiteCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4C996F1B3711E5005BD478 /* WhiteCard.m */; };
+		8C4C99731B3711FF005BD478 /* BlackCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4C99721B3711FF005BD478 /* BlackCard.m */; };
+		8C4C99761B37120B005BD478 /* Pack.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4C99751B37120B005BD478 /* Pack.m */; };
+		8C77427D1B370A380037A42A /* CardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C77427C1B370A380037A42A /* CardManager.m */; };
+		8C7742801B370ACF0037A42A /* cards.json in Resources */ = {isa = PBXBuildFile; fileRef = 8C77427F1B370ACF0037A42A /* cards.json */; };
 		8CAA92041AFE5DBD00332FC9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CAA92031AFE5DBD00332FC9 /* main.m */; };
 		8CAA92071AFE5DBD00332FC9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CAA92061AFE5DBD00332FC9 /* AppDelegate.m */; };
 		8CAA920A1AFE5DBD00332FC9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CAA92091AFE5DBD00332FC9 /* ViewController.m */; };
@@ -38,6 +43,15 @@
 		48FA31B81B320A81F857D89B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		4CF7D8216768588C78C7B18D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		8A99A6BB1EF34B5952B7B672 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C4C996E1B3711E5005BD478 /* WhiteCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhiteCard.h; sourceTree = "<group>"; };
+		8C4C996F1B3711E5005BD478 /* WhiteCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhiteCard.m; sourceTree = "<group>"; };
+		8C4C99711B3711FF005BD478 /* BlackCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlackCard.h; sourceTree = "<group>"; };
+		8C4C99721B3711FF005BD478 /* BlackCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlackCard.m; sourceTree = "<group>"; };
+		8C4C99741B37120B005BD478 /* Pack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pack.h; sourceTree = "<group>"; };
+		8C4C99751B37120B005BD478 /* Pack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pack.m; sourceTree = "<group>"; };
+		8C77427B1B370A380037A42A /* CardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardManager.h; sourceTree = "<group>"; };
+		8C77427C1B370A380037A42A /* CardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardManager.m; sourceTree = "<group>"; };
+		8C77427F1B370ACF0037A42A /* cards.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cards.json; sourceTree = "<group>"; };
 		8CAA91FE1AFE5DBD00332FC9 /* Apps Against Humanity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Apps Against Humanity.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CAA92021AFE5DBD00332FC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8CAA92031AFE5DBD00332FC9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -102,6 +116,54 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		8C4C99771B371215005BD478 /* Pack */ = {
+			isa = PBXGroup;
+			children = (
+				8C4C99741B37120B005BD478 /* Pack.h */,
+				8C4C99751B37120B005BD478 /* Pack.m */,
+			);
+			name = Pack;
+			sourceTree = "<group>";
+		};
+		8C4C99781B37121A005BD478 /* WhiteCard */ = {
+			isa = PBXGroup;
+			children = (
+				8C4C996E1B3711E5005BD478 /* WhiteCard.h */,
+				8C4C996F1B3711E5005BD478 /* WhiteCard.m */,
+			);
+			name = WhiteCard;
+			sourceTree = "<group>";
+		};
+		8C4C99791B371220005BD478 /* BlackCard */ = {
+			isa = PBXGroup;
+			children = (
+				8C4C99711B3711FF005BD478 /* BlackCard.h */,
+				8C4C99721B3711FF005BD478 /* BlackCard.m */,
+			);
+			name = BlackCard;
+			sourceTree = "<group>";
+		};
+		8C77427E1B370A400037A42A /* CardManagement */ = {
+			isa = PBXGroup;
+			children = (
+				8C77427F1B370ACF0037A42A /* cards.json */,
+				8C7742811B370ADF0037A42A /* Card Manager */,
+			);
+			name = CardManagement;
+			sourceTree = "<group>";
+		};
+		8C7742811B370ADF0037A42A /* Card Manager */ = {
+			isa = PBXGroup;
+			children = (
+				8C77427B1B370A380037A42A /* CardManager.h */,
+				8C77427C1B370A380037A42A /* CardManager.m */,
+				8C4C99771B371215005BD478 /* Pack */,
+				8C4C99781B37121A005BD478 /* WhiteCard */,
+				8C4C99791B371220005BD478 /* BlackCard */,
+			);
+			name = "Card Manager";
+			sourceTree = "<group>";
+		};
 		8CAA91F51AFE5DBD00332FC9 = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +190,7 @@
 			children = (
 				8CAA92051AFE5DBD00332FC9 /* AppDelegate.h */,
 				8CAA92061AFE5DBD00332FC9 /* AppDelegate.m */,
+				8C77427E1B370A400037A42A /* CardManagement */,
 				8CCA3EC91AFEB41E00F2E494 /* MessagePacket */,
 				8CCA3EBA1AFE956600F2E494 /* Socket Controllers */,
 				8CAA92081AFE5DBD00332FC9 /* ViewController.h */,
@@ -238,11 +301,12 @@
 		8CAA91F61AFE5DBD00332FC9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Sean Howard";
 				TargetAttributes = {
 					8CAA91FD1AFE5DBD00332FC9 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = EQ2J7J63EV;
 					};
 					8CAA92161AFE5DBE00332FC9 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -277,6 +341,7 @@
 				8CAA920D1AFE5DBD00332FC9 /* Main.storyboard in Resources */,
 				8CAA92121AFE5DBD00332FC9 /* LaunchScreen.xib in Resources */,
 				8CCA3EAD1AFE7FD000F2E494 /* Podfile in Resources */,
+				8C7742801B370ACF0037A42A /* cards.json in Resources */,
 				8CAA920F1AFE5DBD00332FC9 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -328,9 +393,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C4C99761B37120B005BD478 /* Pack.m in Sources */,
 				8CAA920A1AFE5DBD00332FC9 /* ViewController.m in Sources */,
+				8C77427D1B370A380037A42A /* CardManager.m in Sources */,
+				8C4C99701B3711E5005BD478 /* WhiteCard.m in Sources */,
 				8CAA92071AFE5DBD00332FC9 /* AppDelegate.m in Sources */,
 				8CAA92041AFE5DBD00332FC9 /* main.m in Sources */,
+				8C4C99731B3711FF005BD478 /* BlackCard.m in Sources */,
 				8CCA3EC41AFEA58300F2E494 /* SocketClientManager.m in Sources */,
 				8CCA3EC11AFEA57500F2E494 /* SocketServerManager.m in Sources */,
 				8CCA3EB01AFE837300F2E494 /* ServerViewController.m in Sources */,
@@ -399,6 +468,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -463,8 +533,11 @@
 			baseConfigurationReference = 48FA31B81B320A81F857D89B /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Apps Against Humanity/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.seanhoward.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -474,8 +547,11 @@
 			baseConfigurationReference = 4CF7D8216768588C78C7B18D /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Apps Against Humanity/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.seanhoward.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -494,6 +570,7 @@
 				);
 				INFOPLIST_FILE = "Apps Against HumanityTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.seanhoward.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Apps Against Humanity.app/Apps Against Humanity";
 			};
@@ -509,6 +586,7 @@
 				);
 				INFOPLIST_FILE = "Apps Against HumanityTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.seanhoward.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Apps Against Humanity.app/Apps Against Humanity";
 			};

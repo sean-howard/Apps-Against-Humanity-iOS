@@ -8,8 +8,10 @@
 
 #import "ViewController.h"
 #import "MessagePacket.h"
+#import "CardManager.h"
 
 @interface ViewController ()
+
 @end
 
 @implementation ViewController
@@ -18,6 +20,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.    
     
+    [[CardManager sharedManager] populateDatabaseWithCards];
+    
+    /*
     NSDictionary *rawMessage = @{@"name":@"Sean Howard",
                                  @"uuid":[[NSUUID UUID] UUIDString]};
     
@@ -29,6 +34,7 @@
     
     MessagePacket *secondPacket = [[MessagePacket alloc] initWithRawData:[message asString]];
     NSLog(@"%@", [secondPacket serialise]);
+     */
 }
 
 @end
