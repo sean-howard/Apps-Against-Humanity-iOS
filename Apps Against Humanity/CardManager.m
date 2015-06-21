@@ -80,6 +80,7 @@ static bool isFirstAccess = YES;
     return NO;
 }
 
+#pragma mark - Population and setup
 - (void)populateDatabaseWithCards
 {
     NSDictionary *cards = [self cardJson];
@@ -125,4 +126,14 @@ static bool isFirstAccess = YES;
     return cardsJson;
 }
 
+#pragma mark Single Card By cardId
+- (WhiteCard *)getWhiteCardById:(NSInteger)cardId
+{
+    return [WhiteCard objectForPrimaryKey:@(cardId)];
+}
+
+- (BlackCard *)getBlackCardById:(NSInteger)cardId
+{
+    return [BlackCard objectForPrimaryKey:@(cardId)];
+}
 @end

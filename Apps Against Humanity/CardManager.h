@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+@class BlackCard;
+@class WhiteCard;
 
 @interface CardManager : NSObject
 
@@ -17,5 +19,6 @@
 + (CardManager*)sharedManager;
 - (BOOL)packsAvailable;
 - (void)populateDatabaseWithCards;
-
+- (WhiteCard *)getWhiteCardById:(NSInteger)cardId;
+- (BlackCard *)getBlackCardById:(NSInteger)cardId;
 @end
