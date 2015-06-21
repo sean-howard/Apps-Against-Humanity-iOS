@@ -75,6 +75,7 @@ static bool isFirstAccess = YES;
 {
     RLMResults *packResults = [Pack allObjects];
     if ([packResults firstObject]) {
+        self.packInPlay = (Pack *)[packResults firstObject];
         return YES;
     }
     return NO;
@@ -127,13 +128,33 @@ static bool isFirstAccess = YES;
 }
 
 #pragma mark Single Card By cardId
-- (WhiteCard *)getWhiteCardById:(NSInteger)cardId
+- (WhiteCard *)whiteCardWithId:(NSInteger)cardId
 {
     return [WhiteCard objectForPrimaryKey:@(cardId)];
 }
 
-- (BlackCard *)getBlackCardById:(NSInteger)cardId
+- (BlackCard *)blackCardWithId:(NSInteger)cardId
 {
     return [BlackCard objectForPrimaryKey:@(cardId)];
 }
+
+#pragma mark Random Cards
+- (BlackCard *)randomBlackCardFromPack:(Pack *)pack
+{
+    if (!pack) {
+        pack = self.packInPlay;
+    }
+    
+    return pack.blackCards[arc4random() % [pack.blackCards count]];
+}
+
+- (WhiteCard *)randomWhiteCardFromPack:(Pack *)pack
+{
+    if (!pack) {
+        pack = self.packInPlay;
+    }
+    
+    return pack.whiteCards[arc4random() % [pack.whiteCards count]];
+}
+
 @end

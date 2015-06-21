@@ -9,8 +9,11 @@
 #import <Foundation/Foundation.h>
 @class BlackCard;
 @class WhiteCard;
+@class Pack;
 
 @interface CardManager : NSObject
+
+@property (nonatomic, strong) Pack *packInPlay;
 
 /**
  * gets singleton object.
@@ -19,6 +22,10 @@
 + (CardManager*)sharedManager;
 - (BOOL)packsAvailable;
 - (void)populateDatabaseWithCards;
-- (WhiteCard *)getWhiteCardById:(NSInteger)cardId;
-- (BlackCard *)getBlackCardById:(NSInteger)cardId;
+
+- (WhiteCard *)whiteCardWithId:(NSInteger)cardId;
+- (BlackCard *)blackCardWithId:(NSInteger)cardId;
+
+- (WhiteCard *)randomWhiteCardFromPack:(Pack *)pack;
+- (BlackCard *)randomBlackCardFromPack:(Pack *)pack;
 @end
