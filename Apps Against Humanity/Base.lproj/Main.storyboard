@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E33b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="okr-6A-sfP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E36b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="UBy-Ag-zYn">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -19,7 +19,132 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BlG-0V-Eyv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-952" y="478"/>
+            <point key="canvasLocation" x="-1456" y="-226"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Cmn-TP-U5c">
+            <objects>
+                <navigationController id="UBy-Ag-zYn" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0fJ-Iq-1GN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="pwL-mm-AIf" kind="relationship" relationship="rootViewController" id="NoW-Nx-8tI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bi1-Ka-pZj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1160" y="1358"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Ts8-CR-1cN">
+            <objects>
+                <viewController id="pwL-mm-AIf" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KSp-GF-7nD"/>
+                        <viewControllerLayoutGuide type="bottom" id="Jqi-Fs-6Xy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="URU-Z4-Fw0">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PTu-1o-xAl">
+                                <rect key="frame" x="200" y="141" width="201" height="67"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="67" id="VAb-Jm-QZi"/>
+                                    <constraint firstAttribute="width" constant="201" id="fAg-fm-uPa"/>
+                                </constraints>
+                                <state key="normal" title="HOST GAME">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="JoR-iY-8vM" kind="show" identifier="showLobby" id="bTJ-da-1nd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOS-0M-Lhu">
+                                <rect key="frame" x="200" y="291" width="201" height="67"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="201" id="YM7-DI-GxY"/>
+                                    <constraint firstAttribute="height" constant="67" id="czR-Ip-pP8"/>
+                                </constraints>
+                                <state key="normal" title="JOIN GAME">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="kkn-fp-Nzv" kind="show" identifier="browseLobbies" id="F2I-kZ-wee"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="PTu-1o-xAl" firstAttribute="top" secondItem="KSp-GF-7nD" secondAttribute="bottom" constant="77" id="8N5-bi-C7u"/>
+                            <constraint firstAttribute="centerX" secondItem="gOS-0M-Lhu" secondAttribute="centerX" constant="-0.5" id="PkW-i4-DDm"/>
+                            <constraint firstAttribute="centerX" secondItem="PTu-1o-xAl" secondAttribute="centerX" constant="-0.5" id="a8V-fD-ejs"/>
+                            <constraint firstItem="gOS-0M-Lhu" firstAttribute="top" secondItem="PTu-1o-xAl" secondAttribute="bottom" constant="83" id="ibr-SP-oAq"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="0s9-VR-mLE"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cRE-Ti-tFK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-464" y="1356"/>
+        </scene>
+        <!--Game Lobby-->
+        <scene sceneID="5ip-W6-532">
+            <objects>
+                <tableViewController title="Game Lobby" id="JoR-iY-8vM" customClass="LobbyViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Eai-G2-lUY">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="nqN-KE-RIh">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nqN-KE-RIh" id="7q4-Cu-k9q">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="JoR-iY-8vM" id="OKh-qh-S5V"/>
+                            <outlet property="delegate" destination="JoR-iY-8vM" id="V6E-l1-9kj"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kt4-9K-sUQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="830" y="912"/>
+        </scene>
+        <!--Lobby Browser-->
+        <scene sceneID="CXu-vE-v30">
+            <objects>
+                <tableViewController id="kkn-fp-Nzv" customClass="LobbyBrowserViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="cYf-lu-a8F">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="yQi-qN-lYi">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yQi-qN-lYi" id="KDO-Cw-MK8">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="kkn-fp-Nzv" id="UYX-l5-SxW"/>
+                            <outlet property="delegate" destination="kkn-fp-Nzv" id="EeN-EI-cYC"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Lobby Browser" id="mpP-Z1-AJC"/>
+                    <connections>
+                        <segue destination="JoR-iY-8vM" kind="show" identifier="showLobby" id="Dn5-a8-lyX"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZTL-a2-bLw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="348" y="1650"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -72,7 +197,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-268" y="478"/>
+            <point key="canvasLocation" x="-772" y="-226"/>
         </scene>
         <!--Server-->
         <scene sceneID="jPj-bN-zuY">
@@ -110,7 +235,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XbP-GP-vii" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="500" y="80"/>
+            <point key="canvasLocation" x="-4" y="-624"/>
         </scene>
         <!--Client-->
         <scene sceneID="kX0-DQ-7XI">
@@ -146,7 +271,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YZE-SW-LW3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="500" y="852"/>
+            <point key="canvasLocation" x="-4" y="148"/>
         </scene>
         <!--Quick Command View Controller-->
         <scene sceneID="rd8-co-mgy">
@@ -277,10 +402,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Qk-VM-I8S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1184" y="404"/>
+            <point key="canvasLocation" x="680" y="-300"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="2e2-nZ-iH2"/>
+        <segue reference="tdA-0M-hdA"/>
+        <segue reference="Dn5-a8-lyX"/>
     </inferredMetricsTieBreakers>
 </document>

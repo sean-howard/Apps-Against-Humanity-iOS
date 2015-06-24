@@ -1,5 +1,5 @@
 //
-//  ClientViewController.h
+//  LobbyBrowserViewController.h
 //  Apps Against Humanity
 //
 //  Created by Sean Howard on 09/05/2015.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ClientViewController : UITableViewController
+@interface LobbyBrowserViewController : UITableViewController
 - (IBAction)launchQuickCommand:(id)sender;
 
 @end

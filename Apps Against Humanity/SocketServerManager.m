@@ -8,6 +8,7 @@
 
 #import "SocketServerManager.h"
 #import <PocketSocket/PSWebSocketServer.h>
+#import "MessagePacket.h"
 
 @interface SocketServerManager ()<NSNetServiceDelegate, PSWebSocketServerDelegate>
 @property (strong, nonatomic) NSNetService *service;
@@ -140,7 +141,13 @@ static bool isFirstAccess = YES;
     
     NSLog(@"Server received message: %@", json);
     
-    [webSocket send:[message uppercaseString]];
+    if ([json[@"action"] integerValue] == 0) {
+        [self.connections addObject:json];
+        
+        if ([self.delegate respondsToSelector:@selector(serverDidAcceptNewConnections:)]) {
+            [self.delegate serverDidAcceptNewConnections:self.connections];
+        }
+    }
 }
 
 - (void)server:(PSWebSocketServer *)server webSocketDidOpen:(PSWebSocket *)webSocket {

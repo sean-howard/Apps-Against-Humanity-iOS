@@ -14,6 +14,7 @@
 		8C4C997C1B373980005BD478 /* Hand.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4C997B1B373980005BD478 /* Hand.m */; };
 		8C77427D1B370A380037A42A /* CardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C77427C1B370A380037A42A /* CardManager.m */; };
 		8C7742801B370ACF0037A42A /* cards.json in Resources */ = {isa = PBXBuildFile; fileRef = 8C77427F1B370ACF0037A42A /* cards.json */; };
+		8C865E2A1B3B2E52005506B7 /* LobbyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C865E291B3B2E52005506B7 /* LobbyViewController.m */; };
 		8CAA92041AFE5DBD00332FC9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CAA92031AFE5DBD00332FC9 /* main.m */; };
 		8CAA92071AFE5DBD00332FC9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CAA92061AFE5DBD00332FC9 /* AppDelegate.m */; };
 		8CAA920A1AFE5DBD00332FC9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CAA92091AFE5DBD00332FC9 /* ViewController.m */; };
@@ -23,7 +24,7 @@
 		8CAA921E1AFE5DBE00332FC9 /* Apps_Against_HumanityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CAA921D1AFE5DBE00332FC9 /* Apps_Against_HumanityTests.m */; };
 		8CCA3EAD1AFE7FD000F2E494 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 8CCA3EAC1AFE7FD000F2E494 /* Podfile */; };
 		8CCA3EB01AFE837300F2E494 /* ServerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCA3EAF1AFE837300F2E494 /* ServerViewController.m */; };
-		8CCA3EB31AFE837A00F2E494 /* ClientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCA3EB21AFE837A00F2E494 /* ClientViewController.m */; };
+		8CCA3EB31AFE837A00F2E494 /* LobbyBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCA3EB21AFE837A00F2E494 /* LobbyBrowserViewController.m */; };
 		8CCA3EC11AFEA57500F2E494 /* SocketServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCA3EC01AFEA57500F2E494 /* SocketServerManager.m */; };
 		8CCA3EC41AFEA58300F2E494 /* SocketClientManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCA3EC31AFEA58300F2E494 /* SocketClientManager.m */; };
 		8CCA3EC81AFEB41B00F2E494 /* MessagePacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCA3EC71AFEB41B00F2E494 /* MessagePacket.m */; };
@@ -55,6 +56,8 @@
 		8C77427B1B370A380037A42A /* CardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardManager.h; sourceTree = "<group>"; };
 		8C77427C1B370A380037A42A /* CardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardManager.m; sourceTree = "<group>"; };
 		8C77427F1B370ACF0037A42A /* cards.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cards.json; sourceTree = "<group>"; };
+		8C865E281B3B2E52005506B7 /* LobbyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LobbyViewController.h; sourceTree = "<group>"; };
+		8C865E291B3B2E52005506B7 /* LobbyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LobbyViewController.m; sourceTree = "<group>"; };
 		8CAA91FE1AFE5DBD00332FC9 /* Apps Against Humanity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Apps Against Humanity.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CAA92021AFE5DBD00332FC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8CAA92031AFE5DBD00332FC9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -71,8 +74,8 @@
 		8CCA3EAC1AFE7FD000F2E494 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		8CCA3EAE1AFE837300F2E494 /* ServerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerViewController.h; sourceTree = "<group>"; };
 		8CCA3EAF1AFE837300F2E494 /* ServerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerViewController.m; sourceTree = "<group>"; };
-		8CCA3EB11AFE837A00F2E494 /* ClientViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientViewController.h; sourceTree = "<group>"; };
-		8CCA3EB21AFE837A00F2E494 /* ClientViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientViewController.m; sourceTree = "<group>"; };
+		8CCA3EB11AFE837A00F2E494 /* LobbyBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LobbyBrowserViewController.h; sourceTree = "<group>"; };
+		8CCA3EB21AFE837A00F2E494 /* LobbyBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LobbyBrowserViewController.m; sourceTree = "<group>"; };
 		8CCA3EBF1AFEA57500F2E494 /* SocketServerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketServerManager.h; sourceTree = "<group>"; };
 		8CCA3EC01AFEA57500F2E494 /* SocketServerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketServerManager.m; sourceTree = "<group>"; };
 		8CCA3EC21AFEA58300F2E494 /* SocketClientManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketClientManager.h; sourceTree = "<group>"; };
@@ -177,6 +180,17 @@
 			name = "Card Manager";
 			sourceTree = "<group>";
 		};
+		8C865E2E1B3B2F79005506B7 /* Testing */ = {
+			isa = PBXGroup;
+			children = (
+				8CF6F3D71B320C0B00521756 /* QuickCommandViewController.h */,
+				8CF6F3D81B320C0B00521756 /* QuickCommandViewController.m */,
+				8CCA3EAE1AFE837300F2E494 /* ServerViewController.h */,
+				8CCA3EAF1AFE837300F2E494 /* ServerViewController.m */,
+			);
+			name = Testing;
+			sourceTree = "<group>";
+		};
 		8CAA91F51AFE5DBD00332FC9 = {
 			isa = PBXGroup;
 			children = (
@@ -208,12 +222,11 @@
 				8CCA3EBA1AFE956600F2E494 /* Socket Controllers */,
 				8CAA92081AFE5DBD00332FC9 /* ViewController.h */,
 				8CAA92091AFE5DBD00332FC9 /* ViewController.m */,
-				8CF6F3D71B320C0B00521756 /* QuickCommandViewController.h */,
-				8CF6F3D81B320C0B00521756 /* QuickCommandViewController.m */,
-				8CCA3EAE1AFE837300F2E494 /* ServerViewController.h */,
-				8CCA3EAF1AFE837300F2E494 /* ServerViewController.m */,
-				8CCA3EB11AFE837A00F2E494 /* ClientViewController.h */,
-				8CCA3EB21AFE837A00F2E494 /* ClientViewController.m */,
+				8C865E281B3B2E52005506B7 /* LobbyViewController.h */,
+				8C865E291B3B2E52005506B7 /* LobbyViewController.m */,
+				8CCA3EB11AFE837A00F2E494 /* LobbyBrowserViewController.h */,
+				8CCA3EB21AFE837A00F2E494 /* LobbyBrowserViewController.m */,
+				8C865E2E1B3B2F79005506B7 /* Testing */,
 				8CAA920B1AFE5DBD00332FC9 /* Main.storyboard */,
 				8CAA920E1AFE5DBD00332FC9 /* Images.xcassets */,
 				8CAA92101AFE5DBD00332FC9 /* LaunchScreen.xib */,
@@ -411,13 +424,14 @@
 				8C77427D1B370A380037A42A /* CardManager.m in Sources */,
 				8C4C99701B3711E5005BD478 /* WhiteCard.m in Sources */,
 				8CAA92071AFE5DBD00332FC9 /* AppDelegate.m in Sources */,
+				8C865E2A1B3B2E52005506B7 /* LobbyViewController.m in Sources */,
 				8CAA92041AFE5DBD00332FC9 /* main.m in Sources */,
 				8C4C99731B3711FF005BD478 /* BlackCard.m in Sources */,
 				8CCA3EC41AFEA58300F2E494 /* SocketClientManager.m in Sources */,
 				8C4C997C1B373980005BD478 /* Hand.m in Sources */,
 				8CCA3EC11AFEA57500F2E494 /* SocketServerManager.m in Sources */,
 				8CCA3EB01AFE837300F2E494 /* ServerViewController.m in Sources */,
-				8CCA3EB31AFE837A00F2E494 /* ClientViewController.m in Sources */,
+				8CCA3EB31AFE837A00F2E494 /* LobbyBrowserViewController.m in Sources */,
 				8CF6F3D91B320C0B00521756 /* QuickCommandViewController.m in Sources */,
 				8CCA3EC81AFEB41B00F2E494 /* MessagePacket.m in Sources */,
 			);

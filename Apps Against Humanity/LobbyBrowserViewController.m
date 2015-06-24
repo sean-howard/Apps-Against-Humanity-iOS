@@ -1,21 +1,21 @@
 //
-//  ClientViewController.m
+//  LobbyBrowserViewController.m
 //  Apps Against Humanity
 //
 //  Created by Sean Howard on 09/05/2015.
 //  Copyright (c) 2015 Sean Howard. All rights reserved.
 //
 
-#import "ClientViewController.h"
+#import "LobbyBrowserViewController.h"
 #import "SocketClientManager.h"
 
 static NSString *ServiceCell = @"ServiceCell";
 
-@interface ClientViewController ()<SocketClientManagerDelegate>
+@interface LobbyBrowserViewController ()<SocketClientManagerDelegate>
 @property (strong, nonatomic) NSArray *services;
 @end
 
-@implementation ClientViewController
+@implementation LobbyBrowserViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
