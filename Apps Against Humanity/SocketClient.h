@@ -1,5 +1,5 @@
 //
-//  SocketClientManager.h
+//  SocketClient.h
 //  Apps Against Humanity
 //
 //  Created by Sean Howard on 09/05/2015.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol SocketClientManagerDelegate <NSObject>
+@protocol SocketClientDelegate <NSObject>
 @optional
 
 - (void)clientDidStartBrowsing;
@@ -20,12 +20,12 @@
 
 @end
 
-@interface SocketClientManager : NSObject
+@interface SocketClient : NSObject
 
 - (void)startBrowsing;
 - (void)stopBrowsing;
 - (void)resolveService:(NSNetService *)service;
 
-@property (nonatomic) id <SocketClientManagerDelegate>delegate;
+@property (nonatomic) id <SocketClientDelegate>delegate;
 
 @end

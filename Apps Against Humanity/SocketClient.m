@@ -1,23 +1,23 @@
 //
-//  SocketClientManager.m
+//  SocketClient.m
 //  Apps Against Humanity
 //
 //  Created by Sean Howard on 09/05/2015.
 //  Copyright (c) 2015 Sean Howard. All rights reserved.
 //
 
-#import "SocketClientManager.h"
+#import "SocketClient.h"
 #import <SocketRocket/SRWebSocket.h>
 #include <arpa/inet.h>
 #import "MessagePacket.h"
 
-@interface SocketClientManager ()<NSNetServiceDelegate, NSNetServiceBrowserDelegate, SRWebSocketDelegate>
+@interface SocketClient ()<NSNetServiceDelegate, NSNetServiceBrowserDelegate, SRWebSocketDelegate>
 @property (strong, nonatomic) SRWebSocket *socket;
 @property (strong, nonatomic) NSMutableArray *services;
 @property (strong, nonatomic) NSNetServiceBrowser *serviceBrowser;
 @end
 
-@implementation SocketClientManager
+@implementation SocketClient
 
 - (void)startBrowsing {
     if (self.services) {

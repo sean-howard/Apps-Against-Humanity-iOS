@@ -1,5 +1,5 @@
 //
-//  SocketServerManager.h
+//  SocketServer.h
 //  Apps Against Humanity
 //
 //  Created by Sean Howard on 09/05/2015.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class SocketServerManager;
+@class SocketServer;
 
 @protocol SocketServerDelegate <NSObject>
 @optional
@@ -21,7 +21,7 @@
 
 @end
 
-@interface SocketServerManager : NSObject
+@interface SocketServer : NSObject
 @property (nonatomic) id<SocketServerDelegate>delegate;
 - (void)startBroadcast;
 

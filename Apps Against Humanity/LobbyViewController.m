@@ -7,10 +7,8 @@
 //
 
 #import "LobbyViewController.h"
-#import "SocketServerManager.h"
 
-@interface LobbyViewController ()<SocketServerDelegate>
-@property (nonatomic, strong) SocketServerManager *serverManager;
+@interface LobbyViewController ()
 @property (nonatomic, strong) NSArray *players;
 @end
 
@@ -19,9 +17,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.serverManager = [SocketServerManager new];
-    self.serverManager.delegate = self;
-    [self.serverManager startBroadcast];
 }
 
 - (void)didReceiveMemoryWarning {

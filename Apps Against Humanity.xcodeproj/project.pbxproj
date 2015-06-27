@@ -25,8 +25,8 @@
 		8CBE6F511B3EF18E001C10F4 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CBE6F501B3EF18E001C10F4 /* Player.m */; };
 		8CCA3EAD1AFE7FD000F2E494 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 8CCA3EAC1AFE7FD000F2E494 /* Podfile */; };
 		8CCA3EB31AFE837A00F2E494 /* LobbyBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCA3EB21AFE837A00F2E494 /* LobbyBrowserViewController.m */; };
-		8CCA3EC11AFEA57500F2E494 /* SocketServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCA3EC01AFEA57500F2E494 /* SocketServerManager.m */; };
-		8CCA3EC41AFEA58300F2E494 /* SocketClientManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCA3EC31AFEA58300F2E494 /* SocketClientManager.m */; };
+		8CCA3EC11AFEA57500F2E494 /* SocketServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCA3EC01AFEA57500F2E494 /* SocketServer.m */; };
+		8CCA3EC41AFEA58300F2E494 /* SocketClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCA3EC31AFEA58300F2E494 /* SocketClient.m */; };
 		8CCA3EC81AFEB41B00F2E494 /* MessagePacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCA3EC71AFEB41B00F2E494 /* MessagePacket.m */; };
 /* End PBXBuildFile section */
 
@@ -75,10 +75,10 @@
 		8CCA3EAC1AFE7FD000F2E494 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		8CCA3EB11AFE837A00F2E494 /* LobbyBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LobbyBrowserViewController.h; sourceTree = "<group>"; };
 		8CCA3EB21AFE837A00F2E494 /* LobbyBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LobbyBrowserViewController.m; sourceTree = "<group>"; };
-		8CCA3EBF1AFEA57500F2E494 /* SocketServerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketServerManager.h; sourceTree = "<group>"; };
-		8CCA3EC01AFEA57500F2E494 /* SocketServerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketServerManager.m; sourceTree = "<group>"; };
-		8CCA3EC21AFEA58300F2E494 /* SocketClientManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketClientManager.h; sourceTree = "<group>"; };
-		8CCA3EC31AFEA58300F2E494 /* SocketClientManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketClientManager.m; sourceTree = "<group>"; };
+		8CCA3EBF1AFEA57500F2E494 /* SocketServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketServer.h; sourceTree = "<group>"; };
+		8CCA3EC01AFEA57500F2E494 /* SocketServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketServer.m; sourceTree = "<group>"; };
+		8CCA3EC21AFEA58300F2E494 /* SocketClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketClient.h; sourceTree = "<group>"; };
+		8CCA3EC31AFEA58300F2E494 /* SocketClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketClient.m; sourceTree = "<group>"; };
 		8CCA3EC61AFEB41B00F2E494 /* MessagePacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagePacket.h; sourceTree = "<group>"; };
 		8CCA3EC71AFEB41B00F2E494 /* MessagePacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagePacket.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -259,10 +259,10 @@
 		8CCA3EBA1AFE956600F2E494 /* Socket Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				8CCA3EBF1AFEA57500F2E494 /* SocketServerManager.h */,
-				8CCA3EC01AFEA57500F2E494 /* SocketServerManager.m */,
-				8CCA3EC21AFEA58300F2E494 /* SocketClientManager.h */,
-				8CCA3EC31AFEA58300F2E494 /* SocketClientManager.m */,
+				8CCA3EBF1AFEA57500F2E494 /* SocketServer.h */,
+				8CCA3EC01AFEA57500F2E494 /* SocketServer.m */,
+				8CCA3EC21AFEA58300F2E494 /* SocketClient.h */,
+				8CCA3EC31AFEA58300F2E494 /* SocketClient.m */,
 			);
 			name = "Socket Controllers";
 			sourceTree = "<group>";
@@ -423,9 +423,9 @@
 				8C865E2A1B3B2E52005506B7 /* LobbyViewController.m in Sources */,
 				8CAA92041AFE5DBD00332FC9 /* main.m in Sources */,
 				8C4C99731B3711FF005BD478 /* BlackCard.m in Sources */,
-				8CCA3EC41AFEA58300F2E494 /* SocketClientManager.m in Sources */,
+				8CCA3EC41AFEA58300F2E494 /* SocketClient.m in Sources */,
 				8C4C997C1B373980005BD478 /* Hand.m in Sources */,
-				8CCA3EC11AFEA57500F2E494 /* SocketServerManager.m in Sources */,
+				8CCA3EC11AFEA57500F2E494 /* SocketServer.m in Sources */,
 				8CCA3EB31AFE837A00F2E494 /* LobbyBrowserViewController.m in Sources */,
 				8CCA3EC81AFEB41B00F2E494 /* MessagePacket.m in Sources */,
 			);

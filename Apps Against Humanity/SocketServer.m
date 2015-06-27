@@ -1,22 +1,22 @@
 //
-//  SocketServerManager.m
+//  SocketServer.m
 //  Apps Against Humanity
 //
 //  Created by Sean Howard on 09/05/2015.
 //  Copyright (c) 2015 Sean Howard. All rights reserved.
 //
 
-#import "SocketServerManager.h"
+#import "SocketServer.h"
 #import <PocketSocket/PSWebSocketServer.h>
 #import "MessagePacket.h"
 
-@interface SocketServerManager ()<NSNetServiceDelegate, PSWebSocketServerDelegate>
+@interface SocketServer ()<NSNetServiceDelegate, PSWebSocketServerDelegate>
 @property (strong, nonatomic) NSNetService *service;
 @property (strong, nonatomic) PSWebSocketServer *socketServer;
 @property (strong, nonatomic) NSMutableArray *connections;
 @end
 
-@implementation SocketServerManager
+@implementation SocketServer
 
 #pragma mark -
 #pragma mark Lazy Loading
