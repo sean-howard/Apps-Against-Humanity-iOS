@@ -13,6 +13,7 @@ static NSString *ServiceCell = @"ServiceCell";
 
 @interface LobbyBrowserViewController ()<SocketClientManagerDelegate>
 @property (strong, nonatomic) NSArray *services;
+@property (nonatomic, strong) SocketClientManager *clientManager;
 @end
 
 @implementation LobbyBrowserViewController
@@ -20,8 +21,10 @@ static NSString *ServiceCell = @"ServiceCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [[SocketClientManager sharedManager] setDelegate:self];
-    [[SocketClientManager sharedManager] startBrowsing];
+    
+    self.clientManager = [SocketClientManager new];
+    [self.clientManager setDelegate:self];
+    [self.clientManager startBrowsing];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -54,7 +57,7 @@ static NSString *ServiceCell = @"ServiceCell";
     
     // Fetch Service
     NSNetService *service = [self.services objectAtIndex:[indexPath row]];
-    [[SocketClientManager sharedManager] resolveService:service];
+    [self.clientManager resolveService:service];
 }
 
 #pragma mark -

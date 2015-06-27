@@ -19,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.serverManager = [SocketServerManager sharedManager];
+    self.serverManager = [SocketServerManager new];
     self.serverManager.delegate = self;
     [self.serverManager startBroadcast];
 }

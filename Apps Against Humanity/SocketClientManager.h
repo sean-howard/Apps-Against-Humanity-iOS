@@ -22,11 +22,6 @@
 
 @interface SocketClientManager : NSObject
 
-/**
- * gets singleton object.
- * @return singleton
- */
-+ (SocketClientManager*)sharedManager;
 - (void)startBrowsing;
 - (void)stopBrowsing;
 - (void)resolveService:(NSNetService *)service;

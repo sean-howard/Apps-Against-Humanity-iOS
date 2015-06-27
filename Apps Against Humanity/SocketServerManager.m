@@ -18,10 +18,6 @@
 
 @implementation SocketServerManager
 
-static SocketServerManager *SINGLETON = nil;
-
-static bool isFirstAccess = YES;
-
 #pragma mark -
 #pragma mark Lazy Loading
 - (NSMutableArray *)connections
@@ -30,60 +26,6 @@ static bool isFirstAccess = YES;
         _connections = [NSMutableArray new];
     }
     return _connections;
-}
-
-#pragma mark -
-#pragma mark - Public Method
-
-+ (id)sharedManager
-{
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        isFirstAccess = NO;
-        SINGLETON = [[super allocWithZone:NULL] init];    
-    });
-    
-    return SINGLETON;
-}
-
-#pragma mark -
-#pragma mark - Life Cycle
-
-+ (id) allocWithZone:(NSZone *)zone
-{
-    return [self sharedManager];
-}
-
-+ (id)copyWithZone:(struct _NSZone *)zone
-{
-    return [self sharedManager];
-}
-
-+ (id)mutableCopyWithZone:(struct _NSZone *)zone
-{
-    return [self sharedManager];
-}
-
-- (id)copy
-{
-    return [[SocketServerManager alloc] init];
-}
-
-- (id)mutableCopy
-{
-    return [[SocketServerManager alloc] init];
-}
-
-- (id) init
-{
-    if(SINGLETON){
-        return SINGLETON;
-    }
-    if (isFirstAccess) {
-        [self doesNotRecognizeSelector:_cmd];
-    }
-    self = [super init];
-    return self;
 }
 
 - (void)startBroadcast {

@@ -24,12 +24,10 @@
 		8CAA921E1AFE5DBE00332FC9 /* Apps_Against_HumanityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CAA921D1AFE5DBE00332FC9 /* Apps_Against_HumanityTests.m */; };
 		8CBE6F511B3EF18E001C10F4 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CBE6F501B3EF18E001C10F4 /* Player.m */; };
 		8CCA3EAD1AFE7FD000F2E494 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 8CCA3EAC1AFE7FD000F2E494 /* Podfile */; };
-		8CCA3EB01AFE837300F2E494 /* ServerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCA3EAF1AFE837300F2E494 /* ServerViewController.m */; };
 		8CCA3EB31AFE837A00F2E494 /* LobbyBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCA3EB21AFE837A00F2E494 /* LobbyBrowserViewController.m */; };
 		8CCA3EC11AFEA57500F2E494 /* SocketServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCA3EC01AFEA57500F2E494 /* SocketServerManager.m */; };
 		8CCA3EC41AFEA58300F2E494 /* SocketClientManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCA3EC31AFEA58300F2E494 /* SocketClientManager.m */; };
 		8CCA3EC81AFEB41B00F2E494 /* MessagePacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCA3EC71AFEB41B00F2E494 /* MessagePacket.m */; };
-		8CF6F3D91B320C0B00521756 /* QuickCommandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF6F3D81B320C0B00521756 /* QuickCommandViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,8 +73,6 @@
 		8CBE6F4F1B3EF18E001C10F4 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		8CBE6F501B3EF18E001C10F4 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 		8CCA3EAC1AFE7FD000F2E494 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		8CCA3EAE1AFE837300F2E494 /* ServerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerViewController.h; sourceTree = "<group>"; };
-		8CCA3EAF1AFE837300F2E494 /* ServerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerViewController.m; sourceTree = "<group>"; };
 		8CCA3EB11AFE837A00F2E494 /* LobbyBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LobbyBrowserViewController.h; sourceTree = "<group>"; };
 		8CCA3EB21AFE837A00F2E494 /* LobbyBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LobbyBrowserViewController.m; sourceTree = "<group>"; };
 		8CCA3EBF1AFEA57500F2E494 /* SocketServerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketServerManager.h; sourceTree = "<group>"; };
@@ -85,8 +81,6 @@
 		8CCA3EC31AFEA58300F2E494 /* SocketClientManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketClientManager.m; sourceTree = "<group>"; };
 		8CCA3EC61AFEB41B00F2E494 /* MessagePacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagePacket.h; sourceTree = "<group>"; };
 		8CCA3EC71AFEB41B00F2E494 /* MessagePacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagePacket.m; sourceTree = "<group>"; };
-		8CF6F3D71B320C0B00521756 /* QuickCommandViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuickCommandViewController.h; sourceTree = "<group>"; };
-		8CF6F3D81B320C0B00521756 /* QuickCommandViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuickCommandViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,17 +177,6 @@
 			name = "Card Manager";
 			sourceTree = "<group>";
 		};
-		8C865E2E1B3B2F79005506B7 /* Testing */ = {
-			isa = PBXGroup;
-			children = (
-				8CF6F3D71B320C0B00521756 /* QuickCommandViewController.h */,
-				8CF6F3D81B320C0B00521756 /* QuickCommandViewController.m */,
-				8CCA3EAE1AFE837300F2E494 /* ServerViewController.h */,
-				8CCA3EAF1AFE837300F2E494 /* ServerViewController.m */,
-			);
-			name = Testing;
-			sourceTree = "<group>";
-		};
 		8CAA91F51AFE5DBD00332FC9 = {
 			isa = PBXGroup;
 			children = (
@@ -230,7 +213,6 @@
 				8C865E291B3B2E52005506B7 /* LobbyViewController.m */,
 				8CCA3EB11AFE837A00F2E494 /* LobbyBrowserViewController.h */,
 				8CCA3EB21AFE837A00F2E494 /* LobbyBrowserViewController.m */,
-				8C865E2E1B3B2F79005506B7 /* Testing */,
 				8CAA920B1AFE5DBD00332FC9 /* Main.storyboard */,
 				8CAA920E1AFE5DBD00332FC9 /* Images.xcassets */,
 				8CAA92101AFE5DBD00332FC9 /* LaunchScreen.xib */,
@@ -444,9 +426,7 @@
 				8CCA3EC41AFEA58300F2E494 /* SocketClientManager.m in Sources */,
 				8C4C997C1B373980005BD478 /* Hand.m in Sources */,
 				8CCA3EC11AFEA57500F2E494 /* SocketServerManager.m in Sources */,
-				8CCA3EB01AFE837300F2E494 /* ServerViewController.m in Sources */,
 				8CCA3EB31AFE837A00F2E494 /* LobbyBrowserViewController.m in Sources */,
-				8CF6F3D91B320C0B00521756 /* QuickCommandViewController.m in Sources */,
 				8CCA3EC81AFEB41B00F2E494 /* MessagePacket.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

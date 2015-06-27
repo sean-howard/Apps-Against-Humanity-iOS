@@ -22,14 +22,7 @@
 @end
 
 @interface SocketServerManager : NSObject
-
 @property (nonatomic) id<SocketServerDelegate>delegate;
-/**
- * gets singleton object.
- * @return singleton
- */
-+ (SocketServerManager*)sharedManager;
 - (void)startBroadcast;
-
 
 @end
