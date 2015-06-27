@@ -22,6 +22,7 @@
 		8CAA920F1AFE5DBD00332FC9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CAA920E1AFE5DBD00332FC9 /* Images.xcassets */; };
 		8CAA92121AFE5DBD00332FC9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CAA92101AFE5DBD00332FC9 /* LaunchScreen.xib */; };
 		8CAA921E1AFE5DBE00332FC9 /* Apps_Against_HumanityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CAA921D1AFE5DBE00332FC9 /* Apps_Against_HumanityTests.m */; };
+		8CBE6F511B3EF18E001C10F4 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CBE6F501B3EF18E001C10F4 /* Player.m */; };
 		8CCA3EAD1AFE7FD000F2E494 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 8CCA3EAC1AFE7FD000F2E494 /* Podfile */; };
 		8CCA3EB01AFE837300F2E494 /* ServerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCA3EAF1AFE837300F2E494 /* ServerViewController.m */; };
 		8CCA3EB31AFE837A00F2E494 /* LobbyBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCA3EB21AFE837A00F2E494 /* LobbyBrowserViewController.m */; };
@@ -71,6 +72,8 @@
 		8CAA92171AFE5DBE00332FC9 /* Apps Against HumanityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Apps Against HumanityTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CAA921C1AFE5DBE00332FC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8CAA921D1AFE5DBE00332FC9 /* Apps_Against_HumanityTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Apps_Against_HumanityTests.m; sourceTree = "<group>"; };
+		8CBE6F4F1B3EF18E001C10F4 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		8CBE6F501B3EF18E001C10F4 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 		8CCA3EAC1AFE7FD000F2E494 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		8CCA3EAE1AFE837300F2E494 /* ServerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerViewController.h; sourceTree = "<group>"; };
 		8CCA3EAF1AFE837300F2E494 /* ServerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerViewController.m; sourceTree = "<group>"; };
@@ -217,6 +220,7 @@
 			children = (
 				8CAA92051AFE5DBD00332FC9 /* AppDelegate.h */,
 				8CAA92061AFE5DBD00332FC9 /* AppDelegate.m */,
+				8CBE6F521B3EF747001C10F4 /* Player */,
 				8C77427E1B370A400037A42A /* CardManagement */,
 				8CCA3EC91AFEB41E00F2E494 /* MessagePacket */,
 				8CCA3EBA1AFE956600F2E494 /* Socket Controllers */,
@@ -259,6 +263,15 @@
 				8CAA921C1AFE5DBE00332FC9 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8CBE6F521B3EF747001C10F4 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				8CBE6F4F1B3EF18E001C10F4 /* Player.h */,
+				8CBE6F501B3EF18E001C10F4 /* Player.m */,
+			);
+			name = Player;
 			sourceTree = "<group>";
 		};
 		8CCA3EBA1AFE956600F2E494 /* Socket Controllers */ = {
@@ -419,6 +432,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CBE6F511B3EF18E001C10F4 /* Player.m in Sources */,
 				8C4C99761B37120B005BD478 /* Pack.m in Sources */,
 				8CAA920A1AFE5DBD00332FC9 /* ViewController.m in Sources */,
 				8C77427D1B370A380037A42A /* CardManager.m in Sources */,

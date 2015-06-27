@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "MessagePacket.h"
 #import "CardManager.h"
+#import "AppDelegate.h"
 
 @interface ViewController ()
 
@@ -23,20 +24,7 @@
     if (![[CardManager sharedManager] packsAvailable]) {
         [[CardManager sharedManager] populateDatabaseWithCards];
     }
-    
-    /*
-    NSDictionary *rawMessage = @{@"name":@"Sean Howard",
-                                 @"uuid":[[NSUUID UUID] UUIDString]};
-    
-    MessagePacket *message = [[MessagePacket alloc] initWithData:rawMessage action:MessagePacketActionJoiningLobby];
-    
-    NSLog(@"%@", [message asString]);
-    NSLog(@"%@", [message serialise]);
 
-    
-    MessagePacket *secondPacket = [[MessagePacket alloc] initWithRawData:[message asString]];
-    NSLog(@"%@", [secondPacket serialise]);
-     */
 }
 
 @end

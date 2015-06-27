@@ -2,25 +2,9 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E36b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="UBy-Ag-zYn">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="T6b-cE-Hod">
-            <objects>
-                <navigationController id="okr-6A-sfP" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="W2V-ZN-tUu">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="yzB-Qc-zPy"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BlG-0V-Eyv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1456" y="-226"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="Cmn-TP-U5c">
             <objects>
@@ -49,24 +33,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PTu-1o-xAl">
-                                <rect key="frame" x="200" y="141" width="201" height="67"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="67" id="VAb-Jm-QZi"/>
-                                    <constraint firstAttribute="width" constant="201" id="fAg-fm-uPa"/>
-                                </constraints>
-                                <state key="normal" title="HOST GAME">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="JoR-iY-8vM" kind="show" identifier="showLobby" id="bTJ-da-1nd"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOS-0M-Lhu">
-                                <rect key="frame" x="200" y="291" width="201" height="67"/>
+                                <rect key="frame" x="300" y="536" width="300" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="201" id="YM7-DI-GxY"/>
-                                    <constraint firstAttribute="height" constant="67" id="czR-Ip-pP8"/>
+                                    <constraint firstAttribute="height" constant="44" id="8pe-7v-FQu"/>
                                 </constraints>
                                 <state key="normal" title="JOIN GAME">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -75,13 +45,27 @@
                                     <segue destination="kkn-fp-Nzv" kind="show" identifier="browseLobbies" id="F2I-kZ-wee"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PTu-1o-xAl">
+                                <rect key="frame" x="0.0" y="536" width="300" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Mo5-cq-WE2"/>
+                                </constraints>
+                                <state key="normal" title="HOST GAME">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="JoR-iY-8vM" kind="show" identifier="showLobby" id="bTJ-da-1nd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="PTu-1o-xAl" firstAttribute="top" secondItem="KSp-GF-7nD" secondAttribute="bottom" constant="77" id="8N5-bi-C7u"/>
-                            <constraint firstAttribute="centerX" secondItem="gOS-0M-Lhu" secondAttribute="centerX" constant="-0.5" id="PkW-i4-DDm"/>
-                            <constraint firstAttribute="centerX" secondItem="PTu-1o-xAl" secondAttribute="centerX" constant="-0.5" id="a8V-fD-ejs"/>
-                            <constraint firstItem="gOS-0M-Lhu" firstAttribute="top" secondItem="PTu-1o-xAl" secondAttribute="bottom" constant="83" id="ibr-SP-oAq"/>
+                            <constraint firstItem="PTu-1o-xAl" firstAttribute="leading" secondItem="URU-Z4-Fw0" secondAttribute="leading" id="1hy-61-Siw"/>
+                            <constraint firstItem="Jqi-Fs-6Xy" firstAttribute="top" secondItem="PTu-1o-xAl" secondAttribute="bottom" constant="20" id="5S3-q7-ePj"/>
+                            <constraint firstItem="gOS-0M-Lhu" firstAttribute="width" secondItem="URU-Z4-Fw0" secondAttribute="width" multiplier="0.5" id="B3b-fH-Bpe"/>
+                            <constraint firstItem="PTu-1o-xAl" firstAttribute="width" secondItem="URU-Z4-Fw0" secondAttribute="width" multiplier="0.5" id="CVP-0u-ydH"/>
+                            <constraint firstAttribute="trailing" secondItem="gOS-0M-Lhu" secondAttribute="trailing" id="DVr-4a-WoO"/>
+                            <constraint firstItem="Jqi-Fs-6Xy" firstAttribute="top" secondItem="gOS-0M-Lhu" secondAttribute="bottom" constant="20" id="nx2-7Q-JQN"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="0s9-VR-mLE"/>
@@ -100,8 +84,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="nqN-KE-RIh">
+                                <rect key="frame" x="0.0" y="86" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nqN-KE-RIh" id="7q4-Cu-k9q">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -114,7 +100,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kt4-9K-sUQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="830" y="912"/>
+            <point key="canvasLocation" x="448" y="1002"/>
         </scene>
         <!--Lobby Browser-->
         <scene sceneID="CXu-vE-v30">
@@ -126,8 +112,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="yQi-qN-lYi">
+                                <rect key="frame" x="0.0" y="86" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yQi-qN-lYi" id="KDO-Cw-MK8">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -144,269 +132,10 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZTL-a2-bLw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="348" y="1650"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="ufC-wZ-h7g">
-            <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="awU-DT-iOT">
-                                <rect key="frame" x="202" y="74" width="197" height="131"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="197" id="VQJ-xQ-XPv"/>
-                                    <constraint firstAttribute="height" constant="131" id="pv3-9B-DIg"/>
-                                </constraints>
-                                <state key="normal" title="Server">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="7vQ-4Y-63V" kind="show" id="IO4-mF-cVw"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PfS-hj-JA4">
-                                <rect key="frame" x="209" y="348" width="183" height="137"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="137" id="1vf-Mj-V4t"/>
-                                    <constraint firstAttribute="width" constant="183" id="VUo-Bs-cw6"/>
-                                </constraints>
-                                <state key="normal" title="Client">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="G0X-KB-nPs" kind="show" id="Lvj-6V-OTr"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="awU-DT-iOT" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="10" id="Am7-I6-KYJ"/>
-                            <constraint firstAttribute="centerX" secondItem="awU-DT-iOT" secondAttribute="centerX" constant="-0.5" id="LTY-j5-hQu"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="PfS-hj-JA4" secondAttribute="bottom" constant="115" id="nt1-iP-8Xg"/>
-                            <constraint firstAttribute="centerX" secondItem="PfS-hj-JA4" secondAttribute="centerX" constant="-0.5" id="wMC-Ub-aEQ"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="SOZ-85-ya7"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-772" y="-226"/>
-        </scene>
-        <!--Server-->
-        <scene sceneID="jPj-bN-zuY">
-            <objects>
-                <viewController title="Server" id="7vQ-4Y-63V" customClass="ServerViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="3Db-hb-PN9"/>
-                        <viewControllerLayoutGuide type="bottom" id="j0k-Gy-upx"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="mZ8-eh-Vbj">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="plO-Xb-PdQ">
-                                <rect key="frame" x="249" y="309" width="182" height="82"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="182" id="Cci-aZ-LHZ"/>
-                                </constraints>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                        </subviews>
-                    </view>
-                    <navigationItem key="navigationItem" title="Server" id="Lr4-RH-e3z" userLabel="Server">
-                        <barButtonItem key="rightBarButtonItem" title="Quick Command" id="bte-lF-mmV">
-                            <connections>
-                                <action selector="launchQuickCommand:" destination="7vQ-4Y-63V" id="8nh-yU-hdr"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <segue destination="vLC-va-sIE" kind="show" identifier="quickCommand" id="2e2-nZ-iH2"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XbP-GP-vii" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-4" y="-624"/>
-        </scene>
-        <!--Client-->
-        <scene sceneID="kX0-DQ-7XI">
-            <objects>
-                <tableViewController title="Client" id="G0X-KB-nPs" customClass="ClientViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="SM4-cl-AIE">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ServiceCell" id="y05-gh-urY">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="y05-gh-urY" id="SlB-L4-YMB">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="G0X-KB-nPs" id="f3h-C4-oKO"/>
-                            <outlet property="delegate" destination="G0X-KB-nPs" id="hGZ-Em-qEQ"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Client" id="bfU-MN-5ng" userLabel="Server">
-                        <barButtonItem key="rightBarButtonItem" title="Quick Command" id="uL7-FB-6tO">
-                            <connections>
-                                <action selector="launchQuickCommand:" destination="G0X-KB-nPs" id="L9l-wY-7PA"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <segue destination="vLC-va-sIE" kind="show" identifier="quickCommand" id="tdA-0M-hdA"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YZE-SW-LW3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-4" y="148"/>
-        </scene>
-        <!--Quick Command View Controller-->
-        <scene sceneID="rd8-co-mgy">
-            <objects>
-                <viewController id="vLC-va-sIE" customClass="QuickCommandViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="t1O-se-K5J"/>
-                        <viewControllerLayoutGuide type="bottom" id="ZBS-sy-8Pa"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="4rO-ew-vbk">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QTz-sF-u4Q">
-                                <rect key="frame" x="57" y="95" width="207" height="30"/>
-                                <state key="normal" title="Join Lobby">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="sendCommand:" destination="vLC-va-sIE" eventType="touchUpInside" id="z78-Av-eWe"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ZG-c1-s1K">
-                                <rect key="frame" x="57" y="133" width="207" height="30"/>
-                                <state key="normal" title="Start Game Session">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="sendCommand:" destination="vLC-va-sIE" eventType="touchUpInside" id="zca-r5-Mjt"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cks-1W-6xO">
-                                <rect key="frame" x="57" y="171" width="207" height="30"/>
-                                <state key="normal" title="Start Game Match">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="sendCommand:" destination="vLC-va-sIE" eventType="touchUpInside" id="0nx-JI-Yvd"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Edq-IK-x43">
-                                <rect key="frame" x="57" y="209" width="207" height="30"/>
-                                <state key="normal" title="Select Black Card Player">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="sendCommand:" destination="vLC-va-sIE" eventType="touchUpInside" id="kE6-zl-Mlq"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sp8-24-h28">
-                                <rect key="frame" x="57" y="247" width="207" height="30"/>
-                                <state key="normal" title="Distribute White Cards">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="sendCommand:" destination="vLC-va-sIE" eventType="touchUpInside" id="mFy-8e-UYz"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9b7-qi-Z2O">
-                                <rect key="frame" x="57" y="285" width="207" height="30"/>
-                                <state key="normal" title="Display Black Question Card">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="sendCommand:" destination="vLC-va-sIE" eventType="touchUpInside" id="3k4-qU-PK6"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eD1-aa-IAc">
-                                <rect key="frame" x="57" y="323" width="207" height="30"/>
-                                <state key="normal" title="Submit White Card">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="sendCommand:" destination="vLC-va-sIE" eventType="touchUpInside" id="NVa-NB-Dh8"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P9A-f0-LTR">
-                                <rect key="frame" x="57" y="361" width="207" height="30"/>
-                                <state key="normal" title="All Cards Submitted">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="sendCommand:" destination="vLC-va-sIE" eventType="touchUpInside" id="wiG-8f-dte"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keS-vG-Rnm">
-                                <rect key="frame" x="57" y="399" width="207" height="30"/>
-                                <state key="normal" title="Choose Winner">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="sendCommand:" destination="vLC-va-sIE" eventType="touchUpInside" id="med-Pg-OVx"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Edq-IK-x43" firstAttribute="leading" secondItem="Sp8-24-h28" secondAttribute="leading" id="357-Ly-Pzj"/>
-                            <constraint firstAttribute="centerX" secondItem="QTz-sF-u4Q" secondAttribute="centerX" constant="-0.5" id="76d-wb-2tA"/>
-                            <constraint firstItem="Cks-1W-6xO" firstAttribute="trailing" secondItem="Edq-IK-x43" secondAttribute="trailing" id="EvZ-Fd-J7j"/>
-                            <constraint firstItem="eD1-aa-IAc" firstAttribute="trailing" secondItem="P9A-f0-LTR" secondAttribute="trailing" id="EwL-Kk-Els"/>
-                            <constraint firstItem="9b7-qi-Z2O" firstAttribute="trailing" secondItem="Sp8-24-h28" secondAttribute="trailing" id="H2Y-U9-FKF"/>
-                            <constraint firstItem="Edq-IK-x43" firstAttribute="leading" secondItem="Cks-1W-6xO" secondAttribute="leading" id="IwK-YR-ZUl"/>
-                            <constraint firstItem="eD1-aa-IAc" firstAttribute="top" secondItem="9b7-qi-Z2O" secondAttribute="bottom" constant="8" symbolic="YES" id="Jim-KF-Jg1"/>
-                            <constraint firstItem="Cks-1W-6xO" firstAttribute="leading" secondItem="2ZG-c1-s1K" secondAttribute="leading" id="MdS-Qp-mL7"/>
-                            <constraint firstItem="P9A-f0-LTR" firstAttribute="leading" secondItem="eD1-aa-IAc" secondAttribute="leading" id="Q7g-BI-KEs"/>
-                            <constraint firstItem="Cks-1W-6xO" firstAttribute="trailing" secondItem="2ZG-c1-s1K" secondAttribute="trailing" id="R53-Cq-sUi"/>
-                            <constraint firstItem="keS-vG-Rnm" firstAttribute="leading" secondItem="P9A-f0-LTR" secondAttribute="leading" id="RF7-AH-X9M"/>
-                            <constraint firstItem="9b7-qi-Z2O" firstAttribute="top" secondItem="Sp8-24-h28" secondAttribute="bottom" constant="8" symbolic="YES" id="RmV-2p-kIM"/>
-                            <constraint firstItem="P9A-f0-LTR" firstAttribute="top" secondItem="eD1-aa-IAc" secondAttribute="bottom" constant="8" symbolic="YES" id="XO5-kj-o64"/>
-                            <constraint firstItem="eD1-aa-IAc" firstAttribute="leading" secondItem="9b7-qi-Z2O" secondAttribute="leading" id="XUB-PF-OBd"/>
-                            <constraint firstItem="QTz-sF-u4Q" firstAttribute="leading" secondItem="4rO-ew-vbk" secondAttribute="leadingMargin" constant="41" id="eMp-pB-tJp"/>
-                            <constraint firstItem="Edq-IK-x43" firstAttribute="top" secondItem="Cks-1W-6xO" secondAttribute="bottom" constant="8" symbolic="YES" id="fQh-69-pNf"/>
-                            <constraint firstItem="eD1-aa-IAc" firstAttribute="trailing" secondItem="9b7-qi-Z2O" secondAttribute="trailing" id="i9N-cW-TZn"/>
-                            <constraint firstItem="QTz-sF-u4Q" firstAttribute="trailing" secondItem="2ZG-c1-s1K" secondAttribute="trailing" id="itL-fH-4np"/>
-                            <constraint firstItem="Sp8-24-h28" firstAttribute="top" secondItem="Edq-IK-x43" secondAttribute="bottom" constant="8" symbolic="YES" id="jH7-zF-2Ud"/>
-                            <constraint firstItem="Sp8-24-h28" firstAttribute="leading" secondItem="9b7-qi-Z2O" secondAttribute="leading" id="jht-Of-MPm"/>
-                            <constraint firstItem="Sp8-24-h28" firstAttribute="trailing" secondItem="Edq-IK-x43" secondAttribute="trailing" id="kYO-Qv-9EB"/>
-                            <constraint firstItem="QTz-sF-u4Q" firstAttribute="leading" secondItem="2ZG-c1-s1K" secondAttribute="leading" id="lyp-Po-2SJ"/>
-                            <constraint firstItem="2ZG-c1-s1K" firstAttribute="top" secondItem="QTz-sF-u4Q" secondAttribute="bottom" constant="8" symbolic="YES" id="m0N-CV-ou2"/>
-                            <constraint firstItem="Cks-1W-6xO" firstAttribute="top" secondItem="2ZG-c1-s1K" secondAttribute="bottom" constant="8" symbolic="YES" id="oUE-64-RpU"/>
-                            <constraint firstItem="P9A-f0-LTR" firstAttribute="trailing" secondItem="keS-vG-Rnm" secondAttribute="trailing" id="rI6-Ul-bbO"/>
-                            <constraint firstItem="QTz-sF-u4Q" firstAttribute="top" secondItem="t1O-se-K5J" secondAttribute="bottom" constant="31" id="rgn-YV-gL6"/>
-                            <constraint firstItem="keS-vG-Rnm" firstAttribute="top" secondItem="P9A-f0-LTR" secondAttribute="bottom" constant="8" symbolic="YES" id="uXF-A1-AHc"/>
-                        </constraints>
-                    </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9Qk-VM-I8S" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="680" y="-300"/>
+            <point key="canvasLocation" x="410" y="1804"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="tdA-0M-hdA"/>
-        <segue reference="Dn5-a8-lyX"/>
+        <segue reference="bTJ-da-1nd"/>
     </inferredMetricsTieBreakers>
 </document>
