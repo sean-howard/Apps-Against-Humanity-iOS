@@ -9,6 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface LobbyBrowserViewController : UITableViewController
-- (IBAction)launchQuickCommand:(id)sender;
 
 @end
