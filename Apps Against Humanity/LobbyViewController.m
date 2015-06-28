@@ -20,6 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[GameManager sharedManager] setDelegate:self];
+  
+    self.startGameButton.enabled = NO;
     
     if (self.lobbyAsHost) {
         [[GameManager sharedManager] startAsHost];
@@ -62,12 +64,25 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-#pragma mark - SocketServerManagerDelegates
+#pragma mark - GameManager Delegate Methods
 - (void)gameManagerDidUpdateConnectedPlayers:(NSArray *)players
 {
     self.players = players;
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
+        
+        if (self.players.count > 2 && self.lobbyAsHost) {
+            self.startGameButton.enabled = YES;
+        }
     });
+}
+
+- (void)gameManagerDidStartGameSession
+{
+    [self performSegueWithIdentifier:@"startGame" sender:self];
+}
+
+- (IBAction)startGameButtonPressed:(id)sender {
+    [[GameManager sharedManager] enterGame];
 }
 @end

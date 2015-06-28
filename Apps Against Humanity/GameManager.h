@@ -14,6 +14,7 @@
 @optional
 - (void)gameManagerDidFindAvailableLobbies:(NSArray *)lobbies;
 - (void)gameManagerDidUpdateConnectedPlayers:(NSArray *)players;
+- (void)gameManagerDidStartGameSession;
 @end
 
 @interface GameManager : NSObject
@@ -29,4 +30,5 @@
 - (void)startAsHost;
 - (void)startAsClient;
 - (void)connectToLobby:(Lobby *)lobby;
+- (void)enterGame;
 @end

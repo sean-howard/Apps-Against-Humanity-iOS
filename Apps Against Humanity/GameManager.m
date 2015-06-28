@@ -127,17 +127,10 @@ static bool isFirstAccess = YES;
     [self.client resolveService:lobby.service];
 }
 
-- (Player *)localPlayer
+- (void)enterGame
 {
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    Player *player = appDelegate.player;
-    return player;
-}
-
-- (void)updateLobbyWithLocalPlayer
-{
-    MessagePacket *packet = [[MessagePacket alloc] initWithData:[[self localPlayer] serialise]
-                                                         action:MessagePacketActionJoiningLobby];
+    MessagePacket *packet = [[MessagePacket alloc] initWithData:@{}
+                                                         action:MessagePacketActionStartGameSession];
     
     [self.client sendMessage:packet];
 }
@@ -161,16 +154,21 @@ static bool isFirstAccess = YES;
     
     switch (packet.action) {
         case MessagePacketActionJoiningLobby:
-            
             [self updateConnectedPlayersWithDict:packetData];
+            break;
+        case MessagePacketActionStartGameSession:
+            
+            if ([self.delegate respondsToSelector:@selector(gameManagerDidStartGameSession)]) {
+                [self.delegate gameManagerDidStartGameSession];
+            }
             
             break;
-            
         default:
             break;
     }
 }
 
+#pragma mark - Lobby Logic
 - (void)updateConnectedPlayersWithDict:(NSDictionary *)data
 {
     Player *player = [Player new];
@@ -192,6 +190,22 @@ static bool isFirstAccess = YES;
     if ([self.delegate respondsToSelector:@selector(gameManagerDidUpdateConnectedPlayers:)]) {
         [self.delegate gameManagerDidUpdateConnectedPlayers:self.players];
     }
+}
+
+#pragma mark - Convenience Methods
+- (Player *)localPlayer
+{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    Player *player = appDelegate.player;
+    return player;
+}
+
+- (void)updateLobbyWithLocalPlayer
+{
+    MessagePacket *packet = [[MessagePacket alloc] initWithData:[[self localPlayer] serialise]
+                                                         action:MessagePacketActionJoiningLobby];
+    
+    [self.client sendMessage:packet];
 }
 
 @end

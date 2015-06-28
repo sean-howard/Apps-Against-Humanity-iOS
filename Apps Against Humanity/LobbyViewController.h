@@ -12,4 +12,8 @@
 @interface LobbyViewController : UITableViewController
 @property (nonatomic) BOOL lobbyAsHost;
 @property (nonatomic) Lobby *lobbyToConnectTo;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *startGameButton;
+
+- (IBAction)startGameButtonPressed:(id)sender;
+
 @end
