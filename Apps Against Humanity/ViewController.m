@@ -11,8 +11,12 @@
 #import "CardManager.h"
 #import "AppDelegate.h"
 
-@interface ViewController ()
+#import "SocketClient.h"
+#import "SocketServer.h"
 
+@interface ViewController ()
+@property (nonatomic, strong) SocketServer *socketServer;
+@property (nonatomic, strong) SocketClient *socketClient;
 @end
 
 @implementation ViewController
@@ -24,6 +28,12 @@
     if (![[CardManager sharedManager] packsAvailable]) {
         [[CardManager sharedManager] populateDatabaseWithCards];
     }
+    
+    self.socketServer = [[SocketServer alloc] init];
+    [self.socketServer startBroadcast];
+    
+    self.socketClient = [[SocketClient alloc] init];
+    [self.socketClient startBrowsing];
 
 }
 

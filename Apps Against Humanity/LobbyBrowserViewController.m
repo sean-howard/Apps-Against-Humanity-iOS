@@ -31,12 +31,8 @@ static NSString *ServiceCell = @"ServiceCell";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ServiceCell];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ServiceCell forIndexPath:indexPath];
     
-    if (!cell) {
-        // Initialize Table View Cell
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ServiceCell];
-    }
     
     // Fetch Service
     NSNetService *service = [self.services objectAtIndex:[indexPath row]];

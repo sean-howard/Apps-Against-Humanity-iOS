@@ -9,6 +9,7 @@
 #import "SocketServer.h"
 #import <PocketSocket/PSWebSocketServer.h>
 #import "MessagePacket.h"
+#import "Player.h"
 
 @interface SocketServer ()<NSNetServiceDelegate, PSWebSocketServerDelegate>
 @property (strong, nonatomic) NSNetService *service;
@@ -29,8 +30,6 @@
 }
 
 - (void)startBroadcast {
-    // Initialize GCDAsyncSocket
-    
     
     self.socketServer = [PSWebSocketServer serverWithHost:nil port:12345];
     self.socketServer.delegate = self;
@@ -78,28 +77,30 @@
     return YES;
 }
 - (void)server:(PSWebSocketServer *)server webSocket:(PSWebSocket *)webSocket didReceiveMessage:(id)message {
-    NSData *data = [message dataUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-    
-    NSLog(@"Server received message: %@", json);
-    
-    if ([json[@"action"] integerValue] == 0) {
-        [self.connections addObject:json];
-        
-        if ([self.delegate respondsToSelector:@selector(serverDidAcceptNewConnections:)]) {
-            [self.delegate serverDidAcceptNewConnections:self.connections];
-        }
-    }
+    [self broadcastMessage:message];
 }
 
 - (void)server:(PSWebSocketServer *)server webSocketDidOpen:(PSWebSocket *)webSocket {
     NSLog(@"Server websocket did open");
+    [self.connections addObject:webSocket];
 }
 - (void)server:(PSWebSocketServer *)server webSocket:(PSWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean {
     NSLog(@"Server websocket did close with code: %@, reason: %@, wasClean: %@", @(code), reason, @(wasClean));
+    
+    [self.connections removeObject:webSocket];
 }
 - (void)server:(PSWebSocketServer *)server webSocket:(PSWebSocket *)webSocket didFailWithError:(NSError *)error {
     NSLog(@"Server websocket did fail with error: %@", error);
+    [self.connections removeObject:webSocket];
+}
+
+- (void)broadcastMessage:(id)message
+{
+    for (PSWebSocket *socket in self.connections) {
+        if (socket) {
+            [socket send:message];
+        }
+    }
 }
 
 @end

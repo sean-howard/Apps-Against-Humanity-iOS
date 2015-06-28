@@ -24,7 +24,7 @@
         <!--View Controller-->
         <scene sceneID="Ts8-CR-1cN">
             <objects>
-                <viewController id="pwL-mm-AIf" sceneMemberID="viewController">
+                <viewController id="pwL-mm-AIf" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KSp-GF-7nD"/>
                         <viewControllerLayoutGuide type="bottom" id="Jqi-Fs-6Xy"/>
