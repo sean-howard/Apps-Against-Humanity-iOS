@@ -7,14 +7,17 @@
 //
 
 #import "GameManager.h"
+#import "AppDelegate.h"
+#import "MessagePacket.h"
 #import "SocketServer.h"
 #import "SocketClient.h"
+#import "Lobby.h"
 
 @interface GameManager ()<SocketClientDelegate, SocketServerDelegate>
 @property (nonatomic, strong) SocketServer *server;
 @property (nonatomic, strong) SocketClient *client;
 
-@property (nonatomic, getter=isGameHost) BOOL gameHost;
+@property (nonatomic, strong) NSMutableArray *players;
 @end
 
 @implementation GameManager
@@ -22,6 +25,15 @@
 static GameManager *SINGLETON = nil;
 
 static bool isFirstAccess = YES;
+
+#pragma mark - Lazy loading
+- (NSMutableArray *)players
+{
+    if (!_players) {
+        _players = [NSMutableArray array];
+    }
+    return _players;
+}
 
 #pragma mark - Public Method
 
@@ -63,7 +75,7 @@ static bool isFirstAccess = YES;
     return [[GameManager alloc] init];
 }
 
-- (id) init
+- (id)init
 {
     if(SINGLETON){
         return SINGLETON;
@@ -110,10 +122,76 @@ static bool isFirstAccess = YES;
     [self.client startBrowsing];
 }
 
-#pragma mark - Socket Server delegate methods
+- (void)connectToLobby:(Lobby *)lobby
+{
+    [self.client resolveService:lobby.service];
+}
 
+- (Player *)localPlayer
+{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    Player *player = appDelegate.player;
+    return player;
+}
+
+- (void)updateLobbyWithLocalPlayer
+{
+    MessagePacket *packet = [[MessagePacket alloc] initWithData:[[self localPlayer] serialise]
+                                                         action:MessagePacketActionJoiningLobby];
+    
+    [self.client sendMessage:packet];
+}
 
 #pragma mark - Socket Client delegate methods
+- (void)clientDidConnectToServer
+{
+    [self updateLobbyWithLocalPlayer];
+}
 
+- (void)clientDidUpdateServices:(NSArray *)services
+{
+    if ([self.delegate respondsToSelector:@selector(gameManagerDidFindAvailableLobbies:)]) {
+        [self.delegate gameManagerDidFindAvailableLobbies:services];
+    }
+}
+
+- (void)clientDidReceiveMessagePacket:(MessagePacket *)packet
+{
+    NSDictionary *packetData = packet.data;
+    
+    switch (packet.action) {
+        case MessagePacketActionJoiningLobby:
+            
+            [self updateConnectedPlayersWithDict:packetData];
+            
+            break;
+            
+        default:
+            break;
+    }
+}
+
+- (void)updateConnectedPlayersWithDict:(NSDictionary *)data
+{
+    Player *player = [Player new];
+    player.name = data[@"name"];
+    player.uuid = data[@"uuid"];
+    
+    BOOL alreadyAdded = NO;
+    
+    if ([self.players firstObject]) {
+        for (Player *connectedPlayer in self.players) {
+            alreadyAdded = [connectedPlayer.uuid isEqualToString:player.uuid];
+            if (alreadyAdded) return;
+        }
+    }
+    
+    [self.players addObject:player];
+    [self updateLobbyWithLocalPlayer];
+    
+    if ([self.delegate respondsToSelector:@selector(gameManagerDidUpdateConnectedPlayers:)]) {
+        [self.delegate gameManagerDidUpdateConnectedPlayers:self.players];
+    }
+}
 
 @end

@@ -7,34 +7,21 @@
 //
 
 #import "ViewController.h"
-#import "MessagePacket.h"
-#import "CardManager.h"
-#import "AppDelegate.h"
-
-#import "SocketClient.h"
-#import "SocketServer.h"
-
-@interface ViewController ()
-@property (nonatomic, strong) SocketServer *socketServer;
-@property (nonatomic, strong) SocketClient *socketClient;
-@end
+#import "LobbyViewController.h"
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.    
-    
-    if (![[CardManager sharedManager] packsAvailable]) {
-        [[CardManager sharedManager] populateDatabaseWithCards];
-    }
-    
-    self.socketServer = [[SocketServer alloc] init];
-    [self.socketServer startBroadcast];
-    
-    self.socketClient = [[SocketClient alloc] init];
-    [self.socketClient startBrowsing];
+    // Do any additional setup after loading the view, typically from a nib.
+}
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"showLobby"]) {
+        LobbyViewController *lobbyVC = (LobbyViewController *)segue.destinationViewController;
+        lobbyVC.lobbyAsHost = YES;
+    }
 }
 
 @end

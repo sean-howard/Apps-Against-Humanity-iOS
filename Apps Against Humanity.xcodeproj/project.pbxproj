@@ -15,6 +15,7 @@
 		8C77427D1B370A380037A42A /* CardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C77427C1B370A380037A42A /* CardManager.m */; };
 		8C7742801B370ACF0037A42A /* cards.json in Resources */ = {isa = PBXBuildFile; fileRef = 8C77427F1B370ACF0037A42A /* cards.json */; };
 		8C85314F1B401E540051F546 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C85314E1B401E540051F546 /* GameManager.m */; };
+		8C8531521B404EF30051F546 /* Lobby.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C8531511B404EF30051F546 /* Lobby.m */; };
 		8C865E2A1B3B2E52005506B7 /* LobbyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C865E291B3B2E52005506B7 /* LobbyViewController.m */; };
 		8CAA92041AFE5DBD00332FC9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CAA92031AFE5DBD00332FC9 /* main.m */; };
 		8CAA92071AFE5DBD00332FC9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CAA92061AFE5DBD00332FC9 /* AppDelegate.m */; };
@@ -58,6 +59,8 @@
 		8C77427F1B370ACF0037A42A /* cards.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cards.json; sourceTree = "<group>"; };
 		8C85314D1B401E540051F546 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
 		8C85314E1B401E540051F546 /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameManager.m; sourceTree = "<group>"; };
+		8C8531501B404EF30051F546 /* Lobby.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lobby.h; sourceTree = "<group>"; };
+		8C8531511B404EF30051F546 /* Lobby.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lobby.m; sourceTree = "<group>"; };
 		8C865E281B3B2E52005506B7 /* LobbyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LobbyViewController.h; sourceTree = "<group>"; };
 		8C865E291B3B2E52005506B7 /* LobbyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LobbyViewController.m; sourceTree = "<group>"; };
 		8CAA91FE1AFE5DBD00332FC9 /* Apps Against Humanity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Apps Against Humanity.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -180,6 +183,15 @@
 			name = "Card Manager";
 			sourceTree = "<group>";
 		};
+		8C8531531B404F150051F546 /* Lobby */ = {
+			isa = PBXGroup;
+			children = (
+				8C8531501B404EF30051F546 /* Lobby.h */,
+				8C8531511B404EF30051F546 /* Lobby.m */,
+			);
+			name = Lobby;
+			sourceTree = "<group>";
+		};
 		8CAA91F51AFE5DBD00332FC9 = {
 			isa = PBXGroup;
 			children = (
@@ -208,6 +220,7 @@
 				8CAA92061AFE5DBD00332FC9 /* AppDelegate.m */,
 				8C85314D1B401E540051F546 /* GameManager.h */,
 				8C85314E1B401E540051F546 /* GameManager.m */,
+				8C8531531B404F150051F546 /* Lobby */,
 				8CBE6F521B3EF747001C10F4 /* Player */,
 				8C77427E1B370A400037A42A /* CardManagement */,
 				8CCA3EC91AFEB41E00F2E494 /* MessagePacket */,
@@ -429,6 +442,7 @@
 				8C85314F1B401E540051F546 /* GameManager.m in Sources */,
 				8CAA92041AFE5DBD00332FC9 /* main.m in Sources */,
 				8C4C99731B3711FF005BD478 /* BlackCard.m in Sources */,
+				8C8531521B404EF30051F546 /* Lobby.m in Sources */,
 				8CCA3EC41AFEA58300F2E494 /* SocketClient.m in Sources */,
 				8C4C997C1B373980005BD478 /* Hand.m in Sources */,
 				8CCA3EC11AFEA57500F2E494 /* SocketServer.m in Sources */,

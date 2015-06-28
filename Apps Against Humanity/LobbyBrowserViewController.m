@@ -7,11 +7,13 @@
 //
 
 #import "LobbyBrowserViewController.h"
+#import "GameManager.h"
+#import "Lobby.h"
+#import "LobbyViewController.h"
 
-static NSString *ServiceCell = @"ServiceCell";
-
-@interface LobbyBrowserViewController ()
-@property (strong, nonatomic) NSArray *services;
+@interface LobbyBrowserViewController ()<GameManagerDelegate>
+@property (nonatomic, strong) NSArray *lobbies;
+@property (nonatomic, strong) Lobby *selectedLobby;
 @end
 
 @implementation LobbyBrowserViewController
@@ -20,25 +22,23 @@ static NSString *ServiceCell = @"ServiceCell";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [[GameManager sharedManager] setDelegate:self];
+    [[GameManager sharedManager] startAsClient];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.services ? 1 : 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.services count];
+    return self.lobbies.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ServiceCell forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    
-    // Fetch Service
-    NSNetService *service = [self.services objectAtIndex:[indexPath row]];
-    
-    // Configure Cell
-    [cell.textLabel setText:[service name]];
+    Lobby *lobby = (Lobby *)self.lobbies[indexPath.row];
+    cell.textLabel.text = lobby.lobbyName;
     
     return cell;
 }
@@ -46,47 +46,27 @@ static NSString *ServiceCell = @"ServiceCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    // Fetch Service
-    NSNetService *service = [self.services objectAtIndex:[indexPath row]];
-//    [self.clientManager resolveService:service];
+    self.selectedLobby = (Lobby *)self.lobbies[indexPath.row];
+    [self performSegueWithIdentifier:@"showLobby" sender:self];
 }
 
-#pragma mark -
-#pragma mark SocketClientManager Delegate Methods
-- (void)clientDidConnectToServer
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+    if ([segue.identifier isEqualToString:@"showLobby"]) {
+        LobbyViewController *lobbyVC = (LobbyViewController *)segue.destinationViewController;
+        lobbyVC.lobbyAsHost = NO;
+        lobbyVC.lobbyToConnectTo = self.selectedLobby;
+    }
 }
 
-- (void)clientDidDisconnectFromServer
+#pragma mark - Game Manager Delegate Methods
+- (void)gameManagerDidFindAvailableLobbies:(NSArray *)lobbies
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
-}
-
-- (void)clientDidFailToBroadcast
-{
-    NSLog(@"%s", __PRETTY_FUNCTION__);
-}
-
-- (void)clientDidStartBrowsing
-{
-    NSLog(@"%s", __PRETTY_FUNCTION__);
-}
-
-- (void)clientDidFinishFindingServices:(NSArray *)services
-{
-    NSLog(@"%s %@", __PRETTY_FUNCTION__, services);
+    self.lobbies = lobbies;
     
-    self.services = services;
-    [self.tableView reloadData];
-}
-
-- (void)clientDidUpdateServices:(NSArray *)services
-{
-    NSLog(@"%s %@", __PRETTY_FUNCTION__, services);
-
-    self.services = services;
-    [self.tableView reloadData];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+    });
 }
 
 - (void)didReceiveMemoryWarning {

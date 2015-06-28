@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+@class Lobby;
 
 @interface LobbyViewController : UITableViewController
-
+@property (nonatomic) BOOL lobbyAsHost;
+@property (nonatomic) Lobby *lobbyToConnectTo;
 @end

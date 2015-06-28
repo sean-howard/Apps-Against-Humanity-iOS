@@ -10,6 +10,9 @@
 #import <SocketRocket/SRWebSocket.h>
 #include <arpa/inet.h>
 #import "MessagePacket.h"
+#import "AppDelegate.h"
+#import "GameManager.h"
+#import "Lobby.h"
 
 @interface SocketClient ()<NSNetServiceDelegate, NSNetServiceBrowserDelegate, SRWebSocketDelegate>
 @property (strong, nonatomic) SRWebSocket *socket;
@@ -42,6 +45,11 @@
     }
 }
 
+- (void)sendMessage:(MessagePacket *)packet
+{
+    [self.socket send:[packet asString]];
+}
+
 - (void)resolveService:(NSNetService *)service
 {
     // Resolve Service
@@ -52,19 +60,22 @@
 #pragma mark -
 #pragma mark NSNetServiceBrowser Delegate Methods
 - (void)netServiceBrowser:(NSNetServiceBrowser *)serviceBrowser didFindService:(NSNetService *)service moreComing:(BOOL)moreComing {
+
+    if([[GameManager sharedManager] isGameHost]) {
+        [self resolveService:service];
+    }
+    
     // Update Services
-    [self.services addObject:service];
-    [self.services sortUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
+    
+    Lobby *lobby = [Lobby new];
+    lobby.lobbyName = service.name;
+    lobby.service = service;
+    
+    [self.services addObject:lobby];
+    [self.services sortUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"lobby.lobbyName" ascending:YES]]];
 
     if ([self.delegate respondsToSelector:@selector(clientDidUpdateServices:)]) {
         [self.delegate clientDidUpdateServices:self.services];
-    }
-
-    if(!moreComing) {
-        // Sort Services
-        if ([self.delegate respondsToSelector:@selector(clientDidFinishFindingServices:)]) {
-            [self.delegate clientDidFinishFindingServices:self.services];
-        }
     }
 }
 
@@ -119,38 +130,31 @@
     return ipString;
 }
 
-
 #pragma mark -
 #pragma mark SRSocketDelegate Methods
 - (void)webSocketDidOpen:(SRWebSocket *)webSocket
 {
     NSLog(@"%s", __PRETTY_FUNCTION__);
+
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    NSDictionary *lobbyMessage = @{@"action":[NSNumber numberWithInt:MessagePacketActionJoiningLobby],
-                                   @"name":@"Sean Howard"};
-    
-    NSError *error = nil;
-    
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:lobbyMessage options:0 error:&error];
-    
-    if (error) {
-        NSLog(@"%@", error.localizedDescription);
+    Player *player = appDelegate.player;
+    player.socket = webSocket;
+
+    if ([self.delegate respondsToSelector:@selector(clientDidConnectToServer)]) {
+        [self.delegate clientDidConnectToServer];
     }
-    
-    NSString *string = [[NSString alloc] initWithData:jsonData
-                                             encoding:NSUTF8StringEncoding];
-    
-    NSLog(@"%@", string);
-    [webSocket send:string];
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message
 {
-    NSLog(@"%s %@", __PRETTY_FUNCTION__, message);
-    NSData *data = [message dataUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    MessagePacket *packet = [[MessagePacket alloc] initWithRawData:message];
     
-    NSLog(@"Client received message: %@", json);
+    if (packet) {
+        if ([self.delegate respondsToSelector:@selector(clientDidReceiveMessagePacket:)]) {
+            [self.delegate clientDidReceiveMessagePacket:packet];
+        }
+    }
 }
 
 -(void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean

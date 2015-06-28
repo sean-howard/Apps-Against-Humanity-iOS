@@ -19,8 +19,7 @@
 
 @implementation SocketServer
 
-#pragma mark -
-#pragma mark Lazy Loading
+#pragma mark - Lazy Loading
 - (NSMutableArray *)connections
 {
     if (!_connections) {
@@ -45,8 +44,7 @@
         
 }
 
-#pragma mark -
-#pragma mark NSNetServiceDelegate
+#pragma mark - NSNetServiceDelegate
 - (void)netServiceDidPublish:(NSNetService *)service {
     NSLog(@"Bonjour Service Published: domain(%@) type(%@) name(%@) port(%i)", [service domain], [service type], [service name], (int)[service port]);
     
@@ -64,7 +62,6 @@
     }
 }
 
-#pragma mark -
 #pragma mark - PSWebSocketServerDelegate
 - (void)serverDidStart:(PSWebSocketServer *)server {
     NSLog(@"Server did start…");
@@ -86,7 +83,6 @@
 }
 - (void)server:(PSWebSocketServer *)server webSocket:(PSWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean {
     NSLog(@"Server websocket did close with code: %@, reason: %@, wasClean: %@", @(code), reason, @(wasClean));
-    
     [self.connections removeObject:webSocket];
 }
 - (void)server:(PSWebSocketServer *)server webSocket:(PSWebSocket *)webSocket didFailWithError:(NSError *)error {

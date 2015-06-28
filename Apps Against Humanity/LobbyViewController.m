@@ -7,8 +7,11 @@
 //
 
 #import "LobbyViewController.h"
+#import "GameManager.h"
+#import "Player.h"
+#import "Lobby.h"
 
-@interface LobbyViewController ()
+@interface LobbyViewController ()<GameManagerDelegate>
 @property (nonatomic, strong) NSArray *players;
 @end
 
@@ -16,7 +19,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[GameManager sharedManager] setDelegate:self];
     
+    if (self.lobbyAsHost) {
+        [[GameManager sharedManager] startAsHost];
+    }
+    
+    if (self.lobbyToConnectTo) {
+        [[GameManager sharedManager] connectToLobby:self.lobbyToConnectTo];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,9 +49,8 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    NSDictionary *player = self.players[indexPath.row];
-    
-    cell.textLabel.text = player[@"name"];
+    Player *player = self.players[indexPath.row];
+    cell.textLabel.text = player.name;
     
     return cell;
 }
@@ -50,37 +60,12 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-#pragma mark -
-#pragma mark SocketServerManagerDelegates
-- (void)serverDidStartBroadcasting
+#pragma mark - SocketServerManagerDelegates
+- (void)gameManagerDidUpdateConnectedPlayers:(NSArray *)players
 {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
+    self.players = players;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+    });
 }
-
-- (void)serverDidFailToBroadcast
-{
-    NSLog(@"%s", __PRETTY_FUNCTION__);
-}
-
-- (void)serverDidAcceptNewConnection
-{
-    NSLog(@"%s", __PRETTY_FUNCTION__);
-}
-
-- (void)serverDidDisconnect
-{
-    NSLog(@"%s", __PRETTY_FUNCTION__);
-}
-
-- (void)serverDidAcceptNewConnections:(NSArray *)connections
-{
-    self.players = connections;
-    [self.tableView reloadData];
-}
-
-- (void)serverDidLoseConnections:(NSArray *)connections
-{
-    NSLog(@"%s %@", __PRETTY_FUNCTION__, connections);
-}
-
 @end
