@@ -9,10 +9,13 @@
 #import "GameViewController.h"
 #import "GameManager.h"
 #import "BlackCard.h"
+#import "WhiteCard.h"
 #import "BlackCardModalViewController.h"
+#import "Hand.h"
 
 @interface GameViewController ()<GameManagerDelegate>
 @property (nonatomic, strong) BlackCard *blackCardInPlay;
+@property (nonatomic, strong) Hand *hand;
 @end
 
 @implementation GameViewController
@@ -21,7 +24,7 @@
     [super viewDidLoad];
     
     [[GameManager sharedManager] setDelegate:self];
-        
+    
     if ([[GameManager sharedManager] isGameHost]) {
         [[GameManager sharedManager] selectFirstBlackCardPlayer];
     }
@@ -35,14 +38,29 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return (self.hand)?self.hand.whiteCards.count:0;
 }
 
-- (void)prepareForSegue:(nonnull UIStoryboardSegue *)segue sender:(nullable id)sender
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    WhiteCard *whiteCard = (WhiteCard *)self.hand.whiteCards[indexPath.row];
+    
+    cell.textLabel.text = whiteCard.text;
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"presentBlackCard"]) {
         BlackCardModalViewController *blackCardModalVC = (BlackCardModalViewController *)segue.destinationViewController;
@@ -58,6 +76,8 @@
     self.blackCardInPlay = blackCard;
     
     if (blackCardPlayer) {
+        [[GameManager sharedManager] distributeInitialWhiteCards];
+
         [self performSegueWithIdentifier:@"presentBlackCard" sender:self];
     } else {
         [[[UIAlertView alloc] initWithTitle:@"Black Card"
@@ -66,5 +86,14 @@
                           cancelButtonTitle:@"OK"
                           otherButtonTitles:nil, nil] show];
     }
+}
+
+- (void)gameManagerDidReceiveInitialHand:(Hand *)hand
+{
+    self.hand = hand;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+    });
 }
 @end

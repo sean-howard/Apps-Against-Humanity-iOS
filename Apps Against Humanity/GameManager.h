@@ -10,6 +10,7 @@
 
 @class Lobby;
 @class BlackCard;
+@class Hand;
 
 @protocol GameManagerDelegate <NSObject>
 @optional
@@ -17,6 +18,7 @@
 - (void)gameManagerDidUpdateConnectedPlayers:(NSArray *)players;
 - (void)gameManagerDidStartGameSession;
 - (void)gameManagerDidReceiveBlackCard:(BlackCard *)blackCard asBlackCardPlayer:(BOOL)blackCardPlayer;
+- (void)gameManagerDidReceiveInitialHand:(Hand *)hand;
 @end
 
 @interface GameManager : NSObject
@@ -34,4 +36,5 @@
 - (void)connectToLobby:(Lobby *)lobby;
 - (void)enterGame;
 - (void)selectFirstBlackCardPlayer;
+- (void)distributeInitialWhiteCards;
 @end

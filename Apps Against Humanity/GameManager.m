@@ -14,6 +14,7 @@
 #import "Lobby.h"
 #import "CardManager.h"
 #import "BlackCard.h"
+#import "Hand.h"
 
 @interface GameManager ()<SocketClientDelegate, SocketServerDelegate>
 @property (nonatomic, strong) SocketServer *server;
@@ -173,6 +174,9 @@ static bool isFirstAccess = YES;
         case MessagePacketActionSelectBlackCardPlayer:
             [self presentBlackCardForPlayersWithDict:packetData];
             break;
+        case MessagePacketActionDistributeWhiteCards:
+            [self presentWhiteCardsWithDict:packetData];
+            break;
         default:
             break;
     }
@@ -217,6 +221,21 @@ static bool isFirstAccess = YES;
     [self.client sendMessage:packet];
 }
 
+- (void)distributeInitialWhiteCards
+{
+    NSMutableDictionary *playerHands = [NSMutableDictionary dictionary];
+    
+    for (Player *player in self.players) {
+        Hand *hand = [[Hand alloc] initWithCount:7];
+        [playerHands setObject:[hand asCardIds] forKey:player.uuid];
+    }
+    
+    NSDictionary *packetData = @{@"initialCards":playerHands};
+    
+    MessagePacket *packet = [[MessagePacket alloc] initWithData:packetData action:MessagePacketActionDistributeWhiteCards];
+    [self.client sendMessage:packet];
+}
+
 - (void)presentBlackCardForPlayersWithDict:(NSDictionary *)data
 {
     NSString *blackCardPlayerUUID = data[@"uniqueID"];
@@ -227,6 +246,19 @@ static bool isFirstAccess = YES;
         
     if ([self.delegate respondsToSelector:@selector(gameManagerDidReceiveBlackCard:asBlackCardPlayer:)]) {
         [self.delegate gameManagerDidReceiveBlackCard:blackCard asBlackCardPlayer:isBlackCardPlayer];
+    }
+}
+
+- (void)presentWhiteCardsWithDict:(NSDictionary *)data
+{
+    NSArray *cardIDs = data[@"initialCards"][self.localPlayer.uuid];
+    
+    Hand *hand = [[Hand alloc] initWithCardIds:cardIDs];
+    
+    if (hand) {
+        if ([self.delegate respondsToSelector:@selector(gameManagerDidReceiveInitialHand:)]) {
+            [self.delegate gameManagerDidReceiveInitialHand:hand];
+        }
     }
 }
 
