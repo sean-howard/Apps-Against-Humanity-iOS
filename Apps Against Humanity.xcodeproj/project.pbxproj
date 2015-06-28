@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		89799468B7F1E04A85A70983 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A99A6BB1EF34B5952B7B672 /* libPods.a */; };
+		8C474ED21B40608500DEA7C3 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C474ED11B40608500DEA7C3 /* GameViewController.m */; };
+		8C474ED51B40681D00DEA7C3 /* BlackCardModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C474ED41B40681D00DEA7C3 /* BlackCardModalViewController.m */; };
 		8C4C99701B3711E5005BD478 /* WhiteCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4C996F1B3711E5005BD478 /* WhiteCard.m */; };
 		8C4C99731B3711FF005BD478 /* BlackCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4C99721B3711FF005BD478 /* BlackCard.m */; };
 		8C4C99761B37120B005BD478 /* Pack.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4C99751B37120B005BD478 /* Pack.m */; };
@@ -46,6 +48,10 @@
 		48FA31B81B320A81F857D89B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		4CF7D8216768588C78C7B18D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		8A99A6BB1EF34B5952B7B672 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C474ED01B40608500DEA7C3 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		8C474ED11B40608500DEA7C3 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		8C474ED31B40681D00DEA7C3 /* BlackCardModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlackCardModalViewController.h; sourceTree = "<group>"; };
+		8C474ED41B40681D00DEA7C3 /* BlackCardModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlackCardModalViewController.m; sourceTree = "<group>"; };
 		8C4C996E1B3711E5005BD478 /* WhiteCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhiteCard.h; sourceTree = "<group>"; };
 		8C4C996F1B3711E5005BD478 /* WhiteCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhiteCard.m; sourceTree = "<group>"; };
 		8C4C99711B3711FF005BD478 /* BlackCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlackCard.h; sourceTree = "<group>"; };
@@ -231,6 +237,10 @@
 				8C865E291B3B2E52005506B7 /* LobbyViewController.m */,
 				8CCA3EB11AFE837A00F2E494 /* LobbyBrowserViewController.h */,
 				8CCA3EB21AFE837A00F2E494 /* LobbyBrowserViewController.m */,
+				8C474ED01B40608500DEA7C3 /* GameViewController.h */,
+				8C474ED11B40608500DEA7C3 /* GameViewController.m */,
+				8C474ED31B40681D00DEA7C3 /* BlackCardModalViewController.h */,
+				8C474ED41B40681D00DEA7C3 /* BlackCardModalViewController.m */,
 				8CAA920B1AFE5DBD00332FC9 /* Main.storyboard */,
 				8CAA920E1AFE5DBD00332FC9 /* Images.xcassets */,
 				8CAA92101AFE5DBD00332FC9 /* LaunchScreen.xib */,
@@ -440,11 +450,13 @@
 				8CAA92071AFE5DBD00332FC9 /* AppDelegate.m in Sources */,
 				8C865E2A1B3B2E52005506B7 /* LobbyViewController.m in Sources */,
 				8C85314F1B401E540051F546 /* GameManager.m in Sources */,
+				8C474ED21B40608500DEA7C3 /* GameViewController.m in Sources */,
 				8CAA92041AFE5DBD00332FC9 /* main.m in Sources */,
 				8C4C99731B3711FF005BD478 /* BlackCard.m in Sources */,
 				8C8531521B404EF30051F546 /* Lobby.m in Sources */,
 				8CCA3EC41AFEA58300F2E494 /* SocketClient.m in Sources */,
 				8C4C997C1B373980005BD478 /* Hand.m in Sources */,
+				8C474ED51B40681D00DEA7C3 /* BlackCardModalViewController.m in Sources */,
 				8CCA3EC11AFEA57500F2E494 /* SocketServer.m in Sources */,
 				8CCA3EB31AFE837A00F2E494 /* LobbyBrowserViewController.m in Sources */,
 				8CCA3EC81AFEB41B00F2E494 /* MessagePacket.m in Sources */,

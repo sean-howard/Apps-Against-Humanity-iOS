@@ -12,10 +12,13 @@
 #import "SocketServer.h"
 #import "SocketClient.h"
 #import "Lobby.h"
+#import "CardManager.h"
+#import "BlackCard.h"
 
 @interface GameManager ()<SocketClientDelegate, SocketServerDelegate>
 @property (nonatomic, strong) SocketServer *server;
 @property (nonatomic, strong) SocketClient *client;
+@property (nonatomic, strong) Player *localPlayer;
 
 @property (nonatomic, strong) NSMutableArray *players;
 @end
@@ -101,6 +104,9 @@ static bool isFirstAccess = YES;
 
 - (void)commonInit
 {
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.localPlayer = appDelegate.player;
+
     if (self.isGameHost) {
         [self startServer];
     }
@@ -158,10 +164,14 @@ static bool isFirstAccess = YES;
             break;
         case MessagePacketActionStartGameSession:
             
+            //Reorder players alphabetically to help selecting black card player. <- temp solution
+            [self.players sortUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
+            
             if ([self.delegate respondsToSelector:@selector(gameManagerDidStartGameSession)]) {
                 [self.delegate gameManagerDidStartGameSession];
             }
-            
+        case MessagePacketActionSelectBlackCardPlayer:
+            [self presentBlackCardForPlayersWithDict:packetData];
             break;
         default:
             break;
@@ -192,17 +202,37 @@ static bool isFirstAccess = YES;
     }
 }
 
-#pragma mark - Convenience Methods
-- (Player *)localPlayer
+#pragma mark - Game Play Logic
+- (void)selectFirstBlackCardPlayer
 {
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    Player *player = appDelegate.player;
-    return player;
+    Player *blackCardPlayer = [self.players firstObject];
+    BlackCard *blackCard = [[CardManager sharedManager] randomBlackCardFromPack:nil];
+    
+    NSDictionary *packetData = @{@"uniqueID":blackCardPlayer.uuid,
+                                 @"blackCardID":@(blackCard.cardId)};
+    
+    MessagePacket *packet = [[MessagePacket alloc] initWithData:packetData
+                                                         action:MessagePacketActionSelectBlackCardPlayer];
+    
+    [self.client sendMessage:packet];
+}
+
+- (void)presentBlackCardForPlayersWithDict:(NSDictionary *)data
+{
+    NSString *blackCardPlayerUUID = data[@"uniqueID"];
+    NSInteger blackCardID = [data[@"blackCardID"] integerValue];
+    BlackCard *blackCard = [[CardManager sharedManager] blackCardWithId:blackCardID];
+
+    BOOL isBlackCardPlayer = [self.localPlayer.uuid isEqualToString:blackCardPlayerUUID];
+        
+    if ([self.delegate respondsToSelector:@selector(gameManagerDidReceiveBlackCard:asBlackCardPlayer:)]) {
+        [self.delegate gameManagerDidReceiveBlackCard:blackCard asBlackCardPlayer:isBlackCardPlayer];
+    }
 }
 
 - (void)updateLobbyWithLocalPlayer
 {
-    MessagePacket *packet = [[MessagePacket alloc] initWithData:[[self localPlayer] serialise]
+    MessagePacket *packet = [[MessagePacket alloc] initWithData:[self.localPlayer serialise]
                                                          action:MessagePacketActionJoiningLobby];
     
     [self.client sendMessage:packet];

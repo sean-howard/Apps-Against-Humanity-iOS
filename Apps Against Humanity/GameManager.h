@@ -9,12 +9,14 @@
 #import <Foundation/Foundation.h>
 
 @class Lobby;
+@class BlackCard;
 
 @protocol GameManagerDelegate <NSObject>
 @optional
 - (void)gameManagerDidFindAvailableLobbies:(NSArray *)lobbies;
 - (void)gameManagerDidUpdateConnectedPlayers:(NSArray *)players;
 - (void)gameManagerDidStartGameSession;
+- (void)gameManagerDidReceiveBlackCard:(BlackCard *)blackCard asBlackCardPlayer:(BOOL)blackCardPlayer;
 @end
 
 @interface GameManager : NSObject
@@ -31,4 +33,5 @@
 - (void)startAsClient;
 - (void)connectToLobby:(Lobby *)lobby;
 - (void)enterGame;
+- (void)selectFirstBlackCardPlayer;
 @end

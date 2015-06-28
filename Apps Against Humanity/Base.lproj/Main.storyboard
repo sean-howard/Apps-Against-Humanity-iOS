@@ -3,8 +3,14 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.16"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Helvetica.ttc">
+            <string>Helvetica-Bold</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="Cmn-TP-U5c">
@@ -114,10 +120,46 @@
             </objects>
             <point key="canvasLocation" x="448" y="1002"/>
         </scene>
+        <!--Black Card Modal View Controller-->
+        <scene sceneID="7d6-FO-9Bv">
+            <objects>
+                <viewController id="M1Q-6v-ViY" customClass="BlackCardModalViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7N9-ia-9yB"/>
+                        <viewControllerLayoutGuide type="bottom" id="f0i-2N-DRP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OIZ-ix-M4J">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SOME BLACK CARD TEXT" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zmu-6B-1c4" userLabel="blackCardText">
+                                <rect key="frame" x="20" y="20" width="560" height="580"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="38"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zmu-6B-1c4" firstAttribute="top" secondItem="7N9-ia-9yB" secondAttribute="bottom" id="Ata-tW-pi3"/>
+                            <constraint firstItem="f0i-2N-DRP" firstAttribute="top" secondItem="zmu-6B-1c4" secondAttribute="bottom" id="DFb-YB-PJd"/>
+                            <constraint firstItem="zmu-6B-1c4" firstAttribute="leading" secondItem="OIZ-ix-M4J" secondAttribute="leadingMargin" id="Rbl-ky-SyP"/>
+                            <constraint firstItem="zmu-6B-1c4" firstAttribute="trailing" secondItem="OIZ-ix-M4J" secondAttribute="trailingMargin" id="bu8-nc-q7S"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="blackCardLabel" destination="zmu-6B-1c4" id="W2z-NK-0mB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hw4-tS-b1U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1161" y="313"/>
+        </scene>
         <!--Game View-->
         <scene sceneID="EOb-0Q-cN5">
             <objects>
-                <tableViewController title="Game View" id="NF1-V2-37O" sceneMemberID="viewController">
+                <tableViewController title="Game View" id="NF1-V2-37O" customClass="GameViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="WSr-4Q-xcF">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -137,6 +179,9 @@
                             <outlet property="delegate" destination="NF1-V2-37O" id="S9E-pK-ESX"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="M1Q-6v-ViY" kind="presentation" identifier="presentBlackCard" id="lKf-Vf-i7b"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="euc-7p-neX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

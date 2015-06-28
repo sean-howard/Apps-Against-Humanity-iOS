@@ -8,12 +8,18 @@
 
 #import "ViewController.h"
 #import "LobbyViewController.h"
+#import "CardManager.h"
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    if(![[CardManager sharedManager] packsAvailable])
+    {
+        [[CardManager sharedManager] populateDatabaseWithCards];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
