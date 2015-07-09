@@ -43,7 +43,7 @@ static bool isFirstAccess = YES;
 
 - (NSMutableArray *)submittedWhiteCards
 {
-    if (_submittedWhiteCards) {
+    if (!_submittedWhiteCards) {
         _submittedWhiteCards = [NSMutableArray new];
     }
     return _submittedWhiteCards;
@@ -317,6 +317,7 @@ static bool isFirstAccess = YES;
 
 - (void)playerSubmittedWhiteCardsWithDict:(NSDictionary *)data
 {
+
     if (!self.isCurrentlyBlackCardPlayer) return;
     
     NSString *whiteCardKey;

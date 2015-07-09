@@ -110,7 +110,7 @@
     self.blackCardInPlay = blackCard;
     
     if (blackCardPlayer) {
-        [[GameManager sharedManager] setBlackCardPlayer:YES];
+        [[GameManager sharedManager] setBlackCardPlayer:blackCardPlayer];
         [[GameManager sharedManager] distributeInitialWhiteCards];
 
         [self performSegueWithIdentifier:@"presentBlackCard" sender:self];

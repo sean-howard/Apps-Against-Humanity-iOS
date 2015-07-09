@@ -71,7 +71,7 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
         
-        if (self.players.count > 2 && self.lobbyAsHost) {
+        if (self.players.count > 1 && self.lobbyAsHost) {
             self.startGameButton.enabled = YES;
         }
     });
