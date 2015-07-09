@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface GameViewController : UITableViewController
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *submitButton;
+- (IBAction)submitButtonPressed:(UIBarButtonItem *)sender;
 
 @end

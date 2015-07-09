@@ -15,12 +15,14 @@
 #import "CardManager.h"
 #import "BlackCard.h"
 #import "Hand.h"
+#import "WhiteCard.h"
 
 @interface GameManager ()<SocketClientDelegate, SocketServerDelegate>
 @property (nonatomic, strong) SocketServer *server;
 @property (nonatomic, strong) SocketClient *client;
 @property (nonatomic, strong) Player *localPlayer;
 
+@property (nonatomic ,strong) NSMutableArray *submittedWhiteCards;
 @property (nonatomic, strong) NSMutableArray *players;
 @end
 
@@ -37,6 +39,14 @@ static bool isFirstAccess = YES;
         _players = [NSMutableArray array];
     }
     return _players;
+}
+
+- (NSMutableArray *)submittedWhiteCards
+{
+    if (_submittedWhiteCards) {
+        _submittedWhiteCards = [NSMutableArray new];
+    }
+    return _submittedWhiteCards;
 }
 
 #pragma mark - Public Method
@@ -107,7 +117,8 @@ static bool isFirstAccess = YES;
 {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.localPlayer = appDelegate.player;
-
+    self.blackCardPlayer = NO;
+    
     if (self.isGameHost) {
         [self startServer];
     }
@@ -177,6 +188,9 @@ static bool isFirstAccess = YES;
         case MessagePacketActionDistributeWhiteCards:
             [self presentWhiteCardsWithDict:packetData];
             break;
+        case MessagePacketActionSubmitWhiteCards:
+            [self playerSubmittedWhiteCardsWithDict:packetData];
+            break;
         default:
             break;
     }
@@ -206,6 +220,7 @@ static bool isFirstAccess = YES;
     }
 }
 
+#pragma mark - Send Commands
 #pragma mark - Game Play Logic
 - (void)selectFirstBlackCardPlayer
 {
@@ -236,6 +251,28 @@ static bool isFirstAccess = YES;
     [self.client sendMessage:packet];
 }
 
+- (void)submitWhiteCardsResponse:(NSArray *)whiteCards
+{
+    WhiteCard *whiteCard = (WhiteCard *)[whiteCards firstObject];
+    
+    NSDictionary *packetData = @{@"uniqueID":self.localPlayer.uuid,
+                                 @"whiteCardID":@(whiteCard.cardId)};
+    
+    MessagePacket *packet = [[MessagePacket alloc] initWithData:packetData
+                                                         action:MessagePacketActionSubmitWhiteCards];
+    
+    [self.client sendMessage:packet];
+}
+
+- (void)updateLobbyWithLocalPlayer
+{
+    MessagePacket *packet = [[MessagePacket alloc] initWithData:[self.localPlayer serialise]
+                                                         action:MessagePacketActionJoiningLobby];
+    
+    [self.client sendMessage:packet];
+}
+
+#pragma mark - Receive Commands
 - (void)presentBlackCardForPlayersWithDict:(NSDictionary *)data
 {
     NSString *blackCardPlayerUUID = data[@"uniqueID"];
@@ -262,12 +299,37 @@ static bool isFirstAccess = YES;
     }
 }
 
-- (void)updateLobbyWithLocalPlayer
+- (void)playerSubmittedWhiteCardsWithDict:(NSDictionary *)data
 {
-    MessagePacket *packet = [[MessagePacket alloc] initWithData:[self.localPlayer serialise]
-                                                         action:MessagePacketActionJoiningLobby];
+    if (!self.isCurrentlyBlackCardPlayer) return;
     
-    [self.client sendMessage:packet];
+    NSString *whiteCardKey;
+    if (data[@"whiteCardID"]) {
+        whiteCardKey = @"whiteCardID";
+    } else if (data[@"whiteCardIDs"]) {
+        whiteCardKey = @"whiteCardIDs";
+    } else {
+        NSLog(@"%s: NO VALID WHITE CARD KEY", __PRETTY_FUNCTION__);
+        return;
+    }
+    
+    if ([data[whiteCardKey] isKindOfClass:[NSArray class]]){
+        NSMutableArray *playerSubmittedCards = [NSMutableArray new];
+        for (NSNumber *whiteCardID in data[whiteCardKey]) {
+            WhiteCard *whiteCard = [[CardManager sharedManager] whiteCardWithId:[whiteCardID integerValue]];
+            if (whiteCard) {
+                [playerSubmittedCards addObject:whiteCard];
+            }
+        }
+        [self.submittedWhiteCards addObject:playerSubmittedCards];
+    }
+    
+    if ([data[whiteCardKey] isKindOfClass:[NSNumber class]]) {
+        WhiteCard *whiteCard = [[CardManager sharedManager] whiteCardWithId:[data[whiteCardKey] integerValue]];
+        if (whiteCard) {
+            [self.submittedWhiteCards addObject:whiteCard];
+        }
+    }
 }
 
 @end

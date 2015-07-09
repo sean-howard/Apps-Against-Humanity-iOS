@@ -22,7 +22,7 @@ typedef enum : NSInteger
     MessagePacketActionSelectBlackCardPlayer,
     MessagePacketActionDistributeWhiteCards,
     MessagePacketActionDisplayBlackQuestionCard,
-    MessagePacketActionSubmitWhiteCard,
+    MessagePacketActionSubmitWhiteCards,
     MessagePacketActionAllCardsSubmitted,
     MessagePacketActionChooseWinner
 } MessagePacketAction;

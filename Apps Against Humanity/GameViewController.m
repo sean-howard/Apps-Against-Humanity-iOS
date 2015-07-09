@@ -16,6 +16,7 @@
 @interface GameViewController ()<GameManagerDelegate>
 @property (nonatomic, strong) BlackCard *blackCardInPlay;
 @property (nonatomic, strong) Hand *hand;
+@property (nonatomic, strong) NSMutableArray *whiteCardsToSubmit;
 @end
 
 @implementation GameViewController
@@ -35,6 +36,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (NSMutableArray *)whiteCardsToSubmit
+{
+    if (!_whiteCardsToSubmit) {
+        _whiteCardsToSubmit = [NSMutableArray new];
+    }
+    return _whiteCardsToSubmit;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -50,6 +59,10 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     WhiteCard *whiteCard = (WhiteCard *)self.hand.whiteCards[indexPath.row];
     
+    if ([self.whiteCardsToSubmit containsObject:whiteCard]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+    
     cell.textLabel.text = whiteCard.text;
     
     return cell;
@@ -58,6 +71,27 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    WhiteCard *whiteCard = (WhiteCard *)self.hand.whiteCards[indexPath.row];
+    
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    if (cell.accessoryType == UITableViewCellAccessoryCheckmark) {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        
+        if ([self.whiteCardsToSubmit containsObject:whiteCard]) {
+            [self.whiteCardsToSubmit removeObject:whiteCard];
+        }
+        
+    } else {
+        
+        if (![self.whiteCardsToSubmit containsObject:whiteCard]) {
+            [self.whiteCardsToSubmit addObject:whiteCard];
+        }
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+    
+    self.submitButton.enabled = ([self.whiteCardsToSubmit firstObject]);
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -76,6 +110,7 @@
     self.blackCardInPlay = blackCard;
     
     if (blackCardPlayer) {
+        [[GameManager sharedManager] setBlackCardPlayer:YES];
         [[GameManager sharedManager] distributeInitialWhiteCards];
 
         [self performSegueWithIdentifier:@"presentBlackCard" sender:self];
@@ -91,9 +126,16 @@
 - (void)gameManagerDidReceiveInitialHand:(Hand *)hand
 {
     self.hand = hand;
+    [self.whiteCardsToSubmit removeAllObjects];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
     });
+}
+
+- (IBAction)submitButtonPressed:(UIBarButtonItem *)sender {
+    if ([self.whiteCardsToSubmit firstObject]) {
+        [[GameManager sharedManager] submitWhiteCardsResponse:self.whiteCardsToSubmit];
+    }
 }
 @end

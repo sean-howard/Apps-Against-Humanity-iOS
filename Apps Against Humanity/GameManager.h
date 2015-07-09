@@ -25,6 +25,7 @@
 
 @property (nonatomic) id <GameManagerDelegate> delegate;
 @property (nonatomic, getter=isGameHost) BOOL gameHost;
+@property (nonatomic, getter=isCurrentlyBlackCardPlayer) BOOL blackCardPlayer;
 
 /**
  * gets singleton object.
@@ -37,4 +38,5 @@
 - (void)enterGame;
 - (void)selectFirstBlackCardPlayer;
 - (void)distributeInitialWhiteCards;
+- (void)submitWhiteCardsResponse:(NSArray *)whiteCards;
 @end
