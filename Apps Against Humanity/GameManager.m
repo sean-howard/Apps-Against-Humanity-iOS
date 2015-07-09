@@ -191,6 +191,9 @@ static bool isFirstAccess = YES;
         case MessagePacketActionSubmitWhiteCards:
             [self playerSubmittedWhiteCardsWithDict:packetData];
             break;
+        case MessagePacketActionAllCardsSubmitted:
+            [self presentAllSubmittedWhiteCards];
+            break;
         default:
             break;
     }
@@ -200,8 +203,8 @@ static bool isFirstAccess = YES;
 - (void)updateConnectedPlayersWithDict:(NSDictionary *)data
 {
     Player *player = [Player new];
-    player.name = data[@"name"];
-    player.uuid = data[@"uuid"];
+    player.name = data[@"playerName"];
+    player.uuid = data[@"uniqueID"];
     
     BOOL alreadyAdded = NO;
     
@@ -249,6 +252,8 @@ static bool isFirstAccess = YES;
     
     MessagePacket *packet = [[MessagePacket alloc] initWithData:packetData action:MessagePacketActionDistributeWhiteCards];
     [self.client sendMessage:packet];
+    
+    NSLog(@"%@", packet.serialise);
 }
 
 - (void)submitWhiteCardsResponse:(NSArray *)whiteCards
@@ -270,6 +275,17 @@ static bool isFirstAccess = YES;
                                                          action:MessagePacketActionJoiningLobby];
     
     [self.client sendMessage:packet];
+}
+
+- (void)sendAllPlayersSubmittedCommand
+{
+    if (self.submittedWhiteCards.count == self.players.count-1) {
+        NSLog(@"RECEIVED WHITE CARDS FROM ALL PLAYERS");
+        
+        MessagePacket *packet = [[MessagePacket alloc] initWithData:@{}
+                                                             action:MessagePacketActionAllCardsSubmitted];
+        [self.client sendMessage:packet];
+    }
 }
 
 #pragma mark - Receive Commands
@@ -328,6 +344,17 @@ static bool isFirstAccess = YES;
         WhiteCard *whiteCard = [[CardManager sharedManager] whiteCardWithId:[data[whiteCardKey] integerValue]];
         if (whiteCard) {
             [self.submittedWhiteCards addObject:whiteCard];
+        }
+    }
+    
+    [self sendAllPlayersSubmittedCommand];
+}
+
+- (void)presentAllSubmittedWhiteCards
+{
+    if (self.isCurrentlyBlackCardPlayer) {
+        if ([self.delegate respondsToSelector:@selector(gameManagerDidReceiveAllSubmittedWhiteCards:)]) {
+            [self.delegate gameManagerDidReceiveAllSubmittedWhiteCards:self.submittedWhiteCards];
         }
     }
 }

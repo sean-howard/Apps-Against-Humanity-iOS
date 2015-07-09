@@ -19,6 +19,7 @@
 - (void)gameManagerDidStartGameSession;
 - (void)gameManagerDidReceiveBlackCard:(BlackCard *)blackCard asBlackCardPlayer:(BOOL)blackCardPlayer;
 - (void)gameManagerDidReceiveInitialHand:(Hand *)hand;
+- (void)gameManagerDidReceiveAllSubmittedWhiteCards:(NSArray *)submittedWhiteCards;
 @end
 
 @interface GameManager : NSObject

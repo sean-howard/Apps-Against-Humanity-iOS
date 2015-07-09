@@ -11,7 +11,7 @@
 @implementation Player
 - (NSDictionary *)serialise
 {
-    return @{@"name":self.name,
-             @"uuid":self.uuid};
+    return @{@"playerName":self.name,
+             @"uniqueID":self.uuid};
 }
 @end

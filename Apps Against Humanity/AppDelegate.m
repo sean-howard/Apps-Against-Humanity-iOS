@@ -19,7 +19,7 @@
     // Override point for customization after application launch.
  
     self.player = [Player new];
-    self.player.name = [[UIDevice currentDevice] name];
+    self.player.name = @"ABC";
     self.player.uuid = [[NSUUID UUID] UUIDString];
         
     return YES;
