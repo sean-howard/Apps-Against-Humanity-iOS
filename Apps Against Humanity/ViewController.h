@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<UITextFieldDelegate>
 
+@property (weak, nonatomic) IBOutlet UITextField *nameField;
 
+- (IBAction)hostGameButtonPressed:(UIButton *)sender;
+- (IBAction)joinGameButtonPressed:(UIButton *)sender;
 @end
 

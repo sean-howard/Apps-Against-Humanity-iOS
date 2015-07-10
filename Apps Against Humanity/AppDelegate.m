@@ -8,20 +8,11 @@
 
 #import "AppDelegate.h"
 
-@interface AppDelegate ()
-
-@end
-
 @implementation AppDelegate
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
- 
-    self.player = [Player new];
-    self.player.name = @"ABC";
-    self.player.uuid = [[NSUUID UUID] UUIDString];
-        
+         
     return YES;
 }
 

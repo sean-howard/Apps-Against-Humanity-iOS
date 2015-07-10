@@ -11,6 +11,7 @@
 @class Lobby;
 @class BlackCard;
 @class Hand;
+@class Player;
 
 @protocol GameManagerDelegate <NSObject>
 @optional
@@ -27,6 +28,7 @@
 @property (nonatomic) id <GameManagerDelegate> delegate;
 @property (nonatomic, getter=isGameHost) BOOL gameHost;
 @property (nonatomic, getter=isCurrentlyBlackCardPlayer) BOOL blackCardPlayer;
+@property (nonatomic, strong) Player *localPlayer;
 
 /**
  * gets singleton object.

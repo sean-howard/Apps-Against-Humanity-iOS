@@ -7,7 +7,6 @@
 //
 
 #import "GameManager.h"
-#import "AppDelegate.h"
 #import "MessagePacket.h"
 #import "SocketServer.h"
 #import "SocketClient.h"
@@ -15,13 +14,13 @@
 #import "CardManager.h"
 #import "BlackCard.h"
 #import "Hand.h"
+#import "Player.h"
 #import "WhiteCard.h"
 #import "Submission.h"
 
 @interface GameManager ()<SocketClientDelegate, SocketServerDelegate>
 @property (nonatomic, strong) SocketServer *server;
 @property (nonatomic, strong) SocketClient *client;
-@property (nonatomic, strong) Player *localPlayer;
 
 @property (nonatomic ,strong) NSMutableArray *submittedWhiteCards;
 @property (nonatomic, strong) NSMutableArray *players;
@@ -116,8 +115,6 @@ static bool isFirstAccess = YES;
 
 - (void)commonInit
 {
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    self.localPlayer = appDelegate.player;
     self.blackCardPlayer = NO;
     
     if (self.isGameHost) {

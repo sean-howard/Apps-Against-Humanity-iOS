@@ -10,9 +10,9 @@
 #import <SocketRocket/SRWebSocket.h>
 #include <arpa/inet.h>
 #import "MessagePacket.h"
-#import "AppDelegate.h"
 #import "GameManager.h"
 #import "Lobby.h"
+#import "Player.h"
 
 @interface SocketClient ()<NSNetServiceDelegate, NSNetServiceBrowserDelegate, SRWebSocketDelegate>
 @property (strong, nonatomic) SRWebSocket *socket;
@@ -136,10 +136,7 @@
 {
     NSLog(@"%s", __PRETTY_FUNCTION__);
 
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    Player *player = appDelegate.player;
-    player.socket = webSocket;
+    [[[GameManager sharedManager] localPlayer] setSocket:webSocket];
 
     if ([self.delegate respondsToSelector:@selector(clientDidConnectToServer)]) {
         [self.delegate clientDidConnectToServer];
