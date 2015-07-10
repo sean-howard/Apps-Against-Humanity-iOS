@@ -118,17 +118,17 @@ static bool isFirstAccess = YES;
     self.blackCardPlayer = NO;
     
     if (self.isGameHost) {
-        [self startServer];
+        [self startServerWithLobbyName:[NSString stringWithFormat:@"%@'s Lobby", self.localPlayer.name]];
     }
     
     [self startClient];
 }
 
-- (void)startServer
+- (void)startServerWithLobbyName:(NSString *)lobbyName
 {
     self.server = [SocketServer new];
     self.server.delegate = self;
-    [self.server startBroadcast];
+    [self.server startBroadcastWithName:lobbyName];
 }
 
 - (void)startClient

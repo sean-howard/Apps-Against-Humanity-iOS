@@ -28,13 +28,13 @@
     return _connections;
 }
 
-- (void)startBroadcast {
+- (void)startBroadcastWithName:(NSString *)name {
     
     self.socketServer = [PSWebSocketServer serverWithHost:nil port:12345];
     self.socketServer.delegate = self;
     [self.socketServer start];
     
-    self.service = [[NSNetService alloc] initWithDomain:@"local." type:@"_AppsAgainstHumanity._tcp." name:@"" port:12345];
+    self.service = [[NSNetService alloc] initWithDomain:@"local." type:@"_AppsAgainstHumanity._tcp." name:name port:12345];
     
     // Configure Service
     [self.service setDelegate:self];
