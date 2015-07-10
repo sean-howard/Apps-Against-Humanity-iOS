@@ -11,12 +11,14 @@
 #import "BlackCard.h"
 #import "WhiteCard.h"
 #import "BlackCardModalViewController.h"
+#import "SubmittedWhiteCardsTableViewController.h"
 #import "Hand.h"
 
 @interface GameViewController ()<GameManagerDelegate>
 @property (nonatomic, strong) BlackCard *blackCardInPlay;
 @property (nonatomic, strong) Hand *hand;
 @property (nonatomic, strong) NSMutableArray *whiteCardsToSubmit;
+@property (nonatomic, strong) NSArray *submittedWhiteCards;
 @end
 
 @implementation GameViewController
@@ -99,6 +101,12 @@
     if ([segue.identifier isEqualToString:@"presentBlackCard"]) {
         BlackCardModalViewController *blackCardModalVC = (BlackCardModalViewController *)segue.destinationViewController;
         blackCardModalVC.blackCard = self.blackCardInPlay;
+    } else if ([segue.identifier isEqualToString:@"presentSubmittedWhiteCards"]){
+        
+        UINavigationController *navcon = (UINavigationController *)segue.destinationViewController;
+        
+        SubmittedWhiteCardsTableViewController *submittedWhiteCardVC = (SubmittedWhiteCardsTableViewController *)navcon.topViewController;
+        submittedWhiteCardVC.submissions = self.submittedWhiteCards;
     }
 }
 
@@ -131,6 +139,18 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
     });
+}
+
+- (void)gameManagerDidReceiveAllSubmittedWhiteCards:(NSArray *)submittedWhiteCards
+{
+    if ([[GameManager sharedManager] isCurrentlyBlackCardPlayer]) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self dismissViewControllerAnimated:YES completion:^{
+                self.submittedWhiteCards = submittedWhiteCards;
+                [self performSegueWithIdentifier:@"presentSubmittedWhiteCards" sender:self];
+            }];
+        });
+    }
 }
 
 - (IBAction)submitButtonPressed:(UIBarButtonItem *)sender {

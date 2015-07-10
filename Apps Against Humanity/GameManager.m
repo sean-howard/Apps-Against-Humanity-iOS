@@ -16,6 +16,7 @@
 #import "BlackCard.h"
 #import "Hand.h"
 #import "WhiteCard.h"
+#import "Submission.h"
 
 @interface GameManager ()<SocketClientDelegate, SocketServerDelegate>
 @property (nonatomic, strong) SocketServer *server;
@@ -279,9 +280,7 @@ static bool isFirstAccess = YES;
 
 - (void)sendAllPlayersSubmittedCommand
 {
-    if (self.submittedWhiteCards.count == self.players.count-1) {
-        NSLog(@"RECEIVED WHITE CARDS FROM ALL PLAYERS");
-        
+    if (self.submittedWhiteCards.count == self.players.count-1) {        
         MessagePacket *packet = [[MessagePacket alloc] initWithData:@{}
                                                              action:MessagePacketActionAllCardsSubmitted];
         [self.client sendMessage:packet];
@@ -330,6 +329,9 @@ static bool isFirstAccess = YES;
         return;
     }
     
+    Player *player = [self getPlayerWithUUID:data[@"uniqueID"]];
+    NSLog(@"RECEIVED PLAYER: %@", player.name);
+    
     if ([data[whiteCardKey] isKindOfClass:[NSArray class]]){
         NSMutableArray *playerSubmittedCards = [NSMutableArray new];
         for (NSNumber *whiteCardID in data[whiteCardKey]) {
@@ -338,13 +340,23 @@ static bool isFirstAccess = YES;
                 [playerSubmittedCards addObject:whiteCard];
             }
         }
-        [self.submittedWhiteCards addObject:playerSubmittedCards];
+        
+        Submission *submission = [Submission new];
+        submission.player = player;
+        submission.whiteCards = playerSubmittedCards;
+        
+        [self.submittedWhiteCards addObject:submission];
     }
     
     if ([data[whiteCardKey] isKindOfClass:[NSNumber class]]) {
         WhiteCard *whiteCard = [[CardManager sharedManager] whiteCardWithId:[data[whiteCardKey] integerValue]];
         if (whiteCard) {
-            [self.submittedWhiteCards addObject:whiteCard];
+            
+            Submission *submission = [Submission new];
+            submission.player = player;
+            submission.whiteCards = @[whiteCard];
+            
+            [self.submittedWhiteCards addObject:submission];
         }
     }
     
@@ -358,6 +370,18 @@ static bool isFirstAccess = YES;
             [self.delegate gameManagerDidReceiveAllSubmittedWhiteCards:self.submittedWhiteCards];
         }
     }
+}
+
+- (Player *)getPlayerWithUUID:(NSString *)uuid
+{    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uuid = %@", uuid];
+    NSArray *filteredArray = [self.players filteredArrayUsingPredicate:predicate];
+    
+    if ([filteredArray firstObject]) {
+        return (Player *)[filteredArray firstObject];
+    }
+    
+    return nil;
 }
 
 @end

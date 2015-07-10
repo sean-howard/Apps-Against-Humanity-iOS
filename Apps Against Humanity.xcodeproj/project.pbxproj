@@ -16,6 +16,8 @@
 		8C4C997C1B373980005BD478 /* Hand.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4C997B1B373980005BD478 /* Hand.m */; };
 		8C77427D1B370A380037A42A /* CardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C77427C1B370A380037A42A /* CardManager.m */; };
 		8C7742801B370ACF0037A42A /* cards.json in Resources */ = {isa = PBXBuildFile; fileRef = 8C77427F1B370ACF0037A42A /* cards.json */; };
+		8C81C53A1B50574F000118C2 /* SubmittedWhiteCardsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C81C5391B50574F000118C2 /* SubmittedWhiteCardsTableViewController.m */; };
+		8C81C53D1B505A8C000118C2 /* Submission.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C81C53C1B505A8C000118C2 /* Submission.m */; };
 		8C85314F1B401E540051F546 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C85314E1B401E540051F546 /* GameManager.m */; };
 		8C8531521B404EF30051F546 /* Lobby.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C8531511B404EF30051F546 /* Lobby.m */; };
 		8C865E2A1B3B2E52005506B7 /* LobbyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C865E291B3B2E52005506B7 /* LobbyViewController.m */; };
@@ -63,6 +65,10 @@
 		8C77427B1B370A380037A42A /* CardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardManager.h; sourceTree = "<group>"; };
 		8C77427C1B370A380037A42A /* CardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardManager.m; sourceTree = "<group>"; };
 		8C77427F1B370ACF0037A42A /* cards.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cards.json; sourceTree = "<group>"; };
+		8C81C5381B50574F000118C2 /* SubmittedWhiteCardsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubmittedWhiteCardsTableViewController.h; sourceTree = "<group>"; };
+		8C81C5391B50574F000118C2 /* SubmittedWhiteCardsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubmittedWhiteCardsTableViewController.m; sourceTree = "<group>"; };
+		8C81C53B1B505A8C000118C2 /* Submission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Submission.h; sourceTree = "<group>"; };
+		8C81C53C1B505A8C000118C2 /* Submission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Submission.m; sourceTree = "<group>"; };
 		8C85314D1B401E540051F546 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
 		8C85314E1B401E540051F546 /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameManager.m; sourceTree = "<group>"; };
 		8C8531501B404EF30051F546 /* Lobby.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lobby.h; sourceTree = "<group>"; };
@@ -189,6 +195,15 @@
 			name = "Card Manager";
 			sourceTree = "<group>";
 		};
+		8C81C53E1B505A90000118C2 /* Submission */ = {
+			isa = PBXGroup;
+			children = (
+				8C81C53B1B505A8C000118C2 /* Submission.h */,
+				8C81C53C1B505A8C000118C2 /* Submission.m */,
+			);
+			name = Submission;
+			sourceTree = "<group>";
+		};
 		8C8531531B404F150051F546 /* Lobby */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +241,7 @@
 				8CAA92061AFE5DBD00332FC9 /* AppDelegate.m */,
 				8C85314D1B401E540051F546 /* GameManager.h */,
 				8C85314E1B401E540051F546 /* GameManager.m */,
+				8C81C53E1B505A90000118C2 /* Submission */,
 				8C8531531B404F150051F546 /* Lobby */,
 				8CBE6F521B3EF747001C10F4 /* Player */,
 				8C77427E1B370A400037A42A /* CardManagement */,
@@ -241,6 +257,8 @@
 				8C474ED11B40608500DEA7C3 /* GameViewController.m */,
 				8C474ED31B40681D00DEA7C3 /* BlackCardModalViewController.h */,
 				8C474ED41B40681D00DEA7C3 /* BlackCardModalViewController.m */,
+				8C81C5381B50574F000118C2 /* SubmittedWhiteCardsTableViewController.h */,
+				8C81C5391B50574F000118C2 /* SubmittedWhiteCardsTableViewController.m */,
 				8CAA920B1AFE5DBD00332FC9 /* Main.storyboard */,
 				8CAA920E1AFE5DBD00332FC9 /* Images.xcassets */,
 				8CAA92101AFE5DBD00332FC9 /* LaunchScreen.xib */,
@@ -448,10 +466,12 @@
 				8C77427D1B370A380037A42A /* CardManager.m in Sources */,
 				8C4C99701B3711E5005BD478 /* WhiteCard.m in Sources */,
 				8CAA92071AFE5DBD00332FC9 /* AppDelegate.m in Sources */,
+				8C81C53A1B50574F000118C2 /* SubmittedWhiteCardsTableViewController.m in Sources */,
 				8C865E2A1B3B2E52005506B7 /* LobbyViewController.m in Sources */,
 				8C85314F1B401E540051F546 /* GameManager.m in Sources */,
 				8C474ED21B40608500DEA7C3 /* GameViewController.m in Sources */,
 				8CAA92041AFE5DBD00332FC9 /* main.m in Sources */,
+				8C81C53D1B505A8C000118C2 /* Submission.m in Sources */,
 				8C4C99731B3711FF005BD478 /* BlackCard.m in Sources */,
 				8C8531521B404EF30051F546 /* Lobby.m in Sources */,
 				8CCA3EC41AFEA58300F2E494 /* SocketClient.m in Sources */,

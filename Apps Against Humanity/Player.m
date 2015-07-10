@@ -14,4 +14,5 @@
     return @{@"playerName":self.name,
              @"uniqueID":self.uuid};
 }
+
 @end
