@@ -77,7 +77,7 @@
 - (void)presentWinningSubmission:(Submission *)submission
 {
     NSLog(@"WINNING SUBMISSION: %@ %@", submission.player.name, submission.whiteCards);
-    NSString *copy = [NSString stringWithFormat:@"%@ IS WINNER!", submission.player.name];
+    NSString *copy = [NSString stringWithFormat:@"%@ IS WINNER!", [submission.player.name uppercaseString]];
     [SVProgressHUD showSuccessWithStatus:copy maskType:SVProgressHUDMaskTypeGradient];
 }
 
