@@ -346,7 +346,6 @@ static bool isFirstAccess = YES;
 
 - (void)playerSubmittedWhiteCardsWithDict:(NSDictionary *)data
 {
-
     if (!self.isCurrentlyBlackCardPlayer) return;
     
     NSString *whiteCardKey;
@@ -395,10 +394,8 @@ static bool isFirstAccess = YES;
 
 - (void)presentAllSubmittedWhiteCards
 {
-    if (self.isCurrentlyBlackCardPlayer) {
-        if ([self.delegate respondsToSelector:@selector(gameManagerDidReceiveAllSubmittedWhiteCards:)]) {
-            [self.delegate gameManagerDidReceiveAllSubmittedWhiteCards:self.submittedWhiteCards];
-        }
+    if ([self.delegate respondsToSelector:@selector(gameManagerDidReceiveAllSubmittedWhiteCards:)]) {
+        [self.delegate gameManagerDidReceiveAllSubmittedWhiteCards:self.submittedWhiteCards];
     }
 }
 

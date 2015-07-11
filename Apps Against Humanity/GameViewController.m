@@ -148,10 +148,15 @@
 {
     if ([[GameManager sharedManager] isCurrentlyBlackCardPlayer]) {
         dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD dismiss];
             [self dismissViewControllerAnimated:YES completion:^{
                 self.submittedWhiteCards = submittedWhiteCards;
                 [self performSegueWithIdentifier:@"presentSubmittedWhiteCards" sender:self];
             }];
+        });
+    } else {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD showWithStatus:@"Waiting for winning cards to be chosen, bitch." maskType:SVProgressHUDMaskTypeGradient];
         });
     }
 }
@@ -166,6 +171,7 @@
     }
 
     dispatch_async(dispatch_get_main_queue(), ^{
+//        [SVProgressHUD dismiss];
         [SVProgressHUD showSuccessWithStatus:copy maskType:SVProgressHUDMaskTypeGradient];
     });
 }
@@ -173,6 +179,9 @@
 - (IBAction)submitButtonPressed:(UIBarButtonItem *)sender {
     if ([self.whiteCardsToSubmit firstObject]) {
         [[GameManager sharedManager] submitWhiteCardsResponse:self.whiteCardsToSubmit];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD showWithStatus:@"Waiting for players to submit cards" maskType:SVProgressHUDMaskTypeGradient];
+        });
     }
 }
 @end
