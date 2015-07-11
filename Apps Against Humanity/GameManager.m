@@ -192,6 +192,9 @@ static bool isFirstAccess = YES;
         case MessagePacketActionAllCardsSubmitted:
             [self presentAllSubmittedWhiteCards];
             break;
+        case MessagePacketActionChooseWinner:
+            [self presentWinningSubmissionWithDict:packetData];
+            break;
         default:
             break;
     }
@@ -284,6 +287,13 @@ static bool isFirstAccess = YES;
     }
 }
 
+- (void)submitWinningSubmission:(Submission *)submission
+{
+    MessagePacket *packet = [[MessagePacket alloc] initWithData:[submission serialise]
+                                                         action:MessagePacketActionChooseWinner];
+    [self.client sendMessage:packet];
+}
+
 #pragma mark - Receive Commands
 - (void)presentBlackCardForPlayersWithDict:(NSDictionary *)data
 {
@@ -308,6 +318,29 @@ static bool isFirstAccess = YES;
         if ([self.delegate respondsToSelector:@selector(gameManagerDidReceiveInitialHand:)]) {
             [self.delegate gameManagerDidReceiveInitialHand:hand];
         }
+    }
+}
+
+- (void)presentWinningSubmissionWithDict:(NSDictionary *)data
+{
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    NSLog(@"%@", data);
+    
+    Player *player = [self getPlayerWithUUID:data[@"uniqueID"]];
+    NSLog(@"%@", player.name);
+    NSLog(@"%@", player.uuid);
+    
+    Submission *submission = [Submission new];
+    submission.player = player;
+    submission.whiteCards = [[CardManager sharedManager] getCardsFromIds:data[@"whiteCardIDs"]];
+    
+    BOOL winner = NO;
+    if ([submission.player.uuid isEqualToString:self.localPlayer.uuid]) {
+        winner = YES;
+    }
+    
+    if ([self.delegate respondsToSelector:@selector(gameManagerDidReceiveWinningSubmission:isWinner:)]) {
+        [self.delegate gameManagerDidReceiveWinningSubmission:submission isWinner:winner];
     }
 }
 
@@ -373,6 +406,8 @@ static bool isFirstAccess = YES;
 {    
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uuid = %@", uuid];
     NSArray *filteredArray = [self.players filteredArrayUsingPredicate:predicate];
+    
+    NSLog(@"%@", filteredArray);
     
     if ([filteredArray firstObject]) {
         return (Player *)[filteredArray firstObject];

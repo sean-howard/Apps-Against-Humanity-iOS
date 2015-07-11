@@ -13,4 +13,7 @@
 @interface Submission : NSObject
 @property (nonatomic, strong) Player *player;
 @property (nonatomic, strong) NSArray *whiteCards;
+
+- (NSDictionary *)serialise;
+
 @end

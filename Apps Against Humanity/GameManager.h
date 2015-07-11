@@ -12,6 +12,7 @@
 @class BlackCard;
 @class Hand;
 @class Player;
+@class Submission;
 
 @protocol GameManagerDelegate <NSObject>
 @optional
@@ -21,6 +22,7 @@
 - (void)gameManagerDidReceiveBlackCard:(BlackCard *)blackCard asBlackCardPlayer:(BOOL)blackCardPlayer;
 - (void)gameManagerDidReceiveInitialHand:(Hand *)hand;
 - (void)gameManagerDidReceiveAllSubmittedWhiteCards:(NSArray *)submittedWhiteCards;
+- (void)gameManagerDidReceiveWinningSubmission:(Submission *)submission isWinner:(BOOL)winner;
 @end
 
 @interface GameManager : NSObject
@@ -42,4 +44,5 @@
 - (void)selectFirstBlackCardPlayer;
 - (void)distributeInitialWhiteCards;
 - (void)submitWhiteCardsResponse:(NSArray *)whiteCards;
+- (void)submitWinningSubmission:(Submission *)submission;
 @end

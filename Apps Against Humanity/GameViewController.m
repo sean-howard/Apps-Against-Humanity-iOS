@@ -13,6 +13,9 @@
 #import "BlackCardModalViewController.h"
 #import "SubmittedWhiteCardsTableViewController.h"
 #import "Hand.h"
+#import "Submission.h"
+#import "Player.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @interface GameViewController ()<GameManagerDelegate>
 @property (nonatomic, strong) BlackCard *blackCardInPlay;
@@ -151,6 +154,20 @@
             }];
         });
     }
+}
+
+- (void)gameManagerDidReceiveWinningSubmission:(Submission *)submission isWinner:(BOOL)winner
+{
+    NSString *copy;
+    if (winner) {
+        copy = [NSString stringWithFormat:@"CONGRATULATIONS, YOU ARE WINNER!"];
+    } else {
+        copy = [NSString stringWithFormat:@"%@ IS WINNER!", [submission.player.name uppercaseString]];
+    }
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [SVProgressHUD showSuccessWithStatus:copy maskType:SVProgressHUDMaskTypeGradient];
+    });
 }
 
 - (IBAction)submitButtonPressed:(UIBarButtonItem *)sender {

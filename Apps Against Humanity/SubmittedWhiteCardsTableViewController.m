@@ -7,8 +7,7 @@
 //
 
 #import "SubmittedWhiteCardsTableViewController.h"
-
-#import <SVProgressHUD/SVProgressHUD.h>
+#import "GameManager.h"
 
 #import "Submission.h"
 #import "Player.h"
@@ -63,7 +62,13 @@
     UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"This is my winner!"
                                                         style:UIAlertActionStyleDefault
                                                       handler:^(UIAlertAction * __nonnull action) {
-                                                          [self presentWinningSubmission:submission];
+ 
+                                                          [[GameManager sharedManager] submitWinningSubmission:submission];
+
+                                                          dispatch_async(dispatch_get_main_queue(), ^{
+                                                              [self dismissViewControllerAnimated:YES completion:nil];
+                                                          });
+                                                      
                                                       }];
     
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Nah!"
@@ -72,13 +77,6 @@
     [alertController addAction:yesAction];
     [alertController addAction:cancelAction];
     [self presentViewController:alertController animated:YES completion:nil];
-}
-
-- (void)presentWinningSubmission:(Submission *)submission
-{
-    NSLog(@"WINNING SUBMISSION: %@ %@", submission.player.name, submission.whiteCards);
-    NSString *copy = [NSString stringWithFormat:@"%@ IS WINNER!", [submission.player.name uppercaseString]];
-    [SVProgressHUD showSuccessWithStatus:copy maskType:SVProgressHUDMaskTypeGradient];
 }
 
 @end
