@@ -11,9 +11,6 @@
 #import "CardManager.h"
 #import "GameManager.h"
 #import "Player.h"
-#import "BlackCard.h"
-
-#import <GTMNSStringHTMLAdditions//GTMNSString+HTML.h>
 
 @implementation ViewController
 
@@ -24,7 +21,7 @@
     if(![[CardManager sharedManager] packsAvailable]) {
         [[CardManager sharedManager] populateDatabaseWithCards];
     }
-
+    
     NSString *defaultPlayerName = [[NSUserDefaults standardUserDefaults] stringForKey:@"defaultPlayerName"];
     self.nameField.text = defaultPlayerName;
 }

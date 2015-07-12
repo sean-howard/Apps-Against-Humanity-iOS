@@ -18,6 +18,7 @@
 		8C64A9A91B52A02000DCA3B6 /* WhiteCardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C64A9A71B52A02000DCA3B6 /* WhiteCardTableViewCell.xib */; };
 		8C64A9AE1B52A04100DCA3B6 /* BlackCardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C64A9AC1B52A04100DCA3B6 /* BlackCardTableViewCell.m */; };
 		8C64A9AF1B52A04100DCA3B6 /* BlackCardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C64A9AD1B52A04100DCA3B6 /* BlackCardTableViewCell.xib */; };
+		8C64A9B31B52B16E00DCA3B6 /* NSString+_HTML_Markup.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C64A9B21B52B16E00DCA3B6 /* NSString+_HTML_Markup.m */; };
 		8C77427D1B370A380037A42A /* CardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C77427C1B370A380037A42A /* CardManager.m */; };
 		8C7742801B370ACF0037A42A /* cards.json in Resources */ = {isa = PBXBuildFile; fileRef = 8C77427F1B370ACF0037A42A /* cards.json */; };
 		8C81C53A1B50574F000118C2 /* SubmittedWhiteCardsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C81C5391B50574F000118C2 /* SubmittedWhiteCardsTableViewController.m */; };
@@ -72,6 +73,8 @@
 		8C64A9AB1B52A04100DCA3B6 /* BlackCardTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlackCardTableViewCell.h; sourceTree = "<group>"; };
 		8C64A9AC1B52A04100DCA3B6 /* BlackCardTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlackCardTableViewCell.m; sourceTree = "<group>"; };
 		8C64A9AD1B52A04100DCA3B6 /* BlackCardTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlackCardTableViewCell.xib; sourceTree = "<group>"; };
+		8C64A9B11B52B16E00DCA3B6 /* NSString+_HTML_Markup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+_HTML_Markup.h"; sourceTree = "<group>"; };
+		8C64A9B21B52B16E00DCA3B6 /* NSString+_HTML_Markup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+_HTML_Markup.m"; sourceTree = "<group>"; };
 		8C77427B1B370A380037A42A /* CardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardManager.h; sourceTree = "<group>"; };
 		8C77427C1B370A380037A42A /* CardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardManager.m; sourceTree = "<group>"; };
 		8C77427F1B370ACF0037A42A /* cards.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cards.json; sourceTree = "<group>"; };
@@ -280,6 +283,8 @@
 			children = (
 				8CAA92051AFE5DBD00332FC9 /* AppDelegate.h */,
 				8CAA92061AFE5DBD00332FC9 /* AppDelegate.m */,
+				8C64A9B11B52B16E00DCA3B6 /* NSString+_HTML_Markup.h */,
+				8C64A9B21B52B16E00DCA3B6 /* NSString+_HTML_Markup.m */,
 				8C64A9B01B52A04400DCA3B6 /* BlackCardTableViewCell */,
 				8C64A9AA1B52A02900DCA3B6 /* WhiteCardTableViewCell */,
 				8C85314D1B401E540051F546 /* GameManager.h */,
@@ -510,6 +515,7 @@
 				8CAA92071AFE5DBD00332FC9 /* AppDelegate.m in Sources */,
 				8C81C53A1B50574F000118C2 /* SubmittedWhiteCardsTableViewController.m in Sources */,
 				8C865E2A1B3B2E52005506B7 /* LobbyViewController.m in Sources */,
+				8C64A9B31B52B16E00DCA3B6 /* NSString+_HTML_Markup.m in Sources */,
 				8C85314F1B401E540051F546 /* GameManager.m in Sources */,
 				8C474ED21B40608500DEA7C3 /* GameViewController.m in Sources */,
 				8CAA92041AFE5DBD00332FC9 /* main.m in Sources */,
