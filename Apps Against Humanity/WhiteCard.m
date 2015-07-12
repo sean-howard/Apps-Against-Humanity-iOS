@@ -7,13 +7,14 @@
 //
 
 #import "WhiteCard.h"
+#import <GTMNSStringHTMLAdditions/GTMNSString+HTML.h>
 
 @implementation WhiteCard
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict
 {
     if (self = [super init]) {
-        self.text = dict[@"text"];
+        self.text = [dict[@"text"] gtm_stringByUnescapingFromHTML];
         self.cardId = [dict[@"id"] integerValue];
     }
     return self;

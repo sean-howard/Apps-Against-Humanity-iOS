@@ -7,13 +7,14 @@
 //
 
 #import "BlackCard.h"
+#import <GTMNSStringHTMLAdditions/GTMNSString+HTML.h>
 
 @implementation BlackCard
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict
 {
     if (self = [super init]) {
-        self.text = dict[@"text"];
+        self.text = [dict[@"text"] gtm_stringByUnescapingFromHTML];
         self.cardId = [dict[@"id"] integerValue];
         self.pick = [dict[@"pick"] integerValue];
     }
