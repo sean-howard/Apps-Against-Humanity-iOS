@@ -14,6 +14,10 @@
 		8C4C99731B3711FF005BD478 /* BlackCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4C99721B3711FF005BD478 /* BlackCard.m */; };
 		8C4C99761B37120B005BD478 /* Pack.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4C99751B37120B005BD478 /* Pack.m */; };
 		8C4C997C1B373980005BD478 /* Hand.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4C997B1B373980005BD478 /* Hand.m */; };
+		8C64A9A81B52A02000DCA3B6 /* WhiteCardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C64A9A61B52A02000DCA3B6 /* WhiteCardTableViewCell.m */; };
+		8C64A9A91B52A02000DCA3B6 /* WhiteCardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C64A9A71B52A02000DCA3B6 /* WhiteCardTableViewCell.xib */; };
+		8C64A9AE1B52A04100DCA3B6 /* BlackCardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C64A9AC1B52A04100DCA3B6 /* BlackCardTableViewCell.m */; };
+		8C64A9AF1B52A04100DCA3B6 /* BlackCardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C64A9AD1B52A04100DCA3B6 /* BlackCardTableViewCell.xib */; };
 		8C77427D1B370A380037A42A /* CardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C77427C1B370A380037A42A /* CardManager.m */; };
 		8C7742801B370ACF0037A42A /* cards.json in Resources */ = {isa = PBXBuildFile; fileRef = 8C77427F1B370ACF0037A42A /* cards.json */; };
 		8C81C53A1B50574F000118C2 /* SubmittedWhiteCardsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C81C5391B50574F000118C2 /* SubmittedWhiteCardsTableViewController.m */; };
@@ -62,6 +66,12 @@
 		8C4C99751B37120B005BD478 /* Pack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pack.m; sourceTree = "<group>"; };
 		8C4C997A1B373980005BD478 /* Hand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hand.h; sourceTree = "<group>"; };
 		8C4C997B1B373980005BD478 /* Hand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hand.m; sourceTree = "<group>"; };
+		8C64A9A51B52A02000DCA3B6 /* WhiteCardTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhiteCardTableViewCell.h; sourceTree = "<group>"; };
+		8C64A9A61B52A02000DCA3B6 /* WhiteCardTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhiteCardTableViewCell.m; sourceTree = "<group>"; };
+		8C64A9A71B52A02000DCA3B6 /* WhiteCardTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WhiteCardTableViewCell.xib; sourceTree = "<group>"; };
+		8C64A9AB1B52A04100DCA3B6 /* BlackCardTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlackCardTableViewCell.h; sourceTree = "<group>"; };
+		8C64A9AC1B52A04100DCA3B6 /* BlackCardTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlackCardTableViewCell.m; sourceTree = "<group>"; };
+		8C64A9AD1B52A04100DCA3B6 /* BlackCardTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlackCardTableViewCell.xib; sourceTree = "<group>"; };
 		8C77427B1B370A380037A42A /* CardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardManager.h; sourceTree = "<group>"; };
 		8C77427C1B370A380037A42A /* CardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardManager.m; sourceTree = "<group>"; };
 		8C77427F1B370ACF0037A42A /* cards.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cards.json; sourceTree = "<group>"; };
@@ -173,6 +183,37 @@
 			name = Hand;
 			sourceTree = "<group>";
 		};
+		8C64A9A41B52A00500DCA3B6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8C81C53E1B505A90000118C2 /* Submission */,
+				8C8531531B404F150051F546 /* Lobby */,
+				8CBE6F521B3EF747001C10F4 /* Player */,
+				8CCA3EC91AFEB41E00F2E494 /* MessagePacket */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		8C64A9AA1B52A02900DCA3B6 /* WhiteCardTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				8C64A9A51B52A02000DCA3B6 /* WhiteCardTableViewCell.h */,
+				8C64A9A61B52A02000DCA3B6 /* WhiteCardTableViewCell.m */,
+				8C64A9A71B52A02000DCA3B6 /* WhiteCardTableViewCell.xib */,
+			);
+			name = WhiteCardTableViewCell;
+			sourceTree = "<group>";
+		};
+		8C64A9B01B52A04400DCA3B6 /* BlackCardTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				8C64A9AB1B52A04100DCA3B6 /* BlackCardTableViewCell.h */,
+				8C64A9AC1B52A04100DCA3B6 /* BlackCardTableViewCell.m */,
+				8C64A9AD1B52A04100DCA3B6 /* BlackCardTableViewCell.xib */,
+			);
+			name = BlackCardTableViewCell;
+			sourceTree = "<group>";
+		};
 		8C77427E1B370A400037A42A /* CardManagement */ = {
 			isa = PBXGroup;
 			children = (
@@ -239,13 +280,12 @@
 			children = (
 				8CAA92051AFE5DBD00332FC9 /* AppDelegate.h */,
 				8CAA92061AFE5DBD00332FC9 /* AppDelegate.m */,
+				8C64A9B01B52A04400DCA3B6 /* BlackCardTableViewCell */,
+				8C64A9AA1B52A02900DCA3B6 /* WhiteCardTableViewCell */,
 				8C85314D1B401E540051F546 /* GameManager.h */,
 				8C85314E1B401E540051F546 /* GameManager.m */,
-				8C81C53E1B505A90000118C2 /* Submission */,
-				8C8531531B404F150051F546 /* Lobby */,
-				8CBE6F521B3EF747001C10F4 /* Player */,
+				8C64A9A41B52A00500DCA3B6 /* Model */,
 				8C77427E1B370A400037A42A /* CardManagement */,
-				8CCA3EC91AFEB41E00F2E494 /* MessagePacket */,
 				8CCA3EBA1AFE956600F2E494 /* Socket Controllers */,
 				8CAA92081AFE5DBD00332FC9 /* ViewController.h */,
 				8CAA92091AFE5DBD00332FC9 /* ViewController.m */,
@@ -408,8 +448,10 @@
 				8CAA920D1AFE5DBD00332FC9 /* Main.storyboard in Resources */,
 				8CAA92121AFE5DBD00332FC9 /* LaunchScreen.xib in Resources */,
 				8CCA3EAD1AFE7FD000F2E494 /* Podfile in Resources */,
+				8C64A9AF1B52A04100DCA3B6 /* BlackCardTableViewCell.xib in Resources */,
 				8C7742801B370ACF0037A42A /* cards.json in Resources */,
 				8CAA920F1AFE5DBD00332FC9 /* Images.xcassets in Resources */,
+				8C64A9A91B52A02000DCA3B6 /* WhiteCardTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,7 +513,9 @@
 				8C85314F1B401E540051F546 /* GameManager.m in Sources */,
 				8C474ED21B40608500DEA7C3 /* GameViewController.m in Sources */,
 				8CAA92041AFE5DBD00332FC9 /* main.m in Sources */,
+				8C64A9A81B52A02000DCA3B6 /* WhiteCardTableViewCell.m in Sources */,
 				8C81C53D1B505A8C000118C2 /* Submission.m in Sources */,
+				8C64A9AE1B52A04100DCA3B6 /* BlackCardTableViewCell.m in Sources */,
 				8C4C99731B3711FF005BD478 /* BlackCard.m in Sources */,
 				8C8531521B404EF30051F546 /* Lobby.m in Sources */,
 				8CCA3EC41AFEA58300F2E494 /* SocketClient.m in Sources */,

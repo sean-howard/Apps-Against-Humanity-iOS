@@ -15,6 +15,8 @@
 #import "Hand.h"
 #import "Submission.h"
 #import "Player.h"
+#import "WhiteCardTableViewCell.h"
+#import "BlackCardTableViewCell.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 
 @interface GameViewController ()<GameManagerDelegate>
@@ -34,6 +36,17 @@
     if ([[GameManager sharedManager] isGameHost]) {
         [[GameManager sharedManager] selectFirstBlackCardPlayer];
     }
+    
+    UINib *whiteCellNib = [UINib nibWithNibName:@"WhiteCardTableViewCell" bundle:nil];
+    [self.tableView registerNib:whiteCellNib forCellReuseIdentifier:@"cell"];
+    
+    UINib *blackCellNib = [UINib nibWithNibName:@"BlackCardTableViewCell" bundle:nil];
+    [self.tableView registerNib:blackCellNib forCellReuseIdentifier:@"headerCell"];
+    
+    self.tableView.estimatedRowHeight = 44.0f;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    
+    self.tableView.estimatedSectionHeaderHeight = 44.0f;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,6 +63,17 @@
 }
 
 #pragma mark - Table view data source
+- (CGFloat)tableView:(nonnull UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return UITableViewAutomaticDimension;
+}
+
+- (nullable UIView *)tableView:(nonnull UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    BlackCardTableViewCell *headerCell = (BlackCardTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"headerCell"];
+    headerCell.multilineLabel.text = self.blackCardInPlay.text;
+    return headerCell;
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -61,14 +85,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    WhiteCardTableViewCell *cell = (WhiteCardTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     WhiteCard *whiteCard = (WhiteCard *)self.hand.whiteCards[indexPath.row];
     
     if ([self.whiteCardsToSubmit containsObject:whiteCard]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
     
-    cell.textLabel.text = whiteCard.text;
+    cell.multilineLabel.text = whiteCard.text;
     
     return cell;
 }
@@ -79,7 +103,7 @@
     
     WhiteCard *whiteCard = (WhiteCard *)self.hand.whiteCards[indexPath.row];
     
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    WhiteCardTableViewCell *cell = (WhiteCardTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     
     if (cell.accessoryType == UITableViewCellAccessoryCheckmark) {
         cell.accessoryType = UITableViewCellAccessoryNone;
