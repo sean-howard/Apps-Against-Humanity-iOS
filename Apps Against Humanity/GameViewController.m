@@ -134,6 +134,7 @@
         
         SubmittedWhiteCardsTableViewController *submittedWhiteCardVC = (SubmittedWhiteCardsTableViewController *)navcon.topViewController;
         submittedWhiteCardVC.submissions = self.submittedWhiteCards;
+        submittedWhiteCardVC.blackCardInPlay = self.blackCardInPlay;
     }
 }
 

@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+@class BlackCard;
 
 @interface SubmittedWhiteCardsTableViewController : UITableViewController
 @property (nonatomic, strong) NSArray *submissions;
+@property (nonatomic, strong) BlackCard *blackCardInPlay;
 @end
