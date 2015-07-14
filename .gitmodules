@@ -1,0 +1,3 @@
+[submodule "submodules/Cards-Against-Humanity-Random-Phrases"]
+	path = submodules/Cards-Against-Humanity-Random-Phrases
+	url = https://github.com/sean-howard/Cards-Against-Humanity-Random-Phrases.git
