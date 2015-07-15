@@ -226,7 +226,7 @@ static bool isFirstAccess = YES;
 
 - (void)reorderPlayers
 {
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"uuid" ascending:YES];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
     self.players = [NSMutableArray arrayWithArray:[self.players sortedArrayUsingDescriptors:@[sortDescriptor]]];
 }
 
