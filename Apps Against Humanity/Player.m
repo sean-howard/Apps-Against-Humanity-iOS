@@ -15,4 +15,9 @@
              @"uniqueID":self.uuid};
 }
 
+- (NSString *)description
+{
+    return self.uuid;
+}
+
 @end

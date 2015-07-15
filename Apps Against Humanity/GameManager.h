@@ -41,6 +41,7 @@
 - (void)startAsClient;
 - (void)connectToLobby:(Lobby *)lobby;
 - (void)enterGame;
+- (void)reorderPlayers;
 - (void)selectFirstBlackCardPlayer;
 - (void)distributeInitialWhiteCards;
 - (void)submitWhiteCardsResponse:(NSArray *)whiteCards;

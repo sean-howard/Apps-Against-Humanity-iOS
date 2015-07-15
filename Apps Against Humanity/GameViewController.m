@@ -32,6 +32,7 @@
     [super viewDidLoad];
     
     [[GameManager sharedManager] setDelegate:self];
+    [[GameManager sharedManager] reorderPlayers];
     
     if ([[GameManager sharedManager] isGameHost]) {
         [[GameManager sharedManager] selectFirstBlackCardPlayer];
@@ -198,7 +199,6 @@
     }
 
     dispatch_async(dispatch_get_main_queue(), ^{
-//        [SVProgressHUD dismiss];
         [SVProgressHUD showSuccessWithStatus:copy maskType:SVProgressHUDMaskTypeGradient];
     });
 }

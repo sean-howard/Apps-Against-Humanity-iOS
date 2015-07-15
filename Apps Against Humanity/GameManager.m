@@ -224,6 +224,12 @@ static bool isFirstAccess = YES;
     }
 }
 
+- (void)reorderPlayers
+{
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"uuid" ascending:YES];
+    self.players = [NSMutableArray arrayWithArray:[self.players sortedArrayUsingDescriptors:@[sortDescriptor]]];
+}
+
 #pragma mark - Send Commands
 #pragma mark - Game Play Logic
 - (void)selectFirstBlackCardPlayer
