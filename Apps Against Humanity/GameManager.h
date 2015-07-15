@@ -43,6 +43,7 @@
 - (void)enterGame;
 - (void)reorderPlayers;
 - (void)selectFirstBlackCardPlayer;
+- (void)selectNextBlackCardPlayer;
 - (void)distributeInitialWhiteCards;
 - (void)submitWhiteCardsResponse:(NSArray *)whiteCards;
 - (void)submitWinningSubmission:(Submission *)submission;

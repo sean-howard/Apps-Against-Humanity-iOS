@@ -246,6 +246,43 @@ static bool isFirstAccess = YES;
     [self.client sendMessage:packet];
 }
 
+- (void)selectNextBlackCardPlayer
+{
+    Player *localPlayer;
+    
+    for (Player *player in self.players) {
+        if ([self.localPlayer.uuid isEqualToString:player.uuid]) {
+            localPlayer = player;
+            break;
+        }
+    }
+    
+    int currentPlayerIndex = (int)[self.players indexOfObject:localPlayer];
+    currentPlayerIndex++;
+    
+    if (currentPlayerIndex >= self.players.count) {
+        currentPlayerIndex = 0;
+    }
+    
+    Player *newBlackCardPlayer = (Player *)self.players[currentPlayerIndex];
+    
+    if (newBlackCardPlayer) {
+        
+        [self.submittedWhiteCards removeAllObjects];
+        
+        BlackCard *blackCard = [[CardManager sharedManager] randomBlackCardFromPack:nil];
+        
+        NSDictionary *packetData = @{@"uniqueID":newBlackCardPlayer.uuid,
+                                     @"blackCardID":@(blackCard.cardId)};
+        
+        MessagePacket *packet = [[MessagePacket alloc] initWithData:packetData
+                                                             action:MessagePacketActionSelectBlackCardPlayer];
+        
+        [self.client sendMessage:packet];
+
+    }
+}
+
 - (void)distributeInitialWhiteCards
 {
     NSMutableDictionary *playerHands = [NSMutableDictionary dictionary];

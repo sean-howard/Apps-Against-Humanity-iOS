@@ -148,9 +148,17 @@
     NSLog(@"%@", blackCard.text);
     self.blackCardInPlay = blackCard;
     
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+    });
+    
+    [[GameManager sharedManager] setBlackCardPlayer:blackCardPlayer];
+    
     if (blackCardPlayer) {
-        [[GameManager sharedManager] setBlackCardPlayer:blackCardPlayer];
-        [[GameManager sharedManager] distributeInitialWhiteCards];
+        
+        if (![self.hand.cardIds firstObject]) {
+            [[GameManager sharedManager] distributeInitialWhiteCards];
+        }
 
         [self performSegueWithIdentifier:@"presentBlackCard" sender:self];
     } else {
@@ -201,6 +209,10 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [SVProgressHUD showSuccessWithStatus:copy maskType:SVProgressHUDMaskTypeGradient];
     });
+    
+    if ([[GameManager sharedManager] isCurrentlyBlackCardPlayer]) {
+        [[GameManager sharedManager] performSelector:@selector(selectNextBlackCardPlayer) withObject:nil afterDelay:3.0];
+    }
 }
 
 - (IBAction)submitButtonPressed:(UIBarButtonItem *)sender {
