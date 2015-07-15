@@ -253,8 +253,6 @@ static bool isFirstAccess = YES;
     
     MessagePacket *packet = [[MessagePacket alloc] initWithData:packetData action:MessagePacketActionDistributeWhiteCards];
     [self.client sendMessage:packet];
-    
-    NSLog(@"%@", packet.serialise);
 }
 
 - (void)submitWhiteCardsResponse:(NSArray *)whiteCards
@@ -327,9 +325,7 @@ static bool isFirstAccess = YES;
     NSLog(@"%@", data);
     
     Player *player = [self getPlayerWithUUID:data[@"uniqueID"]];
-    NSLog(@"%@", player.name);
-    NSLog(@"%@", player.uuid);
-    
+
     Submission *submission = [Submission new];
     submission.player = player;
     submission.whiteCards = [[CardManager sharedManager] getCardsFromIds:data[@"whiteCardIDs"]];
@@ -403,8 +399,6 @@ static bool isFirstAccess = YES;
 {    
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uuid = %@", uuid];
     NSArray *filteredArray = [self.players filteredArrayUsingPredicate:predicate];
-    
-    NSLog(@"%@", filteredArray);
     
     if ([filteredArray firstObject]) {
         return (Player *)[filteredArray firstObject];

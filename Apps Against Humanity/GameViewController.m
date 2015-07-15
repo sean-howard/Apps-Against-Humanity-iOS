@@ -120,7 +120,7 @@
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
     
-    self.submitButton.enabled = ([self.whiteCardsToSubmit firstObject]);
+    self.submitButton.enabled = [[self.whiteCardsToSubmit firstObject] boolValue];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
