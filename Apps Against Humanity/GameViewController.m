@@ -88,6 +88,8 @@
     WhiteCardTableViewCell *cell = (WhiteCardTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     WhiteCard *whiteCard = (WhiteCard *)self.hand.whiteCards[indexPath.row];
     
+    cell.accessoryType = UITableViewCellAccessoryNone;
+
     if ([self.whiteCardsToSubmit containsObject:whiteCard]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
@@ -120,7 +122,7 @@
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
     
-    self.submitButton.enabled = [[self.whiteCardsToSubmit firstObject] boolValue];
+    self.submitButton.enabled = ([self.whiteCardsToSubmit firstObject]);
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -202,9 +204,18 @@
 }
 
 - (IBAction)submitButtonPressed:(UIBarButtonItem *)sender {
+    
+    for (WhiteCard *whiteCard in self.whiteCardsToSubmit) {
+        if ([self.hand.whiteCards containsObject:whiteCard]) {
+            [self.hand.whiteCards removeObject:whiteCard];
+        }
+    }
+    
     if ([self.whiteCardsToSubmit firstObject]) {
         [[GameManager sharedManager] submitWhiteCardsResponse:self.whiteCardsToSubmit];
         dispatch_async(dispatch_get_main_queue(), ^{
+            [self.whiteCardsToSubmit removeAllObjects];
+            [self.tableView reloadData];
             [SVProgressHUD showWithStatus:@"Waiting for players to submit cards" maskType:SVProgressHUDMaskTypeGradient];
         });
     }

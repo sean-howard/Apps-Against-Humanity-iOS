@@ -245,7 +245,7 @@ static bool isFirstAccess = YES;
     NSMutableDictionary *playerHands = [NSMutableDictionary dictionary];
     
     for (Player *player in self.players) {
-        Hand *hand = [[Hand alloc] initWithCount:7];
+        Hand *hand = [[Hand alloc] initWithCount:100];
         [playerHands setObject:[hand asCardIds] forKey:player.uuid];
     }
     
