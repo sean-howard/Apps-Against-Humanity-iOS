@@ -381,7 +381,10 @@ static bool isFirstAccess = YES;
 {
     NSArray *cardIDs = data[@"initialCards"][self.localPlayer.uuid];
     
-    Hand *hand = [[Hand alloc] initWithCardIds:cardIDs];
+    CardManager *cardManager = [CardManager sharedManager];
+    [cardManager setLocalCardStore:[[cardManager getCardsFromIds:cardIDs] mutableCopy]];
+    
+    Hand *hand = [[Hand alloc] initWithCards:[cardManager getRandomSetOfWhiteCardsFromLocalCardStoreLimitedTo:7]];
     
     if (hand) {
         if ([self.delegate respondsToSelector:@selector(gameManagerDidReceiveInitialHand:)]) {

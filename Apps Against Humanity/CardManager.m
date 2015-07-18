@@ -19,6 +19,14 @@ static CardManager *SINGLETON = nil;
 
 static bool isFirstAccess = YES;
 
+- (NSMutableArray *)localCardStore
+{
+    if (!_localCardStore) {
+        _localCardStore = [NSMutableArray new];
+    }
+    return _localCardStore;
+}
+
 #pragma mark - Public Method
 
 + (id)sharedManager
@@ -169,6 +177,14 @@ static bool isFirstAccess = YES;
     return pack.whiteCards[arc4random() % [pack.whiteCards count]];
 }
 
+- (WhiteCard *)randomWhiteCardFromLocalStore
+{
+    if ([self.localCardStore firstObject]) {
+        return (WhiteCard *)self.localCardStore[arc4random() % [self.localCardStore count]];
+    }
+    return nil;
+}
+
 #pragma mark - Random Sets
 - (NSArray *)getRandomSetOfWhiteCardsFromPack:(Pack *)pack limitedTo:(int)limit
 {
@@ -182,6 +198,24 @@ static bool isFirstAccess = YES;
     
         [cards addObject:whiteCard];
     }
+    return (NSArray *)cards;
+}
+
+- (NSArray *)getRandomSetOfWhiteCardsFromLocalCardStoreLimitedTo:(int)limit
+{
+    NSMutableArray *cards = [NSMutableArray new];
+    WhiteCard *whiteCard;
+    
+    for (int i = 0; i < limit; i++) {
+        do {
+            whiteCard = [self randomWhiteCardFromLocalStore];
+        } while ([cards containsObject:whiteCard]);
+        
+        [cards addObject:whiteCard];
+    }
+    
+    [self.localCardStore removeObjectsInArray:cards];
+    
     return (NSArray *)cards;
 }
 

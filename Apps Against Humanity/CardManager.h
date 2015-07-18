@@ -15,6 +15,7 @@
 @interface CardManager : NSObject
 
 @property (nonatomic, strong) Pack *packInPlay;
+@property (nonatomic, strong) NSMutableArray *localCardStore;
 
 /**
  * gets singleton object.
@@ -32,5 +33,7 @@
 
 - (NSArray *)getRandomSetOfWhiteCardsFromPack:(Pack *)pack limitedTo:(int)limit;
 - (NSArray *)getCardsFromIds:(NSArray *)cardIds;
+
+- (NSArray *)getRandomSetOfWhiteCardsFromLocalCardStoreLimitedTo:(int)limit;
 
 @end

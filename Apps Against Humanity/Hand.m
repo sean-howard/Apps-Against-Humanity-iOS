@@ -34,6 +34,14 @@
     return self;
 }
 
+- (instancetype)initWithCards:(NSArray *)cards
+{
+    if (self = [super init]) {
+        _whiteCards = [cards mutableCopy];
+    }
+    return self;
+}
+
 #pragma mark - Convenience Methods
 - (NSArray *)asCardIds
 {
