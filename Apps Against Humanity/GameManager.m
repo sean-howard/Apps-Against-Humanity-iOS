@@ -15,6 +15,7 @@
 #import "BlackCard.h"
 #import "Hand.h"
 #import "Player.h"
+#import "Pack.h"
 #import "WhiteCard.h"
 #import "Submission.h"
 
@@ -285,13 +286,38 @@ static bool isFirstAccess = YES;
 
 - (void)distributeInitialWhiteCards
 {
+    if (![self.players firstObject]) return;
+    
+    Pack *packInPlay = [[CardManager sharedManager] packInPlay];
+    
+    Hand *bigHand = [[Hand alloc] initWithCount:(int)packInPlay.whiteCards.count];
+    NSArray *cardIDs = [bigHand asCardIds];
+    
+    int cardsRemaining = (int)bigHand.whiteCards.count;
+    int playerIndex = 0;
+    int j = 0;
+ 
+    int handSize = ceilf((float)bigHand.whiteCards.count/self.players.count);
+
     NSMutableDictionary *playerHands = [NSMutableDictionary dictionary];
     
-    for (Player *player in self.players) {
-        Hand *hand = [[Hand alloc] initWithCount:100];
-        [playerHands setObject:[hand asCardIds] forKey:player.uuid];
+    while (j < cardIDs.count) {
+        NSRange range = NSMakeRange(j, MIN(handSize, cardsRemaining));
+        NSArray *subarray = [cardIDs subarrayWithRange:range];
+        
+        if (playerIndex < self.players.count) {
+            Player *player = (Player *)self.players[playerIndex];
+            if (player) {
+                [playerHands setObject:subarray forKey:player.uuid];
+                cardsRemaining-=range.length;
+                j+=range.length;
+                playerIndex++;
+            }
+        } else {
+            break;
+        }
     }
-    
+
     NSDictionary *packetData = @{@"initialCards":playerHands};
     
     MessagePacket *packet = [[MessagePacket alloc] initWithData:packetData action:MessagePacketActionDistributeWhiteCards];
