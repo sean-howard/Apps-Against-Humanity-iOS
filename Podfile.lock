@@ -1,5 +1,6 @@
 PODS:
-  - GTMNSStringHTMLAdditions (0.1.0)
+  - GTMNSStringHTMLAdditions (0.1.1)
+  - NSMutableArray-Shuffle (0.4)
   - PocketSocket (0.6.4)
   - Realm (0.93.2):
     - Realm/Headers (= 0.93.2)
@@ -9,13 +10,15 @@ PODS:
 
 DEPENDENCIES:
   - GTMNSStringHTMLAdditions (~> 0.1)
+  - NSMutableArray-Shuffle (~> 0.4)
   - PocketSocket (~> 0.6)
   - Realm (~> 0.93)
   - SocketRocket
   - SVProgressHUD (~> 1.1)
 
 SPEC CHECKSUMS:
-  GTMNSStringHTMLAdditions: b0e1d984a8521bc05ec678c603f82268a4f24b20
+  GTMNSStringHTMLAdditions: 474e187a2426a7270f6c23af435512b598f2cc3d
+  NSMutableArray-Shuffle: 7bdef1418775ba41a66319b9173bda756f6099be
   PocketSocket: eee7ef375f55b98e7ca79e097d9c61fd688e9494
   Realm: 2fdd0ae74f730e190384e0338d8a0d3654df8220
   SocketRocket: 01443933b7bc362621325f4607b80b4286a99707

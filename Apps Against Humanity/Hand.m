@@ -9,6 +9,7 @@
 #import "Hand.h"
 #import "Pack.h"
 #import "CardManager.h"
+#import <NSMutableArray-Shuffle/NSMutableArray+Shuffle.h>
 
 @implementation Hand
 
@@ -51,6 +52,11 @@
         _whiteCards = [NSMutableArray new];
     }
     return _whiteCards;
+}
+
+- (void)shuffle
+{
+    [self.whiteCards shuffle];
 }
 
 @end

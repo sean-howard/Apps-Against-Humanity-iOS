@@ -17,5 +17,5 @@
 - (instancetype)initWithCount:(int)count;
 - (instancetype)initWithCount:(int)count fromPack:(Pack *)pack;
 - (instancetype)initWithCardIds:(NSArray *)cardIds;
-
+- (void)shuffle;
 @end

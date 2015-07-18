@@ -291,6 +291,8 @@ static bool isFirstAccess = YES;
     Pack *packInPlay = [[CardManager sharedManager] packInPlay];
     
     Hand *bigHand = [[Hand alloc] initWithCount:(int)packInPlay.whiteCards.count];
+    [bigHand shuffle];
+    
     NSArray *cardIDs = [bigHand asCardIds];
     
     int cardsRemaining = (int)bigHand.whiteCards.count;

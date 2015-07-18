@@ -21,9 +21,7 @@
     if(![[CardManager sharedManager] packsAvailable]) {
         [[CardManager sharedManager] populateDatabaseWithCards];
     }
-    
-    [[GameManager sharedManager] distributeInitialWhiteCards];
-    
+
     NSString *defaultPlayerName = [[NSUserDefaults standardUserDefaults] stringForKey:@"defaultPlayerName"];
     self.nameField.text = defaultPlayerName;
 }
