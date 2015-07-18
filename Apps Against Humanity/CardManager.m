@@ -206,9 +206,16 @@ static bool isFirstAccess = YES;
     NSMutableArray *cards = [NSMutableArray new];
     WhiteCard *whiteCard;
     
+    if (limit > self.localCardStore.count) {
+        limit = (int)self.localCardStore.count;
+    }
+    
     for (int i = 0; i < limit; i++) {
         do {
             whiteCard = [self randomWhiteCardFromLocalStore];
+            if (!whiteCard) {
+                break;
+            }
         } while ([cards containsObject:whiteCard]);
         
         [cards addObject:whiteCard];
