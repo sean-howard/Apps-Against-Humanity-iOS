@@ -148,6 +148,10 @@
     NSLog(@"%@", blackCard.text);
     self.blackCardInPlay = blackCard;
     
+    if ([self.hand.whiteCards firstObject]) {
+        [self.hand topUpHand];
+    }
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
     });
@@ -156,7 +160,7 @@
     
     if (blackCardPlayer) {
         
-        if (![self.hand.cardIds firstObject]) {
+        if (![self.hand.whiteCards firstObject]) {
             [[GameManager sharedManager] distributeInitialWhiteCards];
         }
 

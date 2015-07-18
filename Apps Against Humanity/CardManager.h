@@ -34,6 +34,7 @@
 - (NSArray *)getRandomSetOfWhiteCardsFromPack:(Pack *)pack limitedTo:(int)limit;
 - (NSArray *)getCardsFromIds:(NSArray *)cardIds;
 
+- (WhiteCard *)randomWhiteCardFromLocalStore;
 - (NSArray *)getRandomSetOfWhiteCardsFromLocalCardStoreLimitedTo:(int)limit;
 
 @end

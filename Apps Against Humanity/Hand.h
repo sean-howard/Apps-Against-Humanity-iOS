@@ -19,4 +19,5 @@
 - (instancetype)initWithCardIds:(NSArray *)cardIds;
 - (instancetype)initWithCards:(NSArray *)cards;
 - (void)shuffle;
+- (void)topUpHand;
 @end
