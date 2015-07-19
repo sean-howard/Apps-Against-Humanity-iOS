@@ -432,17 +432,10 @@ static bool isFirstAccess = YES;
     NSLog(@"RECEIVED PLAYER: %@", player.name);
     
     if ([data[whiteCardKey] isKindOfClass:[NSArray class]]){
-        NSMutableArray *playerSubmittedCards = [NSMutableArray new];
-        for (NSNumber *whiteCardID in data[whiteCardKey]) {
-            WhiteCard *whiteCard = [[CardManager sharedManager] whiteCardWithId:[whiteCardID integerValue]];
-            if (whiteCard) {
-                [playerSubmittedCards addObject:whiteCard];
-            }
-        }
-        
+
         Submission *submission = [Submission new];
         submission.player = player;
-        submission.whiteCards = playerSubmittedCards;
+        submission.whiteCards = [[CardManager sharedManager] getCardsFromIds:data[whiteCardKey]];
         
         [self.submittedWhiteCards addObject:submission];
     }
