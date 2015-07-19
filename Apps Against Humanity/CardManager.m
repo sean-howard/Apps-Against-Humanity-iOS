@@ -158,6 +158,27 @@ static bool isFirstAccess = YES;
     return tempArray;
 }
 
+- (NSArray *)getIDsFromCards:(NSArray *)cards
+{
+    NSMutableArray *tempArray = [NSMutableArray new];
+    
+    for (id card in cards) {
+        if ([card isKindOfClass:[WhiteCard class]]) {
+            
+            WhiteCard *whiteCard = (WhiteCard *)card;
+            [tempArray addObject:@(whiteCard.cardId)];
+            
+        } else if ([card isKindOfClass:[BlackCard class]]) {
+            
+            BlackCard *blackCard = (BlackCard *)card;
+            [tempArray addObject:@(blackCard.cardId)];
+        
+        }
+    }
+    
+    return (NSArray *)tempArray;
+}
+
 #pragma mark - Random Cards
 - (BlackCard *)randomBlackCardFromPack:(Pack *)pack
 {

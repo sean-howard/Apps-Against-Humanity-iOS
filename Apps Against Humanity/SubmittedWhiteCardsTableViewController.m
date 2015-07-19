@@ -31,11 +31,15 @@
     
     UINib *blackCellNib = [UINib nibWithNibName:@"BlackCardTableViewCell" bundle:nil];
     [self.tableView registerNib:blackCellNib forCellReuseIdentifier:@"headerCell"];
-    
+        
     self.tableView.estimatedRowHeight = 44.0f;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
     self.tableView.estimatedSectionHeaderHeight = 44.0f;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+    });
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,7 +53,7 @@
     if (section == 0) {
         return UITableViewAutomaticDimension;
     }
-    return 20.f;
+    return 0.f;
 }
 
 - (nullable UIView *)tableView:(nonnull UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -92,11 +96,10 @@
 - (void)tableView:(nonnull UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    Submission *submission = self.submissions[indexPath.row];
-    WhiteCard *whiteCard = (WhiteCard *)[submission.whiteCards firstObject];
-
+    Submission *submission = self.submissions[indexPath.section];
+    
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Are you sure this is your winning answer?"
-                                                                             message:whiteCard.text
+                                                                             message:nil
                                                                       preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *yesAction = [UIAlertAction actionWithTitle:@"This is my winner!"

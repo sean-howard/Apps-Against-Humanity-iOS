@@ -117,13 +117,15 @@
         
     } else {
         
+        if (self.whiteCardsToSubmit.count >= self.blackCardInPlay.pick) return;
+        
         if (![self.whiteCardsToSubmit containsObject:whiteCard]) {
             [self.whiteCardsToSubmit addObject:whiteCard];
         }
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
     
-    self.submitButton.enabled = ([self.whiteCardsToSubmit firstObject]);
+    self.submitButton.enabled = (self.whiteCardsToSubmit.count >= self.blackCardInPlay.pick);
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -220,6 +222,20 @@
 }
 
 - (IBAction)submitButtonPressed:(UIBarButtonItem *)sender {
+    
+    if (self.whiteCardsToSubmit.count != self.blackCardInPlay.pick) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"You've not selected enough cards you idiot!"
+                                                                                 message:nil
+                                                                          preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Sorry for being an idiot."
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:nil];
+        
+        [alertController addAction:okAction];
+        [self presentViewController:alertController animated:YES completion:nil];
+        
+        return;
+    }
     
     for (WhiteCard *whiteCard in self.whiteCardsToSubmit) {
         if ([self.hand.whiteCards containsObject:whiteCard]) {

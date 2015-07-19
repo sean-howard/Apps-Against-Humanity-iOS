@@ -328,10 +328,10 @@ static bool isFirstAccess = YES;
 
 - (void)submitWhiteCardsResponse:(NSArray *)whiteCards
 {
-    WhiteCard *whiteCard = (WhiteCard *)[whiteCards firstObject];
+    NSArray *whiteCardIDs = [[CardManager sharedManager] getIDsFromCards:whiteCards];
     
     NSDictionary *packetData = @{@"uniqueID":self.localPlayer.uuid,
-                                 @"whiteCardID":@(whiteCard.cardId)};
+                                 @"whiteCardIDs":whiteCardIDs};
     
     MessagePacket *packet = [[MessagePacket alloc] initWithData:packetData
                                                          action:MessagePacketActionSubmitWhiteCards];
