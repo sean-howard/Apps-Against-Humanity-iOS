@@ -46,30 +46,45 @@
 #pragma mark - Table view data source
 - (CGFloat)tableView:(nonnull UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return UITableViewAutomaticDimension;
+    if (section == 0) {
+        return UITableViewAutomaticDimension;
+    }
+    return 20.f;
 }
 
 - (nullable UIView *)tableView:(nonnull UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    BlackCardTableViewCell *headerCell = (BlackCardTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"headerCell"];
-    headerCell.multilineLabel.text = self.blackCardInPlay.text;
-    return headerCell;
+    if (section == 0) {
+        BlackCardTableViewCell *headerCell = (BlackCardTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"headerCell"];
+        headerCell.multilineLabel.text = self.blackCardInPlay.text;
+        return headerCell;
+    }
+    return nil;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return self.submissions.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.submissions.count;
+    
+    Submission *submission = (Submission *)self.submissions[section];
+    
+    if (submission) {
+        return submission.whiteCards.count;
+    }
+    
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     WhiteCardTableViewCell *cell = (WhiteCardTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    Submission *submission = (Submission *)self.submissions[indexPath.row];
-    WhiteCard *whiteCard = (WhiteCard *)[submission.whiteCards firstObject];
+    Submission *submission = (Submission *)self.submissions[indexPath.section];
     
-    cell.multilineLabel.text = whiteCard.text;
+    if (submission) {
+        WhiteCard *whiteCard = (WhiteCard *)submission.whiteCards[indexPath.row];
+        cell.multilineLabel.text = whiteCard.text;
+    }
     
     return cell;
 }
