@@ -19,6 +19,9 @@
 #import "BlackCardTableViewCell.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 
+#import <GTMNSStringHTMLAdditions/GTMNSString+HTML.h>
+#import "NSString+_HTML_Markup.h"
+
 @interface GameViewController ()<GameManagerDelegate>
 @property (nonatomic, strong) BlackCard *blackCardInPlay;
 @property (nonatomic, strong) Hand *hand;
@@ -72,7 +75,7 @@
 - (nullable UIView *)tableView:(nonnull UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     BlackCardTableViewCell *headerCell = (BlackCardTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"headerCell"];
-    headerCell.multilineLabel.text = self.blackCardInPlay.text;
+    headerCell.multilineLabel.text = [[self.blackCardInPlay.text stringByConvertingBRsToNewLine] gtm_stringByUnescapingFromHTML];
     return headerCell;
 }
 
@@ -95,7 +98,7 @@
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
     
-    cell.multilineLabel.text = whiteCard.text;
+    cell.multilineLabel.text = [[whiteCard.text stringByConvertingBRsToNewLine] gtm_stringByUnescapingFromHTML];
     
     return cell;
 }
@@ -169,7 +172,7 @@
         [self performSegueWithIdentifier:@"presentBlackCard" sender:self];
     } else {
         [[[UIAlertView alloc] initWithTitle:@"Black Card"
-                                    message:blackCard.text
+                                    message:[[blackCard.text stringByConvertingBRsToNewLine] gtm_stringByUnescapingFromHTML]
                                    delegate:nil
                           cancelButtonTitle:@"OK"
                           otherButtonTitles:nil, nil] show];

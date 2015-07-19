@@ -8,6 +8,8 @@
 
 #import "BlackCardModalViewController.h"
 #import "BlackCard.h"
+#import "NSString+_HTML_Markup.h"
+#import <GTMNSStringHTMLAdditions/GTMNSString+HTML.h>
 
 @interface BlackCardModalViewController ()
 
@@ -18,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.blackCardLabel.text = self.blackCard.text;
+    self.blackCardLabel.text = [[self.blackCard.text stringByConvertingBRsToNewLine] gtm_stringByUnescapingFromHTML];
 }
 
 - (void)didReceiveMemoryWarning {

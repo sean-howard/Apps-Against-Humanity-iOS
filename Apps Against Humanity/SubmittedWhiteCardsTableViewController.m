@@ -9,6 +9,9 @@
 #import "SubmittedWhiteCardsTableViewController.h"
 #import "GameManager.h"
 
+#import "NSString+_HTML_Markup.h"
+#import <GTMNSStringHTMLAdditions/GTMNSString+HTML.h>
+
 #import "WhiteCardTableViewCell.h"
 #import "BlackCardTableViewCell.h"
 
@@ -60,7 +63,7 @@
 {
     if (section == 0) {
         BlackCardTableViewCell *headerCell = (BlackCardTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"headerCell"];
-        headerCell.multilineLabel.text = self.blackCardInPlay.text;
+        headerCell.multilineLabel.text = [[self.blackCardInPlay.text stringByConvertingBRsToNewLine] gtm_stringByUnescapingFromHTML];
         return headerCell;
     }
     return nil;
@@ -87,7 +90,7 @@
     
     if (submission) {
         WhiteCard *whiteCard = (WhiteCard *)submission.whiteCards[indexPath.row];
-        cell.multilineLabel.text = whiteCard.text;
+        cell.multilineLabel.text = [[whiteCard.text stringByConvertingBRsToNewLine] gtm_stringByUnescapingFromHTML];
     }
     
     return cell;
