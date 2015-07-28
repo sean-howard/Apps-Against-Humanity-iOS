@@ -44,6 +44,10 @@
         
 }
 
+- (void)stopPublishing {
+    [self.service stop];
+}
+
 #pragma mark - NSNetServiceDelegate
 - (void)netServiceDidPublish:(NSNetService *)service {
     NSLog(@"Bonjour Service Published: domain(%@) type(%@) name(%@) port(%i)", [service domain], [service type], [service name], (int)[service port]);

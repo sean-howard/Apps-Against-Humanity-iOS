@@ -146,6 +146,10 @@ static bool isFirstAccess = YES;
 
 - (void)enterGame
 {
+    if (self.isGameHost) {
+        [self.server stopPublishing];
+    }
+    
     MessagePacket *packet = [[MessagePacket alloc] initWithData:@{}
                                                          action:MessagePacketActionStartGameSession];
     

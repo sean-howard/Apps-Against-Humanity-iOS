@@ -22,5 +22,6 @@
 @interface SocketServer : NSObject
 @property (nonatomic) id<SocketServerDelegate>delegate;
 - (void)startBroadcastWithName:(NSString *)name;
+- (void)stopPublishing;
 
 @end

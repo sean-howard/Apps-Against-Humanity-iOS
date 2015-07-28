@@ -83,10 +83,15 @@
     // Update Services
     [self.services removeObject:service];
     
-    if(!moreComing) {
-        if ([self.delegate respondsToSelector:@selector(clientDidUpdateServices:)]) {
-            [self.delegate clientDidUpdateServices:self.services];
+    for (Lobby *lobby in self.services) {
+        if ([lobby.lobbyName isEqualToString:service.name]) {
+            [self.services removeObject:lobby];
+            break;
         }
+    }
+    
+    if ([self.delegate respondsToSelector:@selector(clientDidUpdateServices:)]) {
+        [self.delegate clientDidUpdateServices:self.services];
     }
 }
 
